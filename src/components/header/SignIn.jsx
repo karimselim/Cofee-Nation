@@ -4,6 +4,7 @@ import LoggedInIcons from "./LoggedInIcons";
 
 const SignIn = () => {
   const { user } = useUserAuth();
+  console.log(user);
 
   return user ? (
     <div className="max-lg:hidden">{<LoggedInIcons />}</div>
