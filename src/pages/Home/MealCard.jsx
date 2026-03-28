@@ -29,7 +29,7 @@ const MealCard = (props) => {
           <p>Sliced Banana on Top</p>
         </li>
       </ul>
-      <p className="price font-medium text-2xl">IDR 25.000</p>
+      <p className="price font-semibold text-2xl">IDR 25.000</p>
       <Button
         onClick={scrollToTop}
         to="/products"
