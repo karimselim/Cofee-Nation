@@ -13,23 +13,23 @@ const MealCard = (props) => {
       <h3 className="text-lg font-medium">Hazelnut Latte</h3>
       <ul className="mb-8 md:mb-20 flex flex-col gap-5 text-left">
         <li className="flex gap-4">
-          <img src={check} alt="" />
+          <img src={check} alt="" className="w-6" />
           <p>Hazelnut Syrup</p>
         </li>
         <li className="flex gap-4">
-          <img src={check} alt="" />
+          <img src={check} alt="" className="w-6" />
           <p>Wanilla Whipped Cream</p>
         </li>
         <li className="flex gap-4">
-          <img src={check} alt="" />
+          <img src={check} alt="" className="w-6" />
           <p>Ice / Hot</p>
         </li>
         <li className="flex gap-4 ">
-          <img src={check} alt="" />
+          <img src={check} alt="" className="w-6" />
           <p>Sliced Banana on Top</p>
         </li>
       </ul>
-      <p className="price font-medium text-2xl">IDR 25.000</p>
+      <p className="price font-semibold text-2xl">IDR 25.000</p>
       <Button
         onClick={scrollToTop}
         to="/products"
