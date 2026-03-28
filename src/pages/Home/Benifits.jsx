@@ -16,19 +16,19 @@ const Benifits = () => {
         </p>
         <ul className="flex flex-col gap-8 text-textColor">
           <li className="flex gap-4">
-            <img src={check} alt="" />
+            <img src={check} alt="" className="w-6" />
             <p>High quality beans</p>
           </li>
           <li className="flex gap-4">
-            <img src={check} alt="" />
+            <img src={check} alt="" className="w-6" />
             <p>Healthy meals, you can request the ingredients</p>
           </li>
           <li className="flex gap-4">
-            <img src={check} alt="" />
+            <img src={check} alt="" className="w-6" />
             <p>Chat with our staff to get better experience for ordering</p>
           </li>
           <li className="flex gap-4">
-            <img src={check} alt="" />
+            <img src={check} alt="" className="w-6" />
             <p>Free member card with a minimum purchase of IDR 200.000.</p>
           </li>
         </ul>

@@ -9,9 +9,10 @@ const LandingPage = () => {
 
   return (
     <>
-      <section className="w-full bg-landing bg-cover bg-center text-white py-20">
+      <section className="w-full bg-landing bg-cover bg-center text-white py-20 relative">
+        <div className="w-full h-full absolute top-0 left-0 bg-black opacity-30"></div>
         <div className="global-px">
-          <article className="flex flex-col gap-6 w-[75%] lg:w-[50%]">
+          <article className="flex flex-col gap-6 w-[75%] lg:w-[50%] z-0 relative">
             <h2 className="font-bold text-4xl">
               Start Your Day with Coofee and Good Meals
             </h2>
@@ -22,12 +23,12 @@ const LandingPage = () => {
             <Button
               onClick={scrollToTop}
               to="/products"
-              className=" text-buttonColor bg-firstColor w-32 hover:bg-hoveredColor text-sm font-bold py-3 rounded-xl"
+              className=" text-buttonColor bg-firstColor w-40 hover:bg-hoveredColor font-bold py-4 rounded-xl"
             >
               get started
             </Button>
           </article>
-          <section className="bg-white flex rounded-xl items-center justify-center text-center mt-20 -mb-[9rem] py-2 md:py-6 shadow-xl">
+          <section className="bg-white flex rounded-xl items-center justify-center text-center mt-20 -mb-[9rem] py-2 md:py-6 shadow-xl z-0 relative">
             <aside className="flex justify-center items-center gap-3 md:gap-8 py-2 md:py-6 flex-col md:flex-row border-r-2 border-slate-200 flex-1">
               <Icon>
                 <FontAwesomeIcon icon={faUser} />
