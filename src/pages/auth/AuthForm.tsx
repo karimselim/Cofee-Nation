@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Button from "../../Ui/Button";
 import PasswordContent from "./PasswordContent";
+import googleLogo from "../../assists/icons/google.svg";
 import jokopi from "../../assists/jokopi.svg";
 import { useUserAuth } from "../../setup/context/user-auth-context";
 import { useNavigate } from "react-router-dom";
@@ -17,37 +18,35 @@ const AuthForm = () => {
   const navigate = useNavigate();
   const { signup, login, signinWithGoogle } = useUserAuth();
 
-  const signUp = async (e) => {
+  const signUp = async () => {
     try {
       await signup(email, password);
-      console.log("submit");
     } catch (err) {
-      if (err.message === "Firebase: Error (auth/missing-password).") {
+      const message = err instanceof Error ? err.message : "";
+      if (message === "Firebase: Error (auth/missing-password).") {
         setPasswordError("Please enter a valid password");
-      } else if (err.message === "Firebase: Error (auth/invalid-email).") {
+      } else if (message === "Firebase: Error (auth/invalid-email).") {
         setEmailError("Please enter a valid email");
       } else {
         setEmailError("Please make sure that the Email is right");
         setPasswordError("Please make sure that the password is right");
       }
-      console.log(err.message);
     }
   };
-  const logIn = async (e) => {
+  const logIn = async () => {
     try {
       await login(email, password);
       navigate("/products");
-      console.log("login");
     } catch (err) {
-      if (err.message === "Firebase: Error (auth/missing-password).") {
+      const message = err instanceof Error ? err.message : "";
+      if (message === "Firebase: Error (auth/missing-password).") {
         setPasswordError("Please enter a valid password");
-      } else if (err.message === "Firebase: Error (auth/invalid-email).") {
+      } else if (message === "Firebase: Error (auth/invalid-email).") {
         setEmailError("Please enter a valid email");
       } else {
         setEmailError("Please make sure that the Email is right");
         setPasswordError("Please make sure that the password is right");
       }
-      console.log(err.message);
     }
   };
 
@@ -55,14 +54,14 @@ const AuthForm = () => {
     try {
       await signinWithGoogle();
       navigate("/");
-    } catch (err) {
-      console.log(err.message);
+    } catch {
+      // popup closed or blocked: stay on the page
     }
   };
 
   const registreHandler = () => {
-    location.pathname.includes("register") && signUp();
-    location.pathname.includes("login") && logIn();
+    if (location.pathname.includes("register")) signUp();
+    if (location.pathname.includes("login")) logIn();
   };
 
   const markCheckboxHandler = () => {
@@ -80,16 +79,15 @@ const AuthForm = () => {
           to="/"
           className="logo flex items-center gap-4 border-none outline-none"
         >
-          <img src={jokopi} alt="logo" className="w-8" />
-          Karim
+          <img src={jokopi} alt="Coffee Nation logo" className="w-8" />
+          Coffee Nation
         </Link>
-        <p className="text-buttonColor font-semibold">
+        <h1 className="text-buttonColor font-semibold">
           {location.pathname.includes("register") ? "Signup" : "Login"}
-        </p>
+        </h1>
       </header>
       <form>
         <div
-          action="login"
           className="mt-16 flex flex-col space-y-3 md:space-y-4 gap-5"
         >
           <div>
@@ -116,7 +114,7 @@ const AuthForm = () => {
                 setPasswordError("");
                 setPassword(e.target.value);
               }}
-              type="text"
+              type="password"
               className={`w-full border-2 border-gray-400 rounded-2xl p-3 mt-2 ${
                 passwodError && "border-red-500"
               }`}
@@ -178,8 +176,9 @@ const AuthForm = () => {
           className="font-bold text-lg text-buttonColor rounded-2xl py-2 my-4 shadow-xl gap-2"
         >
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+            src={googleLogo}
             alt=""
+            className="w-6 h-6"
           />
           {location.pathname.includes("register")
             ? "Signup with Google"

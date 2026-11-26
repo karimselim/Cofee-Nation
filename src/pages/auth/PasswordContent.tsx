@@ -16,9 +16,9 @@ const PasswordContent = () => {
       setSubmitting(
         "If u didn't receive a message please try again after a minute"
       );
-      console.log("submitting");
     } catch (err) {
-      if (err.message === "Firebase: Error (auth/missing-email).") {
+      const message = err instanceof Error ? err.message : "";
+      if (message === "Firebase: Error (auth/missing-email).") {
         SetError("Please enter your Email");
       } else {
         SetError("Please enter a valid Email");
@@ -33,12 +33,12 @@ const PasswordContent = () => {
           to="/"
           className="logo flex items-center gap-4 border-none outline-none"
         >
-          <img src={jokopi} alt="logo" className="w-8" />
-          Karim
+          <img src={jokopi} alt="Coffee Nation logo" className="w-8" />
+          Coffee Nation
         </Link>
       </header>
       <form className="flex flex-col gap-4 md:gap-5">
-        <p className="text-3xl font-bold text-center">Forgot your password?</p>
+        <h1 className="text-3xl font-bold text-center">Forgot your password?</h1>
         <p className="text-xl text-center">Don’t worry, we got your back!</p>
         <input
           onChange={(e) => {
