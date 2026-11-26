@@ -13,9 +13,9 @@ const LandingPage = () => {
         <div className="w-full h-full absolute top-0 left-0 bg-black opacity-30"></div>
         <div className="global-px">
           <article className="flex flex-col gap-6 w-[75%] lg:w-[50%] z-0 relative">
-            <h2 className="font-bold text-4xl">
-              Start Your Day with Coofee and Good Meals
-            </h2>
+            <h1 className="font-bold text-4xl">
+              Start Your Day with Coffee and Good Meals
+            </h1>
             <p className="font-semibold leading-5">
               We provide high quality beans, good taste, and healthy meals made
               by love just for you. Start your day with us for a bigger smile!
