@@ -27,6 +27,7 @@ const PaymentMethods = ({
             name="payment-method"
             className="w-4 h-4 accent-buttonColor"
             value="card"
+            aria-label="Card"
             onChange={() => onMethodChange("card")}
             checked={method === "card"}
           />
@@ -56,6 +57,7 @@ const PaymentMethods = ({
             name="payment-method"
             className="w-4 h-4 accent-buttonColor"
             value="bank"
+            aria-label="Bank account"
             onChange={() => onMethodChange("bank")}
             checked={method === "bank"}
           />
@@ -84,6 +86,7 @@ const PaymentMethods = ({
             name="payment-method"
             className="w-4 h-4 accent-buttonColor"
             value="cash"
+            aria-label="Cash on delivery"
             onChange={() => onMethodChange("cash")}
             checked={method === "cash"}
           />
