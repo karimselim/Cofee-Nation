@@ -1,20 +1,28 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem, Product } from "../types";
-import { productKey } from "../data/products";
+import { CartItem, OrderPrefs, Product, Size } from "../types";
+import { unitPrice } from "../utils/pricing";
 
-interface CartState {
+export interface CartState {
   items: CartItem[];
+  prefs: OrderPrefs;
 }
 
-const initialState: CartState = { items: [] };
+export const defaultPrefs: OrderPrefs = { delivery: "pickup", when: "now", time: "" };
+export const initialCart: CartState = { items: [], prefs: defaultPrefs };
+
+export const cartKey = (p: Pick<Product, "category" | "id">, size: Size) =>
+  `${p.category}-${p.id}-${size}`;
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState,
+  initialState: initialCart,
   reducers: {
-    adding(state, action: PayloadAction<{ product: Product; quantity?: number }>) {
-      const { product, quantity = 1 } = action.payload;
-      const key = productKey(product);
+    replace(_state, action: PayloadAction<CartState>) {
+      return action.payload;
+    },
+    adding(state, action: PayloadAction<{ product: Product; size: Size; quantity?: number }>) {
+      const { product, size, quantity = 1 } = action.payload;
+      const key = cartKey(product, size);
       const existing = state.items.find((item) => item.key === key);
       if (existing) {
         existing.quantity += quantity;
@@ -25,7 +33,8 @@ const cartSlice = createSlice({
           category: product.category,
           title: product.title,
           image: product.image,
-          price: product.price,
+          size,
+          price: unitPrice(product, size),
           quantity,
         });
       }
@@ -45,6 +54,9 @@ const cartSlice = createSlice({
     },
     removing(state, action: PayloadAction<string>) {
       state.items = state.items.filter((item) => item.key !== action.payload);
+    },
+    setPrefs(state, action: PayloadAction<Partial<OrderPrefs>>) {
+      state.prefs = { ...state.prefs, ...action.payload };
     },
     clear(state) {
       state.items = [];

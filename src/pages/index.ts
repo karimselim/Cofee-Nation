@@ -1,5 +1,6 @@
 export { default as Home } from "./Home/Home";
 export { default as History } from "./History";
+export { default as Wishlist } from "./Wishlist";
 export { default as Products } from "./products/Products";
 export { default as YourCart } from "./cart/YourCart";
 export { default as Login } from "./auth/Login";

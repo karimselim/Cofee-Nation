@@ -1,530 +1,530 @@
 [
- {
-  "id": 1,
-  "category": "coffee",
-  "title": "Black Coffee",
-  "image": "/images/products/coffee-1.webp",
-  "description": "Black coffee is as simple as it gets with ground coffee beans steeped in hot water, served warm. And if you want to sound fancy, you can call black coffee by its proper name: cafe noir.",
-  "ingredients": [
-   "Coffee"
-  ],
-  "price": 35
- },
- {
-  "id": 2,
-  "category": "coffee",
-  "title": "Latte",
-  "image": "/images/products/coffee-2.webp",
-  "description": "As the most popular coffee drink out there, the latte is made with a shot of espresso and steamed milk, with just a touch of foam. It can be ordered plain or flavored with everything from vanilla to pumpkin spice.",
-  "ingredients": [
-   "Espresso",
-   "Steamed milk"
-  ],
-  "price": 42
- },
- {
-  "id": 3,
-  "category": "coffee",
-  "title": "Caramel Latte",
-  "image": "/images/products/coffee-3.webp",
-  "description": "If you like flavored lattes, a caramel latte is a great choice, combining espresso, steamed milk, and caramel for a naturally sweet and creamy drink.",
-  "ingredients": [
-   "Espresso",
-   "Steamed milk",
-   "Caramel syrup"
-  ],
-  "price": 49
- },
- {
-  "id": 4,
-  "category": "coffee",
-  "title": "Cappuccino",
-  "image": "/images/products/coffee-4.webp",
-  "description": "A cappuccino is an espresso drink with steamed milk and a thick layer of foam, often topped with cocoa powder or cinnamon. Some variations use cream instead of milk or add flavored syrups.",
-  "ingredients": [
-   "Espresso",
-   "Steamed milk",
-   "Foam"
-  ],
-  "price": 32
- },
- {
-  "id": 5,
-  "category": "coffee",
-  "title": "Americano",
-  "image": "/images/products/coffee-5.webp",
-  "description": "With a flavor similar to black coffee, an americano is made by diluting a shot of espresso with hot water.",
-  "ingredients": [
-   "Espresso",
-   "Hot water"
-  ],
-  "price": 39
- },
- {
-  "id": 6,
-  "category": "coffee",
-  "title": "Espresso",
-  "image": "/images/products/coffee-6.webp",
-  "description": "A shot of espresso can be served on its own or used as the base for most coffee drinks, like lattes and macchiatos.",
-  "ingredients": [
-   "Espresso"
-  ],
-  "price": 46
- },
- {
-  "id": 7,
-  "category": "coffee",
-  "title": "Macchiato",
-  "image": "/images/products/coffee-7.webp",
-  "description": "An espresso macchiato is a shot of espresso marked with a small dollop of foam. It is stronger and smaller than a cappuccino or latte.",
-  "ingredients": [
-   "Espresso",
-   "Foam"
-  ],
-  "price": 29
- },
- {
-  "id": 8,
-  "category": "coffee",
-  "title": "Mocha",
-  "image": "/images/products/coffee-8.webp",
-  "description": "For all the chocolate lovers out there, a mocha is an easy favorite. It is a chocolate espresso drink made with steamed milk and foam.",
-  "ingredients": [
-   "Espresso",
-   "Steamed milk",
-   "Chocolate"
-  ],
-  "price": 36
- },
- {
-  "id": 9,
-  "category": "coffee",
-  "title": "Hot Chocolate",
-  "image": "/images/products/coffee-9.webp",
-  "description": "A classic warm drink made with chocolate and steamed milk. Rich, cozy, and especially good on cold days.",
-  "ingredients": [
-   "Chocolate",
-   "Milk"
-  ],
-  "price": 43
- },
- {
-  "id": 10,
-  "category": "coffee",
-  "title": "Chai Latte",
-  "image": "/images/products/coffee-10.webp",
-  "description": "A spiced tea latte made with black tea, steamed milk, and warming spices such as ginger, cardamom, and cinnamon.",
-  "ingredients": [
-   "Tea",
-   "Milk",
-   "Ginger",
-   "Cardamom",
-   "Cinnamon"
-  ],
-  "price": 50
- },
- {
-  "id": 11,
-  "category": "coffee",
-  "title": "Matcha Latte",
-  "image": "/images/products/coffee-11.webp",
-  "description": "A matcha latte is a green tea drink made with finely ground matcha and milk, offering mild sweetness, a distinctive flavor, and a gentle caffeine boost.",
-  "ingredients": [
-   "Matcha powder",
-   "Milk",
-   "Sugar*"
-  ],
-  "price": 33
- },
- {
-  "id": 12,
-  "category": "coffee",
-  "title": "Seasonal Brew",
-  "image": "/images/products/coffee-12.webp",
-  "description": "A seasonal coffee with flavor notes that can include caramel, fruit, and chocolate.",
-  "ingredients": [
-   "Coffee"
-  ],
-  "price": 40
- },
- {
-  "id": 13,
-  "category": "coffee",
-  "title": "Black Tea",
-  "image": "/images/products/coffee-13.webp",
-  "description": "Black tea is made from the leaves of the Camellia sinensis plant. It can be enjoyed plain or flavored with fruit, spices, or other additions.",
-  "ingredients": [
-   "Tea"
-  ],
-  "price": 47
- },
- {
-  "id": 14,
-  "category": "coffee",
-  "title": "Iced Latte",
-  "image": "/images/products/coffee-14.webp",
-  "description": "An iced latte is espresso poured over ice and cold milk. Sweet syrup is optional, and it is also known as an iced cafe latte.",
-  "ingredients": [
-   "Espresso",
-   "Milk",
-   "Ice",
-   "Syrup"
-  ],
-  "price": 30
- },
- {
-  "id": 15,
-  "category": "coffee",
-  "title": "Iced Mocha Latte",
-  "image": "/images/products/coffee-15.webp",
-  "description": "An iced mocha latte combines a latte with mocha flavors, bringing together chocolate and coffee in a rich and refreshing drink.",
-  "ingredients": [
-   "Espresso",
-   "Ice",
-   "Milk",
-   "Chocolate"
-  ],
-  "price": 37
- },
- {
-  "id": 16,
-  "category": "coffee",
-  "title": "Blended Caramel Coffee",
-  "image": "/images/products/coffee-16.webp",
-  "description": "A blended iced coffee with caramel syrup, milk, and ice, topped with whipped cream and caramel sauce.",
-  "ingredients": [
-   "Coffee",
-   "Ice",
-   "Milk",
-   "Caramel syrup",
-   "Whipped cream*",
-   "Caramel sauce"
-  ],
-  "price": 44
- },
- {
-  "id": 17,
-  "category": "coffee",
-  "title": "Blended Mocha Coffee",
-  "image": "/images/products/coffee-17.webp",
-  "description": "A blended iced mocha with coffee, milk, cocoa, and ice, finished with whipped cream for a chocolate shake-like treat.",
-  "ingredients": [
-   "Coffee",
-   "Ice",
-   "Milk",
-   "Cocoa",
-   "Whipped cream*"
-  ],
-  "price": 51
- },
- {
-  "id": 18,
-  "category": "coffee",
-  "title": "Orange Juice",
-  "image": "/images/products/coffee-18.webp",
-  "description": "Freshly squeezed orange juice served cold over ice.",
-  "ingredients": [
-   "Fresh oranges",
-   "Ice"
-  ],
-  "price": 34
- },
- {
-  "id": 19,
-  "category": "coffee",
-  "title": "Frozen Lemonade",
-  "image": "/images/products/coffee-19.webp",
-  "description": "Frozen lemonade is a refreshing summer drink that combines freshly squeezed lemon juice, ice, and sweetener into a cool, tangy treat.",
-  "ingredients": [
-   "Lemon juice",
-   "Ice",
-   "Sugar*"
-  ],
-  "price": 41
- },
- {
-  "id": 20,
-  "category": "coffee",
-  "title": "Lemonade",
-  "image": "/images/products/coffee-20.webp",
-  "description": "A sweet-tart sparkling lemonade made with lemon juice, carbonated water, and honey.",
-  "ingredients": [
-   "Lemon juice",
-   "Sparkling water",
-   "Honey"
-  ],
-  "price": 48
- },
- {
-  "id": 1,
-  "category": "foods",
-  "title": "California Roll Sushi Bowls",
-  "image": "/images/products/foods-1.webp",
-  "description": "Freshly made in our kitchen.",
-  "ingredients": [
-   "2 cups dry California Calrose Sushi Rice",
-   "5 Tbsp rice vinegar, (, divided)",
-   "2 Tbsp granulated sugar",
-   "1/2 tsp salt",
-   "1/4 cup light mayonnaise",
-   "1 1/2 Tbsp sriracha"
-  ],
-  "price": 23
- },
- {
-  "id": 2,
-  "category": "foods",
-  "title": "Chicken Caesar Wraps",
-  "image": "/images/products/foods-2.webp",
-  "description": "Freshly made in our kitchen.",
-  "ingredients": [
-   "2-3 c. romaine lettuce",
-   "Caesar dressing, (to taste.. the better the dressing, the better your wrap will be.. personally I like Brianna's bran",
-   "1/3 c. Parmesan cheese, (freshly grated)",
-   "1 chicken breast, (cooked & diced)",
-   "croutons, (coarsely chopped)",
-   "diced tomatoes, (lightly salted)"
-  ],
-  "price": 26
- },
- {
-  "id": 3,
-  "category": "foods",
-  "title": "Vegetarian Tacos with Avocado Cream",
-  "image": "/images/products/foods-3.webp",
-  "description": "Freshly made in our kitchen.",
-  "ingredients": [
-   "For Avocado Cream",
-   "1/2 avocado",
-   "1 cup plain Greek Yogurt",
-   "1 lime, (juiced)",
-   "1 teaspoon homemade taco seasoning",
-   "For Tacos"
-  ],
-  "price": 29
- },
- {
-  "id": 4,
-  "category": "foods",
-  "title": "Chicken and Lemon Risotto",
-  "image": "/images/products/foods-4.webp",
-  "description": "Chicken And Lemon Risotto With Reduced Sodium Chicken Stock, Butter, Boneless Skinless Chicken Breasts, Garlic, Lemon Juice, Fresh Oregano, Onion, Arborio Rice, Frozen Peas, Grated Lemon Peel, Grated Parmesan Cheese",
-  "ingredients": [
-   "4 cups reduced sodium chicken stock",
-   "3 tablespoons butter",
-   "1 pound boneless skinless chicken breasts larger pieces halved",
-   "2 cloves garlic crushed",
-   "1/4 cup lemon juice",
-   "2 tablespoons fresh oregano coarsely chopped"
-  ],
-  "price": 32
- },
- {
-  "id": 5,
-  "category": "foods",
-  "title": "Chicken, Broccoli Risotto",
-  "image": "/images/products/foods-5.webp",
-  "description": "Chicken, Broccoli Risotto With Arborio Rice, Dry White Wine, Chicken Stock, Leek, Butter, Parmesan Cheese, Chicken Breast, Broccoli, Medium Carrot, Olive Oil",
-  "ingredients": [
-   "2/3 cup arborio rice 4.2oz, 125gr, or other rice specifically for risotto – Carnaroli or Vialone Nano",
-   "1/2 cup dry white wine 4oz, 120ml",
-   "2 1/4 cups chicken stock 18oz, 540ml",
-   "1 leek medium, trimmed and sliced, divided",
-   "1 tablespoon butter",
-   "3/4 cup parmesan cheese 3oz, 90gr, – freshly grated"
-  ],
-  "price": 35
- },
- {
-  "id": 6,
-  "category": "foods",
-  "title": "Banana Bread Mini Muffins Recipe by Tasty",
-  "image": "/images/products/foods-6.webp",
-  "description": "Here's what you need: ripe banana, egg, full-fat greek yogurt, honey, vanilla extract, whole wheat flour, baking soda, strawberry, dark chocolate chip, blueberry, walnuts",
-  "ingredients": [
-   "3 ripe bananas",
-   "2 eggs",
-   "1/2 cup full-fat Greek yogurt",
-   "1/3 cup honey",
-   "1 teaspoon vanilla extract",
-   "1 1/2 cups whole wheat flour"
-  ],
-  "price": 38
- },
- {
-  "id": 7,
-  "category": "foods",
-  "title": "Protein-Packed Breakfast Bars Recipe by Tasty",
-  "image": "/images/products/foods-7.webp",
-  "description": "Here's what you need: flax meal, water, rolled oats, quinoa, baking powder, salt, maple syrup, refined coconut oil, vanilla extract, ripe banana, peanut butter chocolate candy, peanut butter, mini chocolate chips, gala apple, walnuts, cinnamon, nutmeg, carrot,",
-  "ingredients": [
-   "1/4 cup flax meal",
-   "3/4 cup water",
-   "6 cups rolled oats",
-   "6 cups cooked quinoa",
-   "4 teaspoons baking powder",
-   "1 teaspoon salt"
-  ],
-  "price": 41
- },
- {
-  "id": 8,
-  "category": "foods",
-  "title": "Healthy No Bake Peanut Butter Pretzel Granola Bars",
-  "image": "/images/products/foods-8.webp",
-  "description": "Healthy No-Bake Peanut Butter Pretzel Bars.",
-  "ingredients": [
-   "1 mashed banana, ripe",
-   "3/4 c peanut butter",
-   "1/4 c agave",
-   "2 1/2 c rolled oats, (gluten-free)",
-   "1/4 c pretzels pieces, (gluten-free)",
-   "1 tbsp chia seeds"
-  ],
-  "price": 44
- },
- {
-  "id": 9,
-  "category": "foods",
-  "title": "Slow Cooker Teriyaki Chicken + Crock-Pot Giveaway",
-  "image": "/images/products/foods-9.webp",
-  "description": "This Slow Cooker Teriyaki Chicken recipe is simple to make, full of great flavor, and made with natural sweeteners.",
-  "ingredients": [
-   "2 lbs boneless, skinless chicken breasts",
-   "2 cloves garlic, minced",
-   "1/2 cup chopped white onion",
-   "1/2 cup honey",
-   "1/2 cup soy sauce, (use low-sodium if desired)",
-   "1/4 cup rice wine vinegar"
-  ],
-  "price": 47
- },
- {
-  "id": 10,
-  "category": "foods",
-  "title": "Fiesta Chicken Crockpot Recipe",
-  "image": "/images/products/foods-10.webp",
-  "description": "Freshly made in our kitchen.",
-  "ingredients": [
-   "4 chicken breast, (frozen or raw)",
-   "1 packet Taco Seasoning, (by the salad dressing)",
-   "1 can black beans, (drained and rinsed)",
-   "1 can salsa not drained",
-   "1 can corn not drained"
-  ],
-  "price": 20
- },
- {
-  "id": 11,
-  "category": "foods",
-  "title": "Orange Chipotle Chicken with Cilantro Rice",
-  "image": "/images/products/foods-11.webp",
-  "description": "Freshly made in our kitchen.",
-  "ingredients": [
-   "1 tsp chile powder",
-   "1/2 tsp ground cumin",
-   "1/2 tsp sea salt, divided",
-   "1 tsp safflower oil",
-   "4 boneless, skinless chicken breasts, (about 1 lb) rinsed and patted dry, pounded 1/2-inch thick",
-   "Juice 1 medium navel orange, (1/3 cup orange juice)"
-  ],
-  "price": 23
- },
- {
-  "id": 12,
-  "category": "foods",
-  "title": "One Pot Hamburger Stroganoff",
-  "image": "/images/products/foods-12.webp",
-  "description": "This One Pot Hamburger Stoganoff is a great weeknight meal! It's quick, easy, filled with simple ingredients, and has NO condensed soup.",
-  "ingredients": [
-   "salt and pepper to taste",
-   "8 ounces (230g) sliced baby portabella mushrooms",
-   "1 small onion, chopped",
-   "2 tablespoons butter",
-   "1 tablespoon olive oil",
-   "1 pound lean ground beef"
-  ],
-  "price": 26
- },
- {
-  "id": 1,
-  "category": "iced",
-  "title": "Iced Coffee",
-  "image": "/images/products/iced-1.webp",
-  "description": "A coffee with ice, typically served with a dash of milk, cream or sweetener—iced coffee is really as simple as that.",
-  "ingredients": [
-   "Coffee",
-   "Ice",
-   "Sugar*",
-   "Cream*"
-  ],
-  "price": 39
- },
- {
-  "id": 2,
-  "category": "iced",
-  "title": "Iced Espresso",
-  "image": "/images/products/iced-2.webp",
-  "description": "Like iced coffee, iced espresso can be served straight or with a dash of milk, cream, or sweetener. You can also ice specialty espresso-based drinks like americanos, mochas, macchiatos, lattes, and flat whites.",
-  "ingredients": [
-   "Espresso",
-   "Ice",
-   "Sugar*",
-   "Cream*"
-  ],
-  "price": 44
- },
- {
-  "id": 3,
-  "category": "iced",
-  "title": "Cold Brew",
-  "image": "/images/products/iced-3.webp",
-  "description": "The trendiest of the iced coffee bunch, cold brew coffees are made by steeping coffee beans from anywhere between 6-36 hours, depending on how strong you would like your cold brew. Once the beans are done steeping, add cold milk or cream.",
-  "ingredients": [
-   "Long steeped coffee",
-   "Ice"
-  ],
-  "price": 49
- },
- {
-  "id": 4,
-  "category": "iced",
-  "title": "Frappuccino",
-  "image": "/images/products/iced-4.webp",
-  "description": "Made famous by Starbucks, the Frappuccino is a blended iced coffee drink topped with whipped cream and syrup.",
-  "ingredients": [
-   "Espresso",
-   "Blended ice",
-   "Whip*"
-  ],
-  "price": 34
- },
- {
-  "id": 5,
-  "category": "iced",
-  "title": "Nitro",
-  "image": "/images/products/iced-5.webp",
-  "description": "A cold brew + nitrogen bubbles = a cold brew coffee with a frothy, Guinness-like consistency. (It’s poured via a nitro tap, too.)",
-  "ingredients": [
-   "Coffee",
-   "Nitrogen bubbles",
-   "Sugar*",
-   "Cream*"
-  ],
-  "price": 39
- },
- {
-  "id": 6,
-  "category": "iced",
-  "title": "Mazagran",
-  "image": "/images/products/iced-6.webp",
-  "description": "Mazagran coffee is a cross between iced coffee, tea and your favorite rum drink. It typically consists of espresso, lemon, sugar and (sometimes) rum.",
-  "ingredients": [
-   "Coffee",
-   "Sugar",
-   "Lemon",
-   "Rum*"
-  ],
-  "price": 44
- }
+  {
+    "id": 1,
+    "category": "coffee",
+    "title": "Black Coffee",
+    "image": "/images/products/coffee-1.webp",
+    "description": "Black coffee is as simple as it gets with ground coffee beans steeped in hot water, served warm. And if you want to sound fancy, you can call black coffee by its proper name: cafe noir.",
+    "ingredients": [
+      "Coffee"
+    ],
+    "price": 105
+  },
+  {
+    "id": 2,
+    "category": "coffee",
+    "title": "Latte",
+    "image": "/images/products/coffee-2.webp",
+    "description": "As the most popular coffee drink out there, the latte is made with a shot of espresso and steamed milk, with just a touch of foam. It can be ordered plain or flavored with everything from vanilla to pumpkin spice.",
+    "ingredients": [
+      "Espresso",
+      "Steamed milk"
+    ],
+    "price": 125
+  },
+  {
+    "id": 3,
+    "category": "coffee",
+    "title": "Caramel Latte",
+    "image": "/images/products/coffee-3.webp",
+    "description": "If you like flavored lattes, a caramel latte is a great choice, combining espresso, steamed milk, and caramel for a naturally sweet and creamy drink.",
+    "ingredients": [
+      "Espresso",
+      "Steamed milk",
+      "Caramel syrup"
+    ],
+    "price": 145
+  },
+  {
+    "id": 4,
+    "category": "coffee",
+    "title": "Cappuccino",
+    "image": "/images/products/coffee-4.webp",
+    "description": "A cappuccino is an espresso drink with steamed milk and a thick layer of foam, often topped with cocoa powder or cinnamon. Some variations use cream instead of milk or add flavored syrups.",
+    "ingredients": [
+      "Espresso",
+      "Steamed milk",
+      "Foam"
+    ],
+    "price": 95
+  },
+  {
+    "id": 5,
+    "category": "coffee",
+    "title": "Americano",
+    "image": "/images/products/coffee-5.webp",
+    "description": "With a flavor similar to black coffee, an americano is made by diluting a shot of espresso with hot water.",
+    "ingredients": [
+      "Espresso",
+      "Hot water"
+    ],
+    "price": 115
+  },
+  {
+    "id": 6,
+    "category": "coffee",
+    "title": "Espresso",
+    "image": "/images/products/coffee-6.webp",
+    "description": "A shot of espresso can be served on its own or used as the base for most coffee drinks, like lattes and macchiatos.",
+    "ingredients": [
+      "Espresso"
+    ],
+    "price": 140
+  },
+  {
+    "id": 7,
+    "category": "coffee",
+    "title": "Macchiato",
+    "image": "/images/products/coffee-7.webp",
+    "description": "An espresso macchiato is a shot of espresso marked with a small dollop of foam. It is stronger and smaller than a cappuccino or latte.",
+    "ingredients": [
+      "Espresso",
+      "Foam"
+    ],
+    "price": 85
+  },
+  {
+    "id": 8,
+    "category": "coffee",
+    "title": "Mocha",
+    "image": "/images/products/coffee-8.webp",
+    "description": "For all the chocolate lovers out there, a mocha is an easy favorite. It is a chocolate espresso drink made with steamed milk and foam.",
+    "ingredients": [
+      "Espresso",
+      "Steamed milk",
+      "Chocolate"
+    ],
+    "price": 110
+  },
+  {
+    "id": 9,
+    "category": "coffee",
+    "title": "Hot Chocolate",
+    "image": "/images/products/coffee-9.webp",
+    "description": "A classic warm drink made with chocolate and steamed milk. Rich, cozy, and especially good on cold days.",
+    "ingredients": [
+      "Chocolate",
+      "Milk"
+    ],
+    "price": 130
+  },
+  {
+    "id": 10,
+    "category": "coffee",
+    "title": "Chai Latte",
+    "image": "/images/products/coffee-10.webp",
+    "description": "A spiced tea latte made with black tea, steamed milk, and warming spices such as ginger, cardamom, and cinnamon.",
+    "ingredients": [
+      "Tea",
+      "Milk",
+      "Ginger",
+      "Cardamom",
+      "Cinnamon"
+    ],
+    "price": 150
+  },
+  {
+    "id": 11,
+    "category": "coffee",
+    "title": "Matcha Latte",
+    "image": "/images/products/coffee-11.webp",
+    "description": "A matcha latte is a green tea drink made with finely ground matcha and milk, offering mild sweetness, a distinctive flavor, and a gentle caffeine boost.",
+    "ingredients": [
+      "Matcha powder",
+      "Milk",
+      "Sugar*"
+    ],
+    "price": 100
+  },
+  {
+    "id": 12,
+    "category": "coffee",
+    "title": "Seasonal Brew",
+    "image": "/images/products/coffee-12.webp",
+    "description": "A seasonal coffee with flavor notes that can include caramel, fruit, and chocolate.",
+    "ingredients": [
+      "Coffee"
+    ],
+    "price": 120
+  },
+  {
+    "id": 13,
+    "category": "coffee",
+    "title": "Black Tea",
+    "image": "/images/products/coffee-13.webp",
+    "description": "Black tea is made from the leaves of the Camellia sinensis plant. It can be enjoyed plain or flavored with fruit, spices, or other additions.",
+    "ingredients": [
+      "Tea"
+    ],
+    "price": 140
+  },
+  {
+    "id": 14,
+    "category": "coffee",
+    "title": "Iced Latte",
+    "image": "/images/products/coffee-14.webp",
+    "description": "An iced latte is espresso poured over ice and cold milk. Sweet syrup is optional, and it is also known as an iced cafe latte.",
+    "ingredients": [
+      "Espresso",
+      "Milk",
+      "Ice",
+      "Syrup"
+    ],
+    "price": 90
+  },
+  {
+    "id": 15,
+    "category": "coffee",
+    "title": "Iced Mocha Latte",
+    "image": "/images/products/coffee-15.webp",
+    "description": "An iced mocha latte combines a latte with mocha flavors, bringing together chocolate and coffee in a rich and refreshing drink.",
+    "ingredients": [
+      "Espresso",
+      "Ice",
+      "Milk",
+      "Chocolate"
+    ],
+    "price": 110
+  },
+  {
+    "id": 16,
+    "category": "coffee",
+    "title": "Blended Caramel Coffee",
+    "image": "/images/products/coffee-16.webp",
+    "description": "A blended iced coffee with caramel syrup, milk, and ice, topped with whipped cream and caramel sauce.",
+    "ingredients": [
+      "Coffee",
+      "Ice",
+      "Milk",
+      "Caramel syrup",
+      "Whipped cream*",
+      "Caramel sauce"
+    ],
+    "price": 130
+  },
+  {
+    "id": 17,
+    "category": "coffee",
+    "title": "Blended Mocha Coffee",
+    "image": "/images/products/coffee-17.webp",
+    "description": "A blended iced mocha with coffee, milk, cocoa, and ice, finished with whipped cream for a chocolate shake-like treat.",
+    "ingredients": [
+      "Coffee",
+      "Ice",
+      "Milk",
+      "Cocoa",
+      "Whipped cream*"
+    ],
+    "price": 155
+  },
+  {
+    "id": 18,
+    "category": "coffee",
+    "title": "Orange Juice",
+    "image": "/images/products/coffee-18.webp",
+    "description": "Freshly squeezed orange juice served cold over ice.",
+    "ingredients": [
+      "Fresh oranges",
+      "Ice"
+    ],
+    "price": 100
+  },
+  {
+    "id": 19,
+    "category": "coffee",
+    "title": "Frozen Lemonade",
+    "image": "/images/products/coffee-19.webp",
+    "description": "Frozen lemonade is a refreshing summer drink that combines freshly squeezed lemon juice, ice, and sweetener into a cool, tangy treat.",
+    "ingredients": [
+      "Lemon juice",
+      "Ice",
+      "Sugar*"
+    ],
+    "price": 125
+  },
+  {
+    "id": 20,
+    "category": "coffee",
+    "title": "Lemonade",
+    "image": "/images/products/coffee-20.webp",
+    "description": "A sweet-tart sparkling lemonade made with lemon juice, carbonated water, and honey.",
+    "ingredients": [
+      "Lemon juice",
+      "Sparkling water",
+      "Honey"
+    ],
+    "price": 145
+  },
+  {
+    "id": 1,
+    "category": "foods",
+    "title": "California Roll Sushi Bowls",
+    "image": "/images/products/foods-1.webp",
+    "description": "Freshly made in our kitchen.",
+    "ingredients": [
+      "2 cups dry California Calrose Sushi Rice",
+      "5 Tbsp rice vinegar, (, divided)",
+      "2 Tbsp granulated sugar",
+      "1/2 tsp salt",
+      "1/4 cup light mayonnaise",
+      "1 1/2 Tbsp sriracha"
+    ],
+    "price": 70
+  },
+  {
+    "id": 2,
+    "category": "foods",
+    "title": "Chicken Caesar Wraps",
+    "image": "/images/products/foods-2.webp",
+    "description": "Freshly made in our kitchen.",
+    "ingredients": [
+      "2-3 c. romaine lettuce",
+      "Caesar dressing, (to taste.. the better the dressing, the better your wrap will be.. personally I like Brianna's bran",
+      "1/3 c. Parmesan cheese, (freshly grated)",
+      "1 chicken breast, (cooked & diced)",
+      "croutons, (coarsely chopped)",
+      "diced tomatoes, (lightly salted)"
+    ],
+    "price": 80
+  },
+  {
+    "id": 3,
+    "category": "foods",
+    "title": "Vegetarian Tacos with Avocado Cream",
+    "image": "/images/products/foods-3.webp",
+    "description": "Freshly made in our kitchen.",
+    "ingredients": [
+      "For Avocado Cream",
+      "1/2 avocado",
+      "1 cup plain Greek Yogurt",
+      "1 lime, (juiced)",
+      "1 teaspoon homemade taco seasoning",
+      "For Tacos"
+    ],
+    "price": 85
+  },
+  {
+    "id": 4,
+    "category": "foods",
+    "title": "Chicken and Lemon Risotto",
+    "image": "/images/products/foods-4.webp",
+    "description": "Chicken And Lemon Risotto With Reduced Sodium Chicken Stock, Butter, Boneless Skinless Chicken Breasts, Garlic, Lemon Juice, Fresh Oregano, Onion, Arborio Rice, Frozen Peas, Grated Lemon Peel, Grated Parmesan Cheese",
+    "ingredients": [
+      "4 cups reduced sodium chicken stock",
+      "3 tablespoons butter",
+      "1 pound boneless skinless chicken breasts larger pieces halved",
+      "2 cloves garlic crushed",
+      "1/4 cup lemon juice",
+      "2 tablespoons fresh oregano coarsely chopped"
+    ],
+    "price": 95
+  },
+  {
+    "id": 5,
+    "category": "foods",
+    "title": "Chicken, Broccoli Risotto",
+    "image": "/images/products/foods-5.webp",
+    "description": "Chicken, Broccoli Risotto With Arborio Rice, Dry White Wine, Chicken Stock, Leek, Butter, Parmesan Cheese, Chicken Breast, Broccoli, Medium Carrot, Olive Oil",
+    "ingredients": [
+      "2/3 cup arborio rice 4.2oz, 125gr, or other rice specifically for risotto – Carnaroli or Vialone Nano",
+      "1/2 cup dry white wine 4oz, 120ml",
+      "2 1/4 cups chicken stock 18oz, 540ml",
+      "1 leek medium, trimmed and sliced, divided",
+      "1 tablespoon butter",
+      "3/4 cup parmesan cheese 3oz, 90gr, – freshly grated"
+    ],
+    "price": 105
+  },
+  {
+    "id": 6,
+    "category": "foods",
+    "title": "Banana Bread Mini Muffins Recipe by Tasty",
+    "image": "/images/products/foods-6.webp",
+    "description": "Here's what you need: ripe banana, egg, full-fat greek yogurt, honey, vanilla extract, whole wheat flour, baking soda, strawberry, dark chocolate chip, blueberry, walnuts",
+    "ingredients": [
+      "3 ripe bananas",
+      "2 eggs",
+      "1/2 cup full-fat Greek yogurt",
+      "1/3 cup honey",
+      "1 teaspoon vanilla extract",
+      "1 1/2 cups whole wheat flour"
+    ],
+    "price": 115
+  },
+  {
+    "id": 7,
+    "category": "foods",
+    "title": "Protein-Packed Breakfast Bars Recipe by Tasty",
+    "image": "/images/products/foods-7.webp",
+    "description": "Here's what you need: flax meal, water, rolled oats, quinoa, baking powder, salt, maple syrup, refined coconut oil, vanilla extract, ripe banana, peanut butter chocolate candy, peanut butter, mini chocolate chips, gala apple, walnuts, cinnamon, nutmeg, carrot,",
+    "ingredients": [
+      "1/4 cup flax meal",
+      "3/4 cup water",
+      "6 cups rolled oats",
+      "6 cups cooked quinoa",
+      "4 teaspoons baking powder",
+      "1 teaspoon salt"
+    ],
+    "price": 125
+  },
+  {
+    "id": 8,
+    "category": "foods",
+    "title": "Healthy No Bake Peanut Butter Pretzel Granola Bars",
+    "image": "/images/products/foods-8.webp",
+    "description": "Healthy No-Bake Peanut Butter Pretzel Bars.",
+    "ingredients": [
+      "1 mashed banana, ripe",
+      "3/4 c peanut butter",
+      "1/4 c agave",
+      "2 1/2 c rolled oats, (gluten-free)",
+      "1/4 c pretzels pieces, (gluten-free)",
+      "1 tbsp chia seeds"
+    ],
+    "price": 130
+  },
+  {
+    "id": 9,
+    "category": "foods",
+    "title": "Slow Cooker Teriyaki Chicken + Crock-Pot Giveaway",
+    "image": "/images/products/foods-9.webp",
+    "description": "This Slow Cooker Teriyaki Chicken recipe is simple to make, full of great flavor, and made with natural sweeteners.",
+    "ingredients": [
+      "2 lbs boneless, skinless chicken breasts",
+      "2 cloves garlic, minced",
+      "1/2 cup chopped white onion",
+      "1/2 cup honey",
+      "1/2 cup soy sauce, (use low-sodium if desired)",
+      "1/4 cup rice wine vinegar"
+    ],
+    "price": 140
+  },
+  {
+    "id": 10,
+    "category": "foods",
+    "title": "Fiesta Chicken Crockpot Recipe",
+    "image": "/images/products/foods-10.webp",
+    "description": "Freshly made in our kitchen.",
+    "ingredients": [
+      "4 chicken breast, (frozen or raw)",
+      "1 packet Taco Seasoning, (by the salad dressing)",
+      "1 can black beans, (drained and rinsed)",
+      "1 can salsa not drained",
+      "1 can corn not drained"
+    ],
+    "price": 60
+  },
+  {
+    "id": 11,
+    "category": "foods",
+    "title": "Orange Chipotle Chicken with Cilantro Rice",
+    "image": "/images/products/foods-11.webp",
+    "description": "Freshly made in our kitchen.",
+    "ingredients": [
+      "1 tsp chile powder",
+      "1/2 tsp ground cumin",
+      "1/2 tsp sea salt, divided",
+      "1 tsp safflower oil",
+      "4 boneless, skinless chicken breasts, (about 1 lb) rinsed and patted dry, pounded 1/2-inch thick",
+      "Juice 1 medium navel orange, (1/3 cup orange juice)"
+    ],
+    "price": 70
+  },
+  {
+    "id": 12,
+    "category": "foods",
+    "title": "One Pot Hamburger Stroganoff",
+    "image": "/images/products/foods-12.webp",
+    "description": "This One Pot Hamburger Stoganoff is a great weeknight meal! It's quick, easy, filled with simple ingredients, and has NO condensed soup.",
+    "ingredients": [
+      "salt and pepper to taste",
+      "8 ounces (230g) sliced baby portabella mushrooms",
+      "1 small onion, chopped",
+      "2 tablespoons butter",
+      "1 tablespoon olive oil",
+      "1 pound lean ground beef"
+    ],
+    "price": 80
+  },
+  {
+    "id": 1,
+    "category": "iced",
+    "title": "Iced Coffee",
+    "image": "/images/products/iced-1.webp",
+    "description": "A coffee with ice, typically served with a dash of milk, cream or sweetener—iced coffee is really as simple as that.",
+    "ingredients": [
+      "Coffee",
+      "Ice",
+      "Sugar*",
+      "Cream*"
+    ],
+    "price": 115
+  },
+  {
+    "id": 2,
+    "category": "iced",
+    "title": "Iced Espresso",
+    "image": "/images/products/iced-2.webp",
+    "description": "Like iced coffee, iced espresso can be served straight or with a dash of milk, cream, or sweetener. You can also ice specialty espresso-based drinks like americanos, mochas, macchiatos, lattes, and flat whites.",
+    "ingredients": [
+      "Espresso",
+      "Ice",
+      "Sugar*",
+      "Cream*"
+    ],
+    "price": 130
+  },
+  {
+    "id": 3,
+    "category": "iced",
+    "title": "Cold Brew",
+    "image": "/images/products/iced-3.webp",
+    "description": "The trendiest of the iced coffee bunch, cold brew coffees are made by steeping coffee beans from anywhere between 6-36 hours, depending on how strong you would like your cold brew. Once the beans are done steeping, add cold milk or cream.",
+    "ingredients": [
+      "Long steeped coffee",
+      "Ice"
+    ],
+    "price": 145
+  },
+  {
+    "id": 4,
+    "category": "iced",
+    "title": "Frappuccino",
+    "image": "/images/products/iced-4.webp",
+    "description": "Made famous by Starbucks, the Frappuccino is a blended iced coffee drink topped with whipped cream and syrup.",
+    "ingredients": [
+      "Espresso",
+      "Blended ice",
+      "Whip*"
+    ],
+    "price": 100
+  },
+  {
+    "id": 5,
+    "category": "iced",
+    "title": "Nitro",
+    "image": "/images/products/iced-5.webp",
+    "description": "A cold brew + nitrogen bubbles = a cold brew coffee with a frothy, Guinness-like consistency. (It’s poured via a nitro tap, too.)",
+    "ingredients": [
+      "Coffee",
+      "Nitrogen bubbles",
+      "Sugar*",
+      "Cream*"
+    ],
+    "price": 115
+  },
+  {
+    "id": 6,
+    "category": "iced",
+    "title": "Mazagran",
+    "image": "/images/products/iced-6.webp",
+    "description": "Mazagran coffee is a cross between iced coffee, tea and your favorite rum drink. It typically consists of espresso, lemon, sugar and (sometimes) rum.",
+    "ingredients": [
+      "Coffee",
+      "Sugar",
+      "Lemon",
+      "Rum*"
+    ],
+    "price": 130
+  }
 ]

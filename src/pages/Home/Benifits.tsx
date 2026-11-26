@@ -29,7 +29,7 @@ const Benifits = () => {
           </li>
           <li className="flex gap-4">
             <img src={check} alt="" className="w-6" />
-            <p>Free member card with a minimum purchase of IDR 200.000.</p>
+            <p>Free member card with a minimum purchase of EGP 600.</p>
           </li>
         </ul>
       </aside>

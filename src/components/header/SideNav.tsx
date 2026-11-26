@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Transition from "react-transition-group/Transition";
 import { useRef, useState } from "react";
 import burger from "../../assists/icons/burger.svg";
 import { Button } from "../../Ui";
 import profile from "../../../src/assists/images/placeholder-profile.jpg";
+import CartBadge from "../CartBadge";
 import LoggedInIcons from "./LoggedInIcons";
 import { useUserAuth } from "../../setup/context/user-auth-context";
 
@@ -53,6 +54,10 @@ const SideNav = () => {
       >
         <img src={burger} alt="" className="text-textColor text-2xl cursor-pointer w-8" />
       </button>
+      <Link to="/yourCart" aria-label="Cart" className="flex items-center ml-4 text-textColor">
+        <FontAwesomeIcon icon={faCartShopping} className="text-2xl" />
+        <CartBadge />
+      </Link>
       <Transition
         nodeRef={transitionRef}
         in={isNavShown}
@@ -96,7 +101,7 @@ const SideNav = () => {
                 </li>
                 <li>
                   <Link
-                    to="products"
+                    to="/products"
                     className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
@@ -108,7 +113,7 @@ const SideNav = () => {
                 </li>
                 <li>
                   <Link
-                    to="yourCart"
+                    to="/yourCart"
                     className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
@@ -116,11 +121,12 @@ const SideNav = () => {
                     }}
                   >
                     Your Cart
+                    <CartBadge />
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="history"
+                    to="/history"
                     className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
@@ -128,6 +134,18 @@ const SideNav = () => {
                     }}
                   >
                     History
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/wishlist"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    onClick={() => {
+                      isNavHideHandler();
+                      scrollToTop();
+                    }}
+                  >
+                    Favourites
                   </Link>
                 </li>
               </ul>

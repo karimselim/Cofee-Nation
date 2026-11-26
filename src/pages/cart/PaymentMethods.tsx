@@ -1,27 +1,40 @@
-import { useState } from "react";
+import { PaymentMethod } from "../../types";
 
-const PaymentMethods = () => {
-  const [paymentMethod, setPaymentMethod] = useState({
-    card: false,
-    bank: false,
-    cash: false,
-  });
+interface PaymentMethodsProps {
+  method: PaymentMethod | null;
+  onMethodChange: (method: PaymentMethod) => void;
+  onPay: () => void;
+  disabled?: boolean;
+  error?: string;
+  busy?: boolean;
+}
 
+const optionClass = (active: boolean) =>
+  `flex gap-2 items-center cursor-pointer rounded-lg p-3 border-2 duration-150 ${
+    active ? "border-buttonColor bg-hoveredColor/30" : "border-transparent hover:bg-gray-50"
+  }`;
+
+const PaymentMethods = ({
+  method,
+  onMethodChange,
+  onPay,
+  disabled = false,
+  error = "",
+}: PaymentMethodsProps) => {
   return (
     <section className="flex flex-col gap-5">
-      <h3 className="text-white text-xl lg:text-2xl font-extrabold text-center md:text-left">
+      <h3 id="payment-heading" className="text-white text-xl lg:text-2xl font-extrabold text-center md:text-left">
         Payment method
       </h3>
-      <div className="rounded-xl bg-white p-5 lg:p-7 gap-3 flex flex-col">
-        <div className="flex gap-2 items-center">
+      <div role="radiogroup" aria-labelledby="payment-heading" className="rounded-xl bg-white p-5 lg:p-7 gap-3 flex flex-col">
+        <label className={optionClass(method === "card")}>
           <input
             type="radio"
+            name="payment-method"
             className="w-4 h-4 accent-buttonColor"
             value="card"
-            onChange={() =>
-              setPaymentMethod({ card: true, cash: false, bank: false })
-            }
-            checked={paymentMethod.card}
+            onChange={() => onMethodChange("card")}
+            checked={method === "card"}
           />
           <div className="flex gap-2 items-center">
             <svg
@@ -41,17 +54,15 @@ const PaymentMethods = () => {
             </svg>
             Card
           </div>
-        </div>
-        <hr />
-        <div className="flex gap-2 items-center">
+        </label>
+        <label className={optionClass(method === "bank")}>
           <input
             type="radio"
+            name="payment-method"
             className="w-4 h-4 accent-buttonColor"
             value="bank"
-            onChange={() =>
-              setPaymentMethod({ card: false, cash: false, bank: true })
-            }
-            checked={paymentMethod.bank}
+            onChange={() => onMethodChange("bank")}
+            checked={method === "bank"}
           />
           <div className="flex gap-2 items-center">
             <svg
@@ -70,17 +81,15 @@ const PaymentMethods = () => {
             </svg>
             Bank account
           </div>
-        </div>
-        <hr />
-        <div className="flex gap-2 items-center">
+        </label>
+        <label className={optionClass(method === "cash")}>
           <input
             type="radio"
+            name="payment-method"
             className="w-4 h-4 accent-buttonColor"
             value="cash"
-            onChange={() =>
-              setPaymentMethod({ card: false, cash: true, bank: false })
-            }
-            checked={paymentMethod.cash}
+            onChange={() => onMethodChange("cash")}
+            checked={method === "cash"}
           />
           <div className="flex gap-2 items-center">
             <svg
@@ -115,10 +124,16 @@ const PaymentMethods = () => {
             </svg>
             Cash on delivery
           </div>
-        </div>
+        </label>
       </div>
+      {error && (
+        <p role="alert" className="text-red-200 font-semibold">
+          {error}
+        </p>
+      )}
       <button
-        disabled={!Object.values(paymentMethod).includes(true)}
+        onClick={onPay}
+        disabled={disabled}
         className="uppercase bg-buttonColor disabled:bg-[#9f9f9f] text-white disabled:text-[#898989] rounded-md font-bold py-4 text-sm"
       >
         Confirm And Pay

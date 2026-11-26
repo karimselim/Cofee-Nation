@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import profilePlaceholder from "../../assists/images/placeholder-profile.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import chat from "../../assists/icons/chat.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { formatBadge, useUnreadCount } from "../useUnread";
 import { useUserAuth } from "../../setup/context/user-auth-context";
 
 const LoggedInIcons = () => {
@@ -11,6 +12,7 @@ const LoggedInIcons = () => {
 
   const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
+  const unread = useUnreadCount();
 
   const signOut = async () => {
     try {
@@ -21,23 +23,56 @@ const LoggedInIcons = () => {
     }
   };
 
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // close the account menu when clicking anywhere else or pressing Escape
+  useEffect(() => {
+    if (!isSignedInShown) return;
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsSignedInShown(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsSignedInShown(false);
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("touchstart", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("touchstart", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [isSignedInShown]);
+
   const isSignedInShownHanlder = () => {
     setIsSignedInShown(!isSignedInShown);
   };
 
   return (
     <section className="flex gap-12">
-      <Link aria-label="Messages" className="chat-container w-8 relative" to="/">
+      <Link
+        aria-label={unread ? `Messages, ${unread} unread` : "Messages"}
+        className="chat-container w-8 relative"
+        to="/messages"
+      >
         <img src={chat} alt="" />
-        <span className="absolute text-white rounded-full text-xs font-bold bg-buttonColor -top-2 -left-2 p-[1px]">
-          9+
-        </span>
+        {unread > 0 && (
+          <span
+            data-testid="unread-count"
+            className="absolute text-white rounded-full text-xs font-bold bg-buttonColor -top-2 -left-2 p-[1px] min-w-[1.1rem] text-center"
+          >
+            {formatBadge(unread)}
+          </span>
+        )}
       </Link>
-      <div className="profile-container flex gap-2 justify-center items-center cursor-pointer relative max-lg:hidden">
+      <div ref={menuRef} className="profile-container flex gap-2 justify-center items-center cursor-pointer relative max-lg:hidden">
         <button
           aria-label="Account menu"
           className="w-9"
           onClick={isSignedInShownHanlder}
+          aria-expanded={isSignedInShown}
         >
           <div className="flex items-center justify-center gap-3">
             <img src={profilePlaceholder} alt="" className="rounded-full" />

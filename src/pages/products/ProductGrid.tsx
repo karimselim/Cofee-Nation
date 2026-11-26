@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ProductsSection } from "./";
 import { productPath } from "../../data/products";
+import { formatMoney } from "../../utils/money";
 import { Product } from "../../types";
 
 const ProductGrid = ({ products }: { products: Product[] }) => (
@@ -21,7 +22,7 @@ const ProductGrid = ({ products }: { products: Product[] }) => (
           <p className="text-lg font-black min-h-[102px]">
             {prod.title.split(" ").slice(0, 3).join(" ")}
           </p>
-          <p className="font-bold end text-buttonColor mt-auto">{`IDR ${prod.price}.000`}</p>
+          <p className="font-bold end text-buttonColor mt-auto">{formatMoney(prod.price)}</p>
         </article>
       </Link>
     ))}

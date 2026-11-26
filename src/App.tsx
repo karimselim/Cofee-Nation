@@ -1,5 +1,6 @@
 import {
   History,
+  Wishlist,
   Home,
   Products,
   YourCart,
@@ -17,6 +18,7 @@ import {
 import RootLayout from "./pages/RootLayout";
 import { Addons, CategoryPage, ProductsDetails } from "./pages/products";
 import { ErrorComponent } from "./components";
+import Messages from "./pages/Messages";
 import { LoggedInProtectedRoute, ProtectedRoute } from "./pages/auth";
 
 const router = createBrowserRouter(
@@ -34,8 +36,24 @@ const router = createBrowserRouter(
         </Route>
 
         <Route path="/products/:cat/:id" element={<ProductsDetails />} />
+        <Route
+          path="messages"
+          element={
+            <ProtectedRoute>
+              <Messages />
+            </ProtectedRoute>
+          }
+        />
         <Route path="yourCart" element={<YourCart />} />
         <Route path="*" element={<ErrorComponent />} />
+        <Route
+          path="wishlist"
+          element={
+            <ProtectedRoute>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="history"
           element={
