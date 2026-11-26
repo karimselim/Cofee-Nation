@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -7,54 +7,44 @@ import {
   faAngleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
+interface PaginationProps {
+  ProductsPerPage: number;
+  totalProducts: number;
+  paginate: (page: number, lastPage: number) => void;
+  setCurrentPage: (page: number) => void;
+  currentPage: number;
+}
+
 const Pagination = ({
   ProductsPerPage,
   totalProducts,
   paginate,
   setCurrentPage,
   currentPage,
-}) => {
-  const [inputPage, setInputPage] = useState(1);
+}: PaginationProps) => {
+  const lastPage = Math.max(1, Math.ceil(totalProducts / ProductsPerPage));
+  const [inputPage, setInputPage] = useState(String(currentPage));
 
-  const pageNumber = [];
-  for (let i = 1; i <= Math.ceil(totalProducts / ProductsPerPage); i++) {
-    pageNumber.push(i);
-  }
+  // keep the page box in sync with the real page
+  useEffect(() => {
+    setInputPage(String(currentPage));
+  }, [currentPage]);
 
-  const paginatorPress = (e) => {
-    if (e.key === "Enter") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      e.target.value < parseInt(pageNumber.slice(-1))
-        ? setInputPage(e.target.value)
-        : setInputPage(parseInt(pageNumber.slice(-1)));
-      setCurrentPage(inputPage);
-      if (e.target.value <= 0) {
-        setInputPage(1);
-      }
-      paginate(inputPage, parseInt(pageNumber.slice(-1)));
-    }
+  const goTo = (page: number) => {
+    const clamped = Math.min(Math.max(1, page), lastPage);
+    setCurrentPage(clamped);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const prevPress = () => {
-    if (inputPage <= 1) {
-      setInputPage(1);
-      setCurrentPage(1);
-    } else {
-      setInputPage(+currentPage - 1);
-      setCurrentPage(currentPage - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  const submitInput = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return;
+    const page = parseInt(inputPage, 10);
+    if (Number.isNaN(page)) {
+      setInputPage(String(currentPage));
+      return;
     }
-  };
-
-  const nextPress = () => {
-    if (inputPage >= parseInt(pageNumber.slice(-1))) {
-      setInputPage(parseInt(pageNumber.slice(-1)));
-      setCurrentPage(parseInt(pageNumber.slice(-1)));
-    } else {
-      setInputPage(+currentPage + 1);
-      setCurrentPage(+currentPage + 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    paginate(page, lastPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -62,7 +52,7 @@ const Pagination = ({
       <div className="buttons flex">
         {currentPage > 1 && (
           <button
-            onClick={prevPress}
+            onClick={() => goTo(currentPage - 1)}
             className="mr-2 group border border-firstColor text-firstColor px-4 py-2 rounded-lg font-bold hover:bg-hoveredColor hover:text-buttonColor duration-300 ease-in-out flex gap-2 items-center"
           >
             <FontAwesomeIcon
@@ -72,9 +62,9 @@ const Pagination = ({
             Previous
           </button>
         )}
-        {currentPage < parseInt(pageNumber.slice(-1)) && (
+        {currentPage < lastPage && (
           <button
-            onClick={nextPress}
+            onClick={() => goTo(currentPage + 1)}
             className="rounded-xl px-5 py-2 bg-firstColor hover:bg-hoveredColor text-buttonColor font-bold flex items-center gap-2 duration-300 group"
           >
             Next
@@ -86,33 +76,36 @@ const Pagination = ({
         )}
       </div>
       <div className="input hidden sm:flex right-0 absolute items-center justify-center text-sm">
-        <label>Page</label>
+        <label htmlFor="page-input">Page</label>
         <div className="">
           <input
-            onSubmit={paginate}
+            id="page-input"
             className=" text-center border-gray-100 mx-2 w-8 h-6 outline-firstColor border"
             type="number"
             value={inputPage}
-            onChange={(e) => setInputPage(e.target.value)}
-            onKeyDown={paginatorPress}
-            max={pageNumber[pageNumber.length - 1]}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setInputPage(e.target.value)
+            }
+            onKeyDown={submitInput}
+            max={lastPage}
             min={1}
           />
-          of {parseInt(pageNumber.slice(-1))}
+          of {lastPage}
         </div>
         <div className="ml-3 flex">
           {currentPage > 1 && (
             <button
+              aria-label="Previous page"
               className="px-2 py-1 bg-firstColor hover:bg-hoveredColor text-buttonColor flex duration-75"
-              onClick={prevPress}
+              onClick={() => goTo(currentPage - 1)}
             >
               <FontAwesomeIcon icon={faAngleLeft} />
             </button>
           )}
-
-          {currentPage !== parseInt(pageNumber.slice(-1)) && (
+          {currentPage < lastPage && (
             <button
-              onClick={nextPress}
+              aria-label="Next page"
+              onClick={() => goTo(currentPage + 1)}
               className="px-2 py-1 bg-firstColor hover:bg-hoveredColor text-buttonColor flex duration-75"
             >
               <FontAwesomeIcon icon={faAngleRight} />

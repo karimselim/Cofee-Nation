@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { ProductItemLeft, ProductItemRight, ProductItemBottom } from "..";
+import { Product } from "../../../types";
 
-const ProductItem = ({ prod, id }) => {
-  const item = prod.find((item) => item.id === +id);
+const ProductItem = ({ prod }: { prod: Product }) => {
   const details = {
-    title: item.title,
-    image: item.photoUrl || item.image,
-    description: item.description || "This item has no discription yet*",
-    price: item.totalTime || item.id * item.ingredients.length * 7,
+    title: prod.title,
+    image: prod.image,
+    description: prod.description || "This item has no description yet*",
+    price: prod.price,
   };
 
   return (
@@ -23,7 +23,7 @@ const ProductItem = ({ prod, id }) => {
       </nav>
       <div className="flex gap-16 flex-col md:flex-row justify-between my-10">
         <ProductItemLeft details={details} />
-        <ProductItemRight details={details} item={item} />
+        <ProductItemRight details={details} item={prod} />
       </div>
       <ProductItemBottom details={details} />
     </section>

@@ -7,6 +7,7 @@ const Products = () => {
     <>
       <section className="flex flex-row-reverse max-md:flex-col global-px">
         <aside className="flex flex-[2_2_0%] py-5 md:pl-16 flex-col">
+          <h1 className="sr-only">Our products</h1>
           <ProductsLayout />
         </aside>
         <aside className="flex flex-1 flex-col global-px py-8 text-center left items-center gap-4 border-r-2 border-gray-100 max-md:border-0">

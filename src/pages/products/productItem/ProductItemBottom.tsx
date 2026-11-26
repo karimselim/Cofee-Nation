@@ -2,7 +2,7 @@ import { useState } from "react";
 import placeholder from "../../../assists/images/placeholder-image.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-const ProductItemBottom = ({ details }) => {
+const ProductItemBottom = ({ details }: { details: { title: string; image: string } }) => {
   const [sizeToggle, setSizeToggle] = useState({
     r: false,
     l: false,

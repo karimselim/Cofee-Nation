@@ -15,20 +15,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "./pages/RootLayout";
-import {
-  Coffee,
-  Iced,
-  Foods,
-  Addons,
-  FavPromo,
-  ProductsDetails,
-} from "./pages/products";
-import {
-  FetchCoffee as coffee,
-  FetchFav as fav,
-  FetchIced as iced,
-  FetchFood as food,
-} from "./pages/products/mapping/Api";
+import { Addons, CategoryPage, ProductsDetails } from "./pages/products";
 import { ErrorComponent } from "./components";
 import { LoggedInProtectedRoute, ProtectedRoute } from "./pages/auth";
 
@@ -39,34 +26,16 @@ const router = createBrowserRouter(
         <Route index element={<Home />} />
 
         <Route path="/products" element={<Products />}>
-          <Route index element={<FavPromo />} loader={fav} />
-          <Route path="/products/1" element={<Coffee />} loader={coffee} />
-          <Route path="/products/2" element={<Iced />} loader={iced} />
-          <Route path="/products/3" element={<Foods />} loader={food} />
-          <Route path="/products/4" element={<Addons />} />
+          <Route index element={<CategoryPage />} />
+          <Route path="1" element={<CategoryPage category="coffee" />} />
+          <Route path="2" element={<CategoryPage category="iced" />} />
+          <Route path="3" element={<CategoryPage category="foods" />} />
+          <Route path="4" element={<Addons />} />
         </Route>
 
-        <Route
-          path="/products/details/:id"
-          element={<ProductsDetails />}
-          loader={fav}
-        />
-        <Route
-          path="/products/1/:id"
-          element={<ProductsDetails />}
-          loader={coffee}
-        />
-        <Route
-          path="/products/2/:id"
-          element={<ProductsDetails />}
-          loader={iced}
-        />
-        <Route
-          path="/products/3/:id"
-          element={<ProductsDetails />}
-          loader={food}
-        />
+        <Route path="/products/:cat/:id" element={<ProductsDetails />} />
         <Route path="yourCart" element={<YourCart />} />
+        <Route path="*" element={<ErrorComponent />} />
         <Route
           path="history"
           element={

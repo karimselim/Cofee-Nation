@@ -14,7 +14,7 @@ const Addons = () => {
         </article>
       </main>
       <p className="text-buttonColor my-8 left-0">
-        *the price has been cutted by discount appears
+        *the price has been reduced by the current discount
       </p>
     </>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ProductItemLeft = ({ details }) => {
+const ProductItemLeft = ({ details }: { details: { title: string; image: string } }) => {
   const [deliveryToggle, setDeliveryToggle] = useState({
     first: false,
     second: false,
