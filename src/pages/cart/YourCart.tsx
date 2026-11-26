@@ -10,7 +10,8 @@ import { notificationsActions } from "../../setup/notifications-slice";
 import { useUserAuth } from "../../setup/context/user-auth-context";
 import { Order, PaymentMethod } from "../../types";
 import { formatMoney } from "../../utils/money";
-import { summarize } from "../../utils/pricing";
+import { summarize, lineTotal } from "../../utils/pricing";
+import { PromoCode, applyPromo, discountFor } from "../../utils/promo";
 import { validateAddress, validateNotes, validateTime } from "../../utils/validation";
 
 const money = formatMoney;
@@ -37,7 +38,24 @@ const YourCart = () => {
   const [errors, setErrors] = useState<CheckoutErrors>(noErrors);
   const [order, setOrder] = useState<Order | null>(null);
 
-  const totals = summarize(items);
+  const [promoInput, setPromoInput] = useState("");
+  const [promo, setPromo] = useState<PromoCode | null>(null);
+  const [promoError, setPromoError] = useState("");
+  const rawSubtotal = items.reduce((n, i) => n + lineTotal(i), 0);
+  const discount = discountFor(promo, rawSubtotal);
+  const totals = summarize(items, discount);
+  const promoLost = !!promo && discount === 0 && rawSubtotal > 0;
+
+  const submitPromo = () => {
+    const res = applyPromo(promoInput, rawSubtotal, promo?.code ?? null);
+    if (res.ok) {
+      setPromo(res.promo);
+      setPromoInput("");
+      setPromoError("");
+    } else {
+      setPromoError(res.error);
+    }
+  };
   const isEmpty = items.length === 0;
   const addressRequired = prefs.delivery === "delivery";
 
@@ -62,6 +80,7 @@ const YourCart = () => {
       createdAt: new Date().toISOString(),
       items,
       ...totals,
+      promoCode: promo && discount > 0 ? promo.code : undefined,
       address: address.trim(),
       notes: notes.trim(),
       method: method as PaymentMethod,
@@ -171,11 +190,69 @@ const YourCart = () => {
                   </div>
                 )}
                 <hr />
+                <div className="my-4">
+                  <label htmlFor="promo-code" className="block mb-1">Promo code</label>
+                  {promo ? (
+                    <p className="flex items-center gap-3" data-testid="promo-applied">
+                      <span>
+                        <b>{promo.code}</b> applied ({promo.description})
+                      </span>
+                      <button
+                        type="button"
+                        className="underline text-buttonColor"
+                        onClick={() => {
+                          setPromo(null);
+                          setPromoError("");
+                        }}
+                      >
+                        Remove promo code
+                      </button>
+                    </p>
+                  ) : (
+                    <div className="flex gap-2">
+                      <input
+                        id="promo-code"
+                        type="text"
+                        maxLength={20}
+                        value={promoInput}
+                        placeholder="e.g. WELCOME10"
+                        aria-invalid={!!promoError || undefined}
+                        onChange={(e) => {
+                          setPromoInput(e.target.value);
+                          setPromoError("");
+                        }}
+                        onKeyDown={(e) => e.key === "Enter" && submitPromo()}
+                        className="flex-1 bg-gray-50 outline-none rounded-lg border border-gray-200 px-3 py-2"
+                      />
+                      <button
+                        type="button"
+                        onClick={submitPromo}
+                        className="bg-buttonColor text-white font-bold rounded-lg px-4"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  )}
+                  {promoError && (
+                    <p role="alert" className="text-red-500 mt-1">{promoError}</p>
+                  )}
+                  {promoLost && (
+                    <p role="alert" className="text-red-500 mt-1">
+                      {promo?.code} no longer applies to this cart.
+                    </p>
+                  )}
+                </div>
                 <div className="flex flex-col w-full my-4">
                   <div className="flex uppercase lg:text-lg">
                     <p className="flex flex-[2_2_0]">subtotal</p>
                     <p className="flex flex-1 justify-end">{money(totals.subtotal)}</p>
                   </div>
+                  {discount > 0 && (
+                    <div className="flex uppercase lg:text-lg text-green-700" data-testid="promo-discount">
+                      <p className="flex flex-[2_2_0]">Discount ({promo?.code})</p>
+                      <p className="flex flex-1 justify-end">-{money(discount)}</p>
+                    </div>
+                  )}
                   <div className="flex uppercase lg:text-lg">
                     <p className="flex flex-[2_2_0]">TAX & FEES</p>
                     <p className="flex flex-1 justify-end">{money(totals.tax)}</p>
