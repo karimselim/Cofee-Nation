@@ -11,7 +11,12 @@ Live site: https://cofee-nation.vercel.app
 - Prices in Egyptian pounds (EGP)
 - Shopping cart with quantity controls, tax and shipping lines, saved in the browser between visits
 - Demo checkout: needs an address and a payment method, then shows an order confirmation (no real payment is taken)
-- Email/password and Google sign-in with Firebase Auth, protected History page
+- Email/password and Google sign-in with Firebase Auth. New accounts must verify their email before they can log in; error messages say what is wrong; eye icon on password fields
+- Protected History (paid orders), Messages (notifications) and Favourites pages; cart, orders, messages and favourites are saved per account in the browser (no backend, so they do not sync across devices)
+- Sizes (Regular, Large, Extra large) change the price, and the price follows the quantity
+- Search by name, max price filter and sort on the product pages
+- Promo codes in the cart (WELCOME10, SAVE50, COFFEE20 with a minimum, expired and invalid codes are rejected, no stacking)
+- Dark mode and English/Arabic (right to left). Arabic covers the header, product tabs, search, cart and favourites; other screens are still English
 - Clear 404 page for unknown routes and a separate message for unknown products
 - Responsive layout (checked at 390px and 1440px wide)
 
@@ -31,7 +36,7 @@ npm run test:e2e # Playwright tests (builds and serves the app first)
 
 ## Tests
 
-37 Playwright tests in `e2e/` cover navigation and 404s, product pages and pagination, cart (add, merge, quantity, remove, reload), checkout validation and order confirmation, auth pages, and mobile layout. They run in GitHub Actions on every push (`.github/workflows/e2e.yml`).
+79 Playwright tests in `e2e/` cover navigation and 404s, products, search/filter/sort, sizes and prices, cart and checkout validation, promo codes, signup/login/verification errors, per-account carts and history, favourites, dark mode, English/Arabic and mobile layout. Tests build the app with `REACT_APP_FAKE_AUTH=true`, a local stand-in for Firebase, so signup and email verification can run without a real inbox. They run in GitHub Actions on every push (`.github/workflows/e2e.yml`).
 
 Locally, set `PW_CHROME_PATH` to use an installed Chrome, or run `npx playwright install chromium` once.
 
