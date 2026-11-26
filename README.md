@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Coffee Nation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A coffee shop storefront built with React and TypeScript. Browse coffee, iced drinks and meals, open a product, add it to a cart and see the order total.
 
-## Available Scripts
+Live site: https://cofee-nation.vercel.app
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Product catalogue with three categories and pagination (38 items, local data and images, no external API)
+- Product detail pages at `/products/:category/:id`
+- Shopping cart with quantity controls, tax and shipping lines, saved in the browser between visits
+- Email/password and Google sign-in with Firebase Auth, protected History page
+- Clear 404 page for unknown routes and a separate message for unknown products
+- Responsive layout (checked at 390px and 1440px wide)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React 18, TypeScript, React Router 6, Redux Toolkit, Firebase Auth, Tailwind CSS (Create React App).
 
-### `npm test`
+## Run it
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+npm start        # http://localhost:3000
+npm run build    # production build
+npx tsc --noEmit # type check
+```
 
-### `npm run build`
+## How it was checked
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Production build served locally and opened in Chrome at 1440x900 and 390x844. Every route loads with no console errors or failed requests, the cart flow (add, change quantity, remove, reload) works, and pagination moves between pages.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Notes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Prices in the data file are in thousands of IDR.
+- The Firebase web config in the repo is a public client config, not a secret.
