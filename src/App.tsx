@@ -1,5 +1,6 @@
 import {
   History,
+  Wishlist,
   Home,
   Products,
   YourCart,
@@ -45,6 +46,14 @@ const router = createBrowserRouter(
         />
         <Route path="yourCart" element={<YourCart />} />
         <Route path="*" element={<ErrorComponent />} />
+        <Route
+          path="wishlist"
+          element={
+            <ProtectedRoute>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="history"
           element={

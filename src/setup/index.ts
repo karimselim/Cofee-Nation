@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartSlice, { CartState, initialCart } from "./cart-slice";
 import ordersSlice from "./orders-slice";
+import wishlistSlice from "./wishlist-slice";
 import notificationsSlice from "./notifications-slice";
-import { AppNotification, Order } from "../types";
+import { AppNotification, Order, Product } from "../types";
 
 const store = configureStore({
   reducer: {
     cart: cartSlice.reducer,
     orders: ordersSlice.reducer,
     notifications: notificationsSlice.reducer,
+    wishlist: wishlistSlice.reducer,
   },
 });
 
@@ -57,6 +59,11 @@ export function bindUser(uid: string | null) {
     })
   );
   store.dispatch(
+    wishlistSlice.actions.replace({
+      items: uid ? load<Product[]>("wishlist", owner, []) : [],
+    })
+  );
+  store.dispatch(
     notificationsSlice.actions.replace({
       items: uid ? load<AppNotification[]>("notifications", owner, []) : [],
     })
@@ -65,15 +72,16 @@ export function bindUser(uid: string | null) {
 
 export const currentOwner = () => owner;
 
-let last = { cart: store.getState().cart, orders: store.getState().orders, n: store.getState().notifications.items };
+let last = { cart: store.getState().cart, orders: store.getState().orders, n: store.getState().notifications.items, w: store.getState().wishlist.items };
 store.subscribe(() => {
   const s = store.getState();
   if (s.cart !== last.cart) save("cart", owner, s.cart);
   if (owner !== "guest") {
     if (s.orders !== last.orders) save("orders", owner, s.orders.orders);
+    if (s.wishlist.items !== last.w) save("wishlist", owner, s.wishlist.items);
     if (s.notifications.items !== last.n) save("notifications", owner, s.notifications.items);
   }
-  last = { cart: s.cart, orders: s.orders, n: s.notifications.items };
+  last = { cart: s.cart, orders: s.orders, n: s.notifications.items, w: s.wishlist.items };
 });
 
 bindUser(null);

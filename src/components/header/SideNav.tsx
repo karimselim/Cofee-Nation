@@ -136,6 +136,18 @@ const SideNav = () => {
                     History
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/wishlist"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    onClick={() => {
+                      isNavHideHandler();
+                      scrollToTop();
+                    }}
+                  >
+                    Favourites
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="sideFooter mt-auto">

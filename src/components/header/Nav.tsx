@@ -45,6 +45,15 @@ const Nav = () => {
       >
         History
       </NavLink>
+      <NavLink
+        onClick={scrollToTop}
+        to="wishlist"
+        className={({ isActive }) =>
+          isActive ? "mx-4 font-bold text-buttonColor" : "mx-4"
+        }
+      >
+        Favourites
+      </NavLink>
     </nav>
   );
 };

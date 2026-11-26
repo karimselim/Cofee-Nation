@@ -5,10 +5,28 @@ import { Product, Size } from "../../../types";
 import { SIZES, unitPrice } from "../../../utils/pricing";
 import { cartActions } from "../../../setup/cart-slice";
 import { notificationsActions } from "../../../setup/notifications-slice";
-import { useAppDispatch } from "../../../setup/hooks";
+import { useAppDispatch, useAppSelector } from "../../../setup/hooks";
+import { wishlistActions } from "../../../setup/wishlist-slice";
+import { useUserAuth } from "../../../setup/context/user-auth-context";
 
 const ProductItem = ({ prod }: { prod: Product }) => {
   const dispatch = useAppDispatch();
+  const { user } = useUserAuth();
+  const saved = useAppSelector((st) =>
+    st.wishlist.items.some((p) => p.id === prod.id && p.category === prod.category)
+  );
+  const toggleSaved = () => {
+    if (!user) {
+      dispatch(
+        notificationsActions.flash({
+          title: "Log in to save favourites",
+          body: "Favourites are kept in your account.",
+        })
+      );
+      return;
+    }
+    dispatch(wishlistActions.toggle(prod));
+  };
   const [size, setSize] = useState<Size>("R");
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
@@ -44,6 +62,14 @@ const ProductItem = ({ prod }: { prod: Product }) => {
           Favourite & Promo
         </Link>
         {prod.title.split(" ").slice(0, 3).join(" ")}
+        <button
+          type="button"
+          onClick={toggleSaved}
+          aria-pressed={saved}
+          className="ml-6 text-sm font-semibold border border-buttonColor rounded-full px-3 py-1"
+        >
+          {saved ? "♥ Saved to favourites" : "♡ Save to favourites"}
+        </button>
       </nav>
       <div className="flex gap-16 flex-col md:flex-row justify-between my-10">
         <ProductItemLeft details={{ title: prod.title, image: prod.image }} />
