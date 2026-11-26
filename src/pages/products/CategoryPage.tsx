@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import { MessageKey, useT } from "../../i18n";
 import { SORT_OPTIONS, filterProducts, parseMaxPrice, parseSort } from "../../utils/catalog";
 import ProductGrid from "./ProductGrid";
 import Pagination from "./Pagination";
@@ -10,7 +9,6 @@ import { Category } from "../../types";
 
 /** One page for every product tab: the favorites mix or a single category. */
 const CategoryPage = ({ category }: { category?: Category }) => {
-  const t = useT();
   const [params, setParams] = useSearchParams();
   const q = params.get("q") ?? "";
   const sort = parseSort(params.get("sort"));
@@ -43,19 +41,19 @@ const CategoryPage = ({ category }: { category?: Category }) => {
         className="flex flex-wrap gap-3 items-end"
       >
         <div className="flex flex-col text-left">
-          <label htmlFor="product-search" className="text-sm">{t("search.label", "Search")}</label>
+          <label htmlFor="product-search" className="text-sm">Search</label>
           <input
             id="product-search"
             type="search"
             maxLength={50}
-            placeholder={t("search.placeholder", "Search by name")}
+            placeholder="Search by name"
             value={q}
             onChange={(e) => update("q", e.target.value)}
             className={field}
           />
         </div>
         <div className="flex flex-col text-left">
-          <label htmlFor="product-max" className="text-sm">{t("search.max", "Max price (EGP)")}</label>
+          <label htmlFor="product-max" className="text-sm">Max price (EGP)</label>
           <input
             id="product-max"
             type="text"
@@ -69,7 +67,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
           />
         </div>
         <div className="flex flex-col text-left">
-          <label htmlFor="product-sort" className="text-sm">{t("search.sort", "Sort by")}</label>
+          <label htmlFor="product-sort" className="text-sm">Sort by</label>
           <select
             id="product-sort"
             value={sort}
@@ -77,7 +75,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
             className={field}
           >
             {SORT_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value}>{t(`sort.${o.value}` as MessageKey, o.label)}</option>
+              <option key={o.value} value={o.value}>{o.label}</option>
             ))}
           </select>
         </div>
@@ -88,7 +86,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
         </p>
       )}
       {items.length === 0 && (
-        <p role="status" className="my-10">{t("search.none", "No products match your search.")}</p>
+        <p role="status" className="my-10">No products match your search.</p>
       )}
       <ProductGrid products={currentProducts} />
       <Pagination

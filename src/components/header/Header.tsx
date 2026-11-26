@@ -1,4 +1,3 @@
-import LangToggle from "../LangToggle";
 import ThemeToggle from "../ThemeToggle";
 import { Logo, Nav, SignIn, SideNav } from "./";
 
@@ -11,7 +10,6 @@ const Header = () => {
           <Nav />
           <SignIn />
           <ThemeToggle />
-          <LangToggle />
           <SideNav />
         </div>
       </header>

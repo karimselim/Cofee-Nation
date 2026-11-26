@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductItemLeft, ProductItemRight, ProductItemBottom } from "..";
-import { useT } from "../../../i18n";
 import { Product, Size } from "../../../types";
 import { SIZES, unitPrice } from "../../../utils/pricing";
 import { cartActions } from "../../../setup/cart-slice";
@@ -12,7 +11,6 @@ import { useUserAuth } from "../../../setup/context/user-auth-context";
 
 const ProductItem = ({ prod }: { prod: Product }) => {
   const dispatch = useAppDispatch();
-  const t = useT();
   const { user } = useUserAuth();
   const saved = useAppSelector((st) =>
     st.wishlist.items.some((p) => p.id === prod.id && p.category === prod.category)
@@ -70,7 +68,7 @@ const ProductItem = ({ prod }: { prod: Product }) => {
           aria-pressed={saved}
           className="ml-6 text-sm font-semibold border border-buttonColor rounded-full px-3 py-1"
         >
-          {saved ? t("fav.saved", "♥ Saved to favourites") : t("fav.save", "♡ Save to favourites")}
+          {saved ? "♥ Saved to favourites" : "♡ Save to favourites"}
         </button>
       </nav>
       <div className="flex gap-16 flex-col md:flex-row justify-between my-10">

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useT } from "../../i18n";
 import { Footer } from "../../components";
 import CartRight, { CheckoutErrors } from "./CartRight";
 import CartProduct from "./CartProduct";
@@ -30,7 +29,6 @@ const noErrors: CheckoutErrors = { address: "", notes: "", time: "", method: "",
 const YourCart = () => {
   const items = useAppSelector((state) => state.cart.items);
   const prefs = useAppSelector((state) => state.cart.prefs);
-  const t = useT();
   const dispatch = useAppDispatch();
   const { user } = useUserAuth();
 
@@ -166,22 +164,22 @@ const YourCart = () => {
       <div className="bg-cover bg-center bg-cart">
         <section className="global-px space-y-3 py-10">
           <h1 className="text-white text-2xl md:text-3xl text-center md:text-left font-extrabold ">
-            {t("cart.title", "Checkout your item now!")}
+            Checkout your item now!
           </h1>
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
             <aside className="flex flex-1 gap-5 w-full h-auto">
               <section className="rounded-lg bg-white p-5 lg:p-7 w-full flex-col">
                 <header className="w-full text-center my-4 lg:my-6">
-                  <h3 className="text-buttonColor font-bold text-lg lg:text-3xl">{t("cart.summary", "Order Summary")}</h3>
+                  <h3 className="text-buttonColor font-bold text-lg lg:text-3xl">Order Summary</h3>
                 </header>
                 {isEmpty ? (
                   <div className="flex flex-col items-center gap-4 my-10 text-center">
-                    <p className="text-lg">{t("cart.empty", "Your cart is empty.")}</p>
+                    <p className="text-lg">Your cart is empty.</p>
                     <Link
                       to="/products"
                       className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3"
                     >
-                      {t("cart.browse", "Browse products")}
+                      Browse products
                     </Link>
                   </div>
                 ) : (
@@ -193,7 +191,7 @@ const YourCart = () => {
                 )}
                 <hr />
                 <div className="my-4">
-                  <label htmlFor="promo-code" className="block mb-1">{t("cart.promo", "Promo code")}</label>
+                  <label htmlFor="promo-code" className="block mb-1">Promo code</label>
                   {promo ? (
                     <p className="flex items-center gap-3" data-testid="promo-applied">
                       <span>
@@ -231,7 +229,7 @@ const YourCart = () => {
                         onClick={submitPromo}
                         className="bg-buttonColor text-white font-bold rounded-lg px-4"
                       >
-                        {t("cart.apply", "Apply")}
+                        Apply
                       </button>
                     </div>
                   )}
@@ -246,7 +244,7 @@ const YourCart = () => {
                 </div>
                 <div className="flex flex-col w-full my-4">
                   <div className="flex uppercase lg:text-lg">
-                    <p className="flex flex-[2_2_0]">{t("cart.subtotal", "subtotal")}</p>
+                    <p className="flex flex-[2_2_0]">subtotal</p>
                     <p className="flex flex-1 justify-end">{money(totals.subtotal)}</p>
                   </div>
                   {discount > 0 && (
@@ -256,16 +254,16 @@ const YourCart = () => {
                     </div>
                   )}
                   <div className="flex uppercase lg:text-lg">
-                    <p className="flex flex-[2_2_0]">{t("cart.tax", "TAX & FEES")}</p>
+                    <p className="flex flex-[2_2_0]">TAX & FEES</p>
                     <p className="flex flex-1 justify-end">{money(totals.tax)}</p>
                   </div>
                   <div className="flex uppercase lg:text-lg">
-                    <p className="flex flex-[2_2_0]">{t("cart.shipping", "shipping")}</p>
+                    <p className="flex flex-[2_2_0]">shipping</p>
                     <p className="flex flex-1 justify-end">{money(totals.shipping)}</p>
                   </div>
                 </div>
                 <div className="flex uppercase lg:text-xl font-bold justify-between">
-                  <p>{t("cart.total", "Total")}</p>
+                  <p>Total</p>
                   <p data-testid="cart-total">{money(totals.total)}</p>
                 </div>
               </section>
