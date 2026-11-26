@@ -66,11 +66,23 @@ test.describe("size, quantity and price", () => {
 });
 
 test.describe("cart badge", () => {
-  test("header badge counts items and updates", async ({ page }) => {
+  test("badge counts orders, not units", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByTestId("cart-count").first()).toHaveCount(0);
-    await addFirstProduct(page, 1, 2); // quantity 3
-    await expect(page.getByTestId("cart-count").first()).toHaveText("3");
+    await addFirstProduct(page, 1, 2); // one order, quantity 3
+    await expect(page.getByTestId("cart-count").first()).toHaveText("1");
+    await addFirstProduct(page, 1, 0); // same product and size: still one order, quantity 4
+    await expect(page.getByTestId("cart-count").first()).toHaveText("1");
+    await addFirstProduct(page, 2, 0); // a different product: two orders
+    await expect(page.getByTestId("cart-count").first()).toHaveText("2");
+  });
+
+  test("badge number is centered in its circle", async ({ page }) => {
+    await addFirstProduct(page, 1, 0);
+    const badge = page.getByTestId("cart-count").first();
+    await expect(badge).toHaveCSS("justify-content", "center");
+    await expect(badge).toHaveCSS("align-items", "center");
+    await expect(badge).toHaveCSS("text-align", "center");
   });
 });
 
