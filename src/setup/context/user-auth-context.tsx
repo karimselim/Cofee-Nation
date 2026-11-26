@@ -1,67 +1,51 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-  User,
-  UserCredential,
-  sendPasswordResetEmail,
-} from "firebase/auth";
-import { auth } from "../../firebase-config";
+import { AppUser, AuthService } from "../../auth/types";
+import { firebaseAuth } from "../../auth/firebaseAuth";
+import { fakeAuth } from "../../auth/fakeAuth";
+
+const service: AuthService =
+  process.env.REACT_APP_FAKE_AUTH === "true" ? fakeAuth : firebaseAuth;
 
 interface UserAuthContextValue {
-  user: User | null;
-  signup: (email: string, password: string) => Promise<UserCredential>;
-  login: (email: string, password: string) => Promise<UserCredential>;
+  /** The signed-in user with a verified email, or null. */
+  user: AppUser | null;
+  /** False until the first auth state is known (avoids flashing logged-out pages). */
+  ready: boolean;
+  signup: AuthService["signup"];
+  login: AuthService["login"];
   logOut: () => Promise<void>;
-  signinWithGoogle: () => Promise<UserCredential>;
-  resetPassword: (email: string) => Promise<void>;
+  signinWithGoogle: AuthService["google"];
+  resetPassword: AuthService["reset"];
+  resendVerification: AuthService["resendVerification"];
 }
 
 const userAuthContext = createContext<UserAuthContextValue | null>(null);
 
 export const UserAuthContextProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const signup = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+  const [user, setUser] = useState<AppUser | null>(null);
+  const [ready, setReady] = useState(false);
 
-  const login = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const logOut = () => {
-    return signOut(auth);
-  };
-
-  const signinWithGoogle = () => {
-    const googleauthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleauthProvider);
-  };
-
-  const resetPassword = (email: string) => {
-    return sendPasswordResetEmail(auth, email);
-  };
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  return (
-    <userAuthContext.Provider
-      value={{ user, signup, login, logOut, signinWithGoogle, resetPassword }}
-    >
-      {children}
-    </userAuthContext.Provider>
+  useEffect(
+    () =>
+      service.onChange((u) => {
+        setUser(u);
+        setReady(true);
+      }),
+    []
   );
+
+  const value: UserAuthContextValue = {
+    user,
+    ready,
+    signup: service.signup,
+    login: service.login,
+    logOut: service.logout,
+    signinWithGoogle: service.google,
+    resetPassword: service.reset,
+    resendVerification: service.resendVerification,
+  };
+
+  return <userAuthContext.Provider value={value}>{children}</userAuthContext.Provider>;
 };
 
 export const useUserAuth = (): UserAuthContextValue => {
