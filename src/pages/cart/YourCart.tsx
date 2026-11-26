@@ -2,10 +2,27 @@ import { Footer } from "../../components";
 import CartRight from "./CartRight";
 import { formatMoney } from "../../utils/money";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../setup/hooks";
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../setup/hooks";
+import { cartActions } from "../../setup/cart-slice";
+import { PaymentMethod } from "./PaymentMethods";
 import CartProduct from "./CartProduct";
 
 const money = formatMoney;
+
+interface Order {
+  number: string;
+  total: number;
+  count: number;
+  address: string;
+  method: PaymentMethod;
+}
+
+const METHOD_LABEL: Record<PaymentMethod, string> = {
+  card: "Card",
+  bank: "Bank account",
+  cash: "Cash on delivery",
+};
 
 const YourCart = () => {
   const items = useAppSelector((state) => state.cart.items);
@@ -13,6 +30,69 @@ const YourCart = () => {
   const tax = subtotal * 0.1;
   const shipping = subtotal * 0.05;
   const isEmpty = items.length === 0;
+  const total = subtotal + tax + shipping;
+
+  const dispatch = useAppDispatch();
+  const [address, setAddress] = useState("");
+  const [notes, setNotes] = useState("");
+  const [method, setMethod] = useState<PaymentMethod | null>(null);
+  const [error, setError] = useState("");
+  const [order, setOrder] = useState<Order | null>(null);
+
+  const payHandler = () => {
+    if (isEmpty) return setError("Your cart is empty.");
+    if (!address.trim()) return setError("Please enter a delivery address.");
+    if (!method) return setError("Please choose a payment method.");
+    // Demo checkout: no real payment is taken, the order is only confirmed here.
+    setOrder({
+      number: `CN-${Date.now().toString().slice(-6)}`,
+      total,
+      count: items.reduce((n, i) => n + i.quantity, 0),
+      address: address.trim(),
+      method,
+    });
+    dispatch(cartActions.clear());
+    setError("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (order) {
+    return (
+      <>
+        <div className="bg-cover bg-center bg-cart">
+          <section className="global-px py-16">
+            <div
+              role="status"
+              className="rounded-lg bg-white p-8 max-w-xl mx-auto text-center flex flex-col gap-4"
+            >
+              <h1 className="text-buttonColor font-bold text-2xl lg:text-3xl">
+                Order confirmed
+              </h1>
+              <p>Thank you! Your order number is</p>
+              <p className="font-extrabold text-xl" data-testid="order-number">
+                {order.number}
+              </p>
+              <p>
+                {order.count} item{order.count === 1 ? "" : "s"} · Total{" "}
+                <b>{money(order.total)}</b> · {METHOD_LABEL[order.method]}
+              </p>
+              <p>Delivering to: {order.address}</p>
+              <p className="text-sm text-gray-500">
+                This is a demo shop. No payment was taken.
+              </p>
+              <Link
+                to="/products"
+                className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3 mx-auto"
+              >
+                Keep shopping
+              </Link>
+            </div>
+          </section>
+        </div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -65,11 +145,27 @@ const YourCart = () => {
                 </div>
                 <div className="flex uppercase lg:text-xl font-bold justify-between">
                   <p>Total</p>
-                  <p>{money(subtotal + tax + shipping)}</p>
+                  <p>{money(total)}</p>
                 </div>
               </section>
             </aside>
-            <CartRight />
+            <CartRight
+              address={address}
+              notes={notes}
+              onAddressChange={(v) => {
+                setAddress(v);
+                setError("");
+              }}
+              onNotesChange={setNotes}
+              method={method}
+              onMethodChange={(m) => {
+                setMethod(m);
+                setError("");
+              }}
+              onPay={payHandler}
+              payDisabled={isEmpty}
+              error={error}
+            />
           </div>
         </section>
       </div>
