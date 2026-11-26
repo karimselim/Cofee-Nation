@@ -33,7 +33,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `CI=false npm run build && npx serve -s build -l ${PORT}`,
+    command: `CI=false REACT_APP_FAKE_AUTH=true npm run build && npx serve -s build -l ${PORT}`,
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,

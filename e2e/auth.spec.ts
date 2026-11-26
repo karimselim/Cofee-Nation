@@ -4,8 +4,8 @@ test.describe("auth pages", () => {
   test("login form hides the password and shows errors for empty input", async ({ page }) => {
     await page.goto("/auth/login");
     await expect(page.getByPlaceholder("Enter your password")).toHaveAttribute("type", "password");
-    await page.getByRole("link", { name: "Login", exact: true }).click();
-    await expect(page.getByText(/valid email|make sure/i).first()).toBeVisible();
+    await page.getByRole("button", { name: "Login", exact: true }).click();
+    await expect(page.getByText(/valid email|required|enter/i).first()).toBeVisible();
   });
 
   test("login and register pages link to each other", async ({ page }) => {
