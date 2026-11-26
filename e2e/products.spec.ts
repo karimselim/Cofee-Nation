@@ -20,7 +20,7 @@ test.describe("products", () => {
   test("product page shows title, description, price and one h1", async ({ page }) => {
     await page.goto("/products/3/1");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Add To Cart" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Add To Cart", exact: true })).toBeVisible();
     await expect(page.locator("body")).toContainText(/EGP \d+/);
   });
 

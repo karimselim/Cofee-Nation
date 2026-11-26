@@ -20,17 +20,17 @@ test.describe("cart and checkout", () => {
 
   test("same product twice merges into one line with the right quantity", async ({ page }) => {
     await addFirstProduct(page, 1);
-    await page.getByRole("button", { name: "Add To Cart" }).click();
+    await page.getByRole("button", { name: "Add To Cart", exact: true }).click();
     await page.getByRole("link", { name: "Your cart" }).click();
     await expect(page.getByRole("button", { name: /^Increase / })).toHaveCount(1);
-    await expect(page.getByText("2", { exact: true })).toBeVisible();
+    await expect(page.getByLabel("Quantity").filter({ hasText: "2" })).toBeVisible();
   });
 
   test("cart quantity and remove buttons work", async ({ page }) => {
     await addFirstProduct(page, 1);
     await page.getByRole("link", { name: "Your cart" }).click();
     await page.getByRole("button", { name: /^Increase / }).click();
-    await expect(page.getByText("2", { exact: true })).toBeVisible();
+    await expect(page.getByLabel("Quantity").filter({ hasText: "2" })).toBeVisible();
     await page.getByRole("button", { name: /^Decrease / }).click();
     await page.getByRole("button", { name: /^Remove / }).click();
     await expect(page.getByText("Your cart is empty.")).toBeVisible();
@@ -46,28 +46,29 @@ test.describe("cart and checkout", () => {
   test("paying without an address shows an error", async ({ page }) => {
     await addFirstProduct(page, 1);
     await page.getByRole("link", { name: "Your cart" }).click();
-    await page.getByLabel("Card").check();
+    await page.getByRole("button", { name: "Door Delivery" }).click();
+    await page.getByText("Card", { exact: true }).click();
     await page.getByRole("button", { name: "Confirm And Pay" }).click();
-    await expect(page.getByRole("alert")).toContainText("delivery address");
+    await expect(page.getByRole("alert").first()).toContainText("delivery address");
   });
 
-  test("pay button is disabled until a payment method is chosen", async ({ page }) => {
+  test("paying without a payment method shows an error", async ({ page }) => {
     await addFirstProduct(page, 1);
     await page.getByRole("link", { name: "Your cart" }).click();
-    await expect(page.getByRole("button", { name: "Confirm And Pay" })).toBeDisabled();
-    await page.getByLabel("Cash on delivery").check();
-    await expect(page.getByRole("button", { name: "Confirm And Pay" })).toBeEnabled();
+    await page.getByRole("button", { name: "Confirm And Pay" }).click();
+    await expect(page.getByRole("alert").first()).toContainText("payment method");
   });
 
   test("full checkout confirms the order and empties the cart", async ({ page }) => {
     await addFirstProduct(page, 3);
     await page.getByRole("link", { name: "Your cart" }).click();
-    await page.getByLabel("Delivery address").fill("12 Nile St, Cairo");
-    await page.getByLabel("Card").check();
+    await page.getByRole("button", { name: "Door Delivery" }).click();
+    await page.getByLabel(/^Delivery to/).fill("12 Nile St, Zamalek, Cairo");
+    await page.getByText("Card", { exact: true }).click();
     await page.getByRole("button", { name: "Confirm And Pay" }).click();
     await expect(page.getByRole("heading", { name: "Order confirmed" })).toBeVisible();
     await expect(page.getByTestId("order-number")).toHaveText(/^CN-\d{6}$/);
-    await expect(page.getByText("12 Nile St, Cairo")).toBeVisible();
+    await expect(page.getByText("12 Nile St, Zamalek, Cairo")).toBeVisible();
     await page.goto("/yourCart");
     await expect(page.getByText("Your cart is empty.")).toBeVisible();
   });
