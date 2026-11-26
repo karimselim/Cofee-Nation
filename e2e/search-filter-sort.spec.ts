@@ -1,5 +1,10 @@
 import { test, expect, Page } from "@playwright/test";
 
+const chooseSort = async (page: Page, name: string) => {
+  await page.getByRole("button", { name: /Sort by/ }).click();
+  await page.getByRole("option", { name }).click();
+};
+
 const prices = async (page: Page) => {
   const texts = await page.locator('a[href^="/products/1/"] p.font-bold').allInnerTexts();
   return texts.map((t) => Number(t.replace(/[^0-9.]/g, "")));
@@ -28,10 +33,10 @@ test.describe("search, filter and sort", () => {
   });
 
   test("sort by price works in both directions", async ({ page }) => {
-    await page.getByLabel("Sort by").selectOption("price-asc");
+    await chooseSort(page, "Price: low to high");
     const asc = await prices(page);
     expect(asc).toEqual([...asc].sort((a, b) => a - b));
-    await page.getByLabel("Sort by").selectOption("price-desc");
+    await chooseSort(page, "Price: high to low");
     const desc = await prices(page);
     expect(desc).toEqual([...desc].sort((a, b) => b - a));
   });
@@ -50,5 +55,34 @@ test.describe("search, filter and sort", () => {
     await expect(page.locator('a[href^="/products/1/"]')).toHaveCount(all);
     await page.getByLabel("Max price (EGP)").fill("-5");
     await expect(page.getByRole("alert")).toBeVisible();
+  });
+
+  test("the sort menu is a custom list that works with the keyboard", async ({ page }) => {
+    const button = page.getByRole("button", { name: /Sort by/ });
+    await expect(button).toHaveAttribute("aria-expanded", "false");
+    await button.click();
+    await expect(page.getByRole("listbox")).toBeVisible();
+    await expect(page.getByRole("option")).toHaveCount(4);
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("listbox")).toHaveCount(0);
+    await button.focus();
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("Enter");
+    await expect(button).toContainText("Price: low to high");
+    await expect(page).toHaveURL(/sort=price-asc/);
+  });
+
+  test("clicking outside closes the sort menu", async ({ page }) => {
+    await page.getByRole("button", { name: /Sort by/ }).click();
+    await expect(page.getByRole("listbox")).toBeVisible();
+    await page.locator("#product-search").click();
+    await expect(page.getByRole("listbox")).toHaveCount(0);
+  });
+
+  test("search row does not overlap the category tabs", async ({ page }) => {
+    const tabs = await page.getByRole("navigation", { name: "Product categories" }).boundingBox();
+    const form = await page.getByRole("search").boundingBox();
+    expect(tabs && form && form.y >= tabs.y + tabs.height + 8).toBeTruthy();
   });
 });
