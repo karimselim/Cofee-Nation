@@ -7,7 +7,7 @@ export interface Product {
   image: string;
   description: string;
   ingredients: string[];
-  /** price in thousands of IDR */
+  /** price in Egyptian pounds (EGP) */
   price: number;
 }
 

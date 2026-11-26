@@ -1,10 +1,11 @@
 import { Footer } from "../../components";
 import CartRight from "./CartRight";
+import { formatMoney } from "../../utils/money";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../setup/hooks";
 import CartProduct from "./CartProduct";
 
-const money = (n: number) => `IDR ${n.toFixed(3)}`;
+const money = formatMoney;
 
 const YourCart = () => {
   const items = useAppSelector((state) => state.cart.items);

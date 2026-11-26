@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { cartActions } from "../../setup/cart-slice";
 import { useAppDispatch } from "../../setup/hooks";
+import { formatMoney } from "../../utils/money";
 import { CartItem } from "../../types";
 
 const roundBtn =
@@ -48,7 +49,7 @@ const CartProduct = ({ item }: { item: CartItem }) => {
         >
           <FontAwesomeIcon icon={faXmark} />
         </button>
-        <p>IDR {price * quantity}.000</p>
+        <p>{formatMoney(price * quantity)}</p>
       </div>
     </div>
   );

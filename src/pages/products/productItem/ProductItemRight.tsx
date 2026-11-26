@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cartActions } from "../../../setup/cart-slice";
 import { useAppDispatch } from "../../../setup/hooks";
+import { formatMoney } from "../../../utils/money";
 import { Product } from "../../../types";
 
 interface Details {
@@ -56,7 +57,7 @@ const ProductItemRight = ({ details, item }: { details: Details; item: Product }
             +
           </button>
         </div>
-        <p className="font-bold text-xl">{`IDR ${details.price}.000`}</p>
+        <p className="font-bold text-xl">{formatMoney(details.price)}</p>
       </div>
       <div>
         <button
