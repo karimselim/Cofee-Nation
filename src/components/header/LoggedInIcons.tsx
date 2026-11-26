@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import chat from "../../assists/icons/chat.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { formatBadge, useUnreadCount } from "../useUnread";
 import { useUserAuth } from "../../setup/context/user-auth-context";
 
 const LoggedInIcons = () => {
@@ -11,6 +12,7 @@ const LoggedInIcons = () => {
 
   const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
+  const unread = useUnreadCount();
 
   const signOut = async () => {
     try {
@@ -50,11 +52,20 @@ const LoggedInIcons = () => {
 
   return (
     <section className="flex gap-12">
-      <Link aria-label="Messages" className="chat-container w-8 relative" to="/">
+      <Link
+        aria-label={unread ? `Messages, ${unread} unread` : "Messages"}
+        className="chat-container w-8 relative"
+        to="/messages"
+      >
         <img src={chat} alt="" />
-        <span className="absolute text-white rounded-full text-xs font-bold bg-buttonColor -top-2 -left-2 p-[1px]">
-          9+
-        </span>
+        {unread > 0 && (
+          <span
+            data-testid="unread-count"
+            className="absolute text-white rounded-full text-xs font-bold bg-buttonColor -top-2 -left-2 p-[1px] min-w-[1.1rem] text-center"
+          >
+            {formatBadge(unread)}
+          </span>
+        )}
       </Link>
       <div ref={menuRef} className="profile-container flex gap-2 justify-center items-center cursor-pointer relative max-lg:hidden">
         <button

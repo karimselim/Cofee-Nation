@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import CartBadge from "../CartBadge";
 
 const Nav = () => {
   const scrollToTop = () => {
@@ -33,6 +34,7 @@ const Nav = () => {
         }
       >
         Your cart
+        <CartBadge />
       </NavLink>
       <NavLink
         onClick={scrollToTop}
