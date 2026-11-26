@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Transition from "react-transition-group/Transition";
 import { useRef, useState } from "react";
 import burger from "../../assists/icons/burger.svg";
@@ -54,7 +54,8 @@ const SideNav = () => {
       >
         <img src={burger} alt="" className="text-textColor text-2xl cursor-pointer w-8" />
       </button>
-      <Link to="/yourCart" aria-label="Cart" className="flex items-center ml-2">
+      <Link to="/yourCart" aria-label="Cart" className="flex items-center ml-4 text-textColor">
+        <FontAwesomeIcon icon={faCartShopping} className="text-2xl" />
         <CartBadge />
       </Link>
       <Transition
@@ -120,6 +121,7 @@ const SideNav = () => {
                     }}
                   >
                     Your Cart
+                    <CartBadge />
                   </Link>
                 </li>
                 <li>
