@@ -17,7 +17,7 @@ const PaymentMethods = () => {
           <input
             type="radio"
             className="w-4 h-4 accent-buttonColor"
-            value={paymentMethod.card}
+            value="card"
             onChange={() =>
               setPaymentMethod({ card: true, cash: false, bank: false })
             }
@@ -47,7 +47,7 @@ const PaymentMethods = () => {
           <input
             type="radio"
             className="w-4 h-4 accent-buttonColor"
-            value={paymentMethod.bank}
+            value="bank"
             onChange={() =>
               setPaymentMethod({ card: false, cash: false, bank: true })
             }
@@ -76,7 +76,7 @@ const PaymentMethods = () => {
           <input
             type="radio"
             className="w-4 h-4 accent-buttonColor"
-            value={paymentMethod.cash}
+            value="cash"
             onChange={() =>
               setPaymentMethod({ card: false, cash: true, bank: false })
             }

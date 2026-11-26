@@ -41,15 +41,6 @@ const CartRight = () => {
               readOnly={!buttonToggle}
             />
           </div>
-          <hr />
-          <div>
-            <input
-              type="text"
-              className="bg-gray-50 outline-none flex-1 w-[-webkit-fill-available]"
-              value={123456789}
-              readOnly
-            />
-          </div>
         </form>
       </section>
       <PaymentMethods />
