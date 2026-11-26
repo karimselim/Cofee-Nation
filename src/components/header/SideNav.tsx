@@ -14,7 +14,7 @@ const SideNav = () => {
 
   const { user } = useUserAuth();
 
-  const transitionRef = useRef(null);
+  const transitionRef = useRef<HTMLDivElement>(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,12 +30,12 @@ const SideNav = () => {
 
   return (
     <div className="altNav lg:hidden flex">
-      <FontAwesomeIcon
-        icon={faMagnifyingGlass}
-        className={`w-6 text-textColor cursor-pointer text-2xl ${
-          user && " mr-6"
-        }`}
-      />
+      <button aria-label="Search" className={user ? "mr-6" : ""}>
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          className="w-6 text-textColor cursor-pointer text-2xl"
+        />
+      </button>
 
       {user && <LoggedInIcons />}
 
@@ -46,12 +46,13 @@ const SideNav = () => {
         ></div>
       )}
 
-      <img
-        src={burger}
-        alt=""
-        className="text-textColor text-2xl ml-6 cursor-pointer w-8"
+      <button
+        aria-label="Open menu"
+        className="ml-6"
         onClick={isNavShowHandler}
-      />
+      >
+        <img src={burger} alt="" className="text-textColor text-2xl cursor-pointer w-8" />
+      </button>
       <Transition
         nodeRef={transitionRef}
         in={isNavShown}
@@ -59,7 +60,7 @@ const SideNav = () => {
         mountOnEnter
         unmountOnExit
       >
-        {(state) => (
+        {(state: string) => (
           <div
             className="sideBar h-screen absolute top-0 right-[-15px] w-80 p-5 bg-white border-l-2 border-gray-100 flex flex-col ease-in-out transition-all duration-300"
             style={{
@@ -71,12 +72,13 @@ const SideNav = () => {
                 <img src={profile} alt="" className="w-10 rounded-md mr-2" />
                 Guest
               </div>
-              <FontAwesomeIcon
-                icon={faXmark}
-                size="xs"
-                className="cursor-pointer text-unactiveText hover:text-textColor text-2xl font-light"
-                onClick={isNavHideHandler}
-              />
+              <button aria-label="Close menu" onClick={isNavHideHandler}>
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  size="xs"
+                  className="cursor-pointer text-unactiveText hover:text-textColor text-2xl font-light"
+                />
+              </button>
             </div>
             <div className="side-main">
               <ul>
