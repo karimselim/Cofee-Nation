@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useT } from "../../i18n";
 import CartBadge from "../CartBadge";
 
 const Nav = () => {
+  const t = useT();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -15,7 +17,7 @@ const Nav = () => {
         }
         end
       >
-        Home
+        {t("nav.home", "Home")}
       </NavLink>
       <NavLink
         onClick={scrollToTop}
@@ -24,7 +26,7 @@ const Nav = () => {
           isActive ? "mx-4 font-bold text-buttonColor" : "mx-4"
         }
       >
-        Products
+        {t("nav.products", "Products")}
       </NavLink>
       <NavLink
         onClick={scrollToTop}
@@ -33,7 +35,7 @@ const Nav = () => {
           isActive ? "mx-4 font-bold text-buttonColor" : "mx-4"
         }
       >
-        Your cart
+        {t("nav.cart", "Your cart")}
         <CartBadge />
       </NavLink>
       <NavLink
@@ -43,7 +45,7 @@ const Nav = () => {
           isActive ? "mx-4 font-bold text-buttonColor" : "mx-4"
         }
       >
-        History
+        {t("nav.history", "History")}
       </NavLink>
       <NavLink
         onClick={scrollToTop}
@@ -52,7 +54,7 @@ const Nav = () => {
           isActive ? "mx-4 font-bold text-buttonColor" : "mx-4"
         }
       >
-        Favourites
+        {t("nav.favourites", "Favourites")}
       </NavLink>
     </nav>
   );
