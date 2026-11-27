@@ -50,7 +50,8 @@ export const SHOP_CLOSE = "22:00";
 
 export const validateTime = (time: string): FieldError => {
   if (!time) return "Please choose the time you want your order.";
-  if (!/^\d{2}:\d{2}$/.test(time)) return "Enter the time like 14:30.";
+  const m = /^(\d{2}):(\d{2})$/.exec(time);
+  if (!m || Number(m[1]) > 23 || Number(m[2]) > 59) return "Enter a real time like 14:30.";
   if (time < SHOP_OPEN || time > SHOP_CLOSE) {
     return `We are open from ${SHOP_OPEN} to ${SHOP_CLOSE}. Pick a time in that range.`;
   }
