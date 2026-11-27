@@ -20,3 +20,18 @@ body {
 * {
   font-family: "Poppins", sans-serif;
 }
+
+/* Notification banner: slides down from the top, and back up when it goes away. */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-1.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-1.5rem); }
+}
+.toast-in { animation: toast-in 300ms ease-out both; }
+.toast-out { animation: toast-out 300ms ease-in both; }
+@media (prefers-reduced-motion: reduce) {
+  .toast-in, .toast-out { animation-duration: 1ms; }
+}
