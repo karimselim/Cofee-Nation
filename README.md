@@ -25,7 +25,20 @@ Live site: https://cofee-nation.vercel.app
 
 ## Stack
 
-React 18, TypeScript, React Router 6, Redux Toolkit, Firebase Auth, Tailwind CSS (Create React App).
+Versions from `package-lock.json`:
+
+- React 18.2.0, TypeScript 4.9.5, React Router 6.4.5, Redux Toolkit 1.9.5
+- Firebase 10.4.0 (Auth), Tailwind CSS 3.3.3
+- Create React App (`react-scripts` 5.0.1)
+- Playwright 1.65.1 for the end to end tests
+
+## Requirements
+
+Node.js and npm. CI uses Node 20, so use Node 20 or newer. No database or server is needed, all data is local.
+
+## Environment variables
+
+None are needed to run or build the app. The Firebase web config is in the repo (it is public client config). `REACT_APP_FAKE_AUTH=true` swaps Firebase for a local stand-in and is only used by the tests, which set it themselves. `PW_CHROME_PATH` is optional, see Tests.
 
 ## Run it
 
