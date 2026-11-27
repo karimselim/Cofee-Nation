@@ -11,16 +11,17 @@ const Wishlist = () => {
   return (
     <>
       <section className="global-px py-10 min-h-[50vh]">
-        <h1 className="text-buttonColor text-3xl font-extrabold mb-6">Your favourites</h1>
+        <div className="max-w-3xl mx-auto">
+        <h1 className="text-buttonColor text-3xl font-extrabold mb-6 text-center">Your favourites</h1>
         {items.length === 0 ? (
-          <div className="py-10">
+          <div className="py-10 text-center">
             <p className="text-lg mb-4">You have no favourites yet.</p>
             <Link to="/products" className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3">
               Browse products
             </Link>
           </div>
         ) : (
-          <ul className="grid gap-4 max-w-3xl">
+          <ul className="grid gap-4">
             {items.map((p) => (
               <li
                 key={`${p.category}-${p.id}`}
@@ -44,6 +45,7 @@ const Wishlist = () => {
             ))}
           </ul>
         )}
+        </div>
       </section>
       <Footer />
     </>
