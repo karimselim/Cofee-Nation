@@ -2,6 +2,8 @@
 
 A coffee shop storefront built with React and TypeScript. Browse coffee, iced drinks and meals, open a product, add it to a cart and see the order total.
 
+The goal is a realistic shop front end to build and to test: browsing, a cart that follows the rules (sizes, promo codes, tax), a checkout with validation and per-account data, without needing a backend.
+
 Live site: https://cofee-nation.vercel.app
 
 ## Features
