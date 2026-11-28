@@ -12,9 +12,9 @@ const Auth = () => {
               <Outlet />
             </section>
           </div>
-          <Footer />
         </aside>
       </section>
+      <Footer />
     </>
   );
 };

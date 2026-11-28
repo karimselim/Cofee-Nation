@@ -128,7 +128,7 @@ const AuthForm = () => {
         </div>
       ) : (
         <form onSubmit={submit} noValidate>
-          <div className="mt-16 flex flex-col space-y-3 md:space-y-4 gap-5">
+          <div className="mt-8 md:mt-14 flex flex-col space-y-3 md:space-y-4 gap-5">
             <div>
               <label htmlFor="email" className="text-footerTextColor font-bold">
                 Email address :
@@ -257,7 +257,7 @@ const AuthForm = () => {
       </div>
       <Link
         to={isRegister ? "/auth/login" : "/auth/register"}
-        className="flex justify-center bg-accent text-lg font-bold text-onAccent rounded-2xl py-2 mb-4 shadow-xl"
+        className="flex justify-center border border-accent/70 text-accent hover:bg-accent hover:text-onAccent transition-colors text-lg font-bold rounded-2xl py-2 mb-4"
       >
         {isRegister ? "Login here" : "Signup"}
       </Link>
