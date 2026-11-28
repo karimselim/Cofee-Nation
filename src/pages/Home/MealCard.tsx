@@ -24,7 +24,7 @@ const MealCard = () => {
         </li>
         <li className="flex gap-4">
           <img src={check} alt="" className="w-5 opacity-90" />
-          <p>Wanilla Whipped Cream</p>
+          <p>Vanilla Whipped Cream</p>
         </li>
         <li className="flex gap-4">
           <img src={check} alt="" className="w-5 opacity-90" />
