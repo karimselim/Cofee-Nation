@@ -15,27 +15,27 @@ const Partners = () => {
         <img
           src={netfelix}
           alt=""
-          className="w-24 lg:w-[15%] grayscale opacity-40 hover:opacity-100 hover:grayscale-0 duration-300 ease-in-out"
+          className="w-24 lg:w-[15%] opacity-70 brightness-0 invert hover:opacity-100 hover:brightness-100 hover:invert-0 duration-300 ease-in-out"
         />
         <img
           src={reddit}
           alt=""
-          className="w-24 lg:w-[15%] grayscale opacity-40 hover:opacity-100 hover:grayscale-0 duration-300 ease-in-out"
+          className="w-24 lg:w-[15%] opacity-70 brightness-0 invert hover:opacity-100 hover:brightness-100 hover:invert-0 duration-300 ease-in-out"
         />
         <img
           src={amazon}
           alt=""
-          className="w-24 lg:w-[15%] grayscale opacity-40 hover:opacity-100 hover:grayscale-0 duration-300 ease-in-out"
+          className="w-24 lg:w-[15%] opacity-70 brightness-0 invert hover:opacity-100 hover:brightness-100 hover:invert-0 duration-300 ease-in-out"
         />
         <img
           src={discord}
           alt=""
-          className="w-24 lg:w-[15%] grayscale opacity-40 hover:opacity-100 hover:grayscale-0 duration-300 ease-in-out"
+          className="w-24 lg:w-[15%] opacity-70 brightness-0 invert hover:opacity-100 hover:brightness-100 hover:invert-0 duration-300 ease-in-out"
         />
         <img
           src={spotify}
           alt=""
-          className="w-24 lg:w-[15%] grayscale opacity-40 hover:opacity-100 hover:grayscale-0 duration-300 ease-in-out"
+          className="w-24 lg:w-[15%] opacity-70 brightness-0 invert hover:opacity-100 hover:brightness-100 hover:invert-0 duration-300 ease-in-out"
         />
       </div>
     </Section>
