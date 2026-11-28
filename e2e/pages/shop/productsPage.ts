@@ -91,4 +91,41 @@ export class ProductsPage {
   getEmptyMessage(): Locator {
     return this.page.getByRole("status").filter({ hasText: /no products match/i });
   }
+
+  getSearchForm(): Locator {
+    return this.page.getByRole("search");
+  }
+
+  getCategoryNav(): Locator {
+    return this.page.getByRole("navigation", { name: "Product categories" });
+  }
+
+  getCategoryLink(name: string): Locator {
+    return this.getCategoryNav().getByRole("link", { name, exact: true });
+  }
+
+  getSortButton(): Locator {
+    return this.sortButton;
+  }
+
+  getSortListbox(): Locator {
+    return this.page.getByRole("listbox");
+  }
+
+  getSortOptions(): Locator {
+    return this.page.getByRole("option");
+  }
+
+  getCategoryCards(category: "1" | "2" | "3"): Locator {
+    return this.page.locator(`a[href^="/products/${category}/"]`);
+  }
+
+  async expectEmptyCategoryMessage(): Promise<void> {
+    await expect(this.page.getByText(/have gone into hiding/i)).toBeVisible();
+  }
+
+  async openAddons(): Promise<void> {
+    await this.page.goto("/products/4");
+    await expect(this.page.getByText(/have gone into hiding/i)).toBeVisible();
+  }
 }

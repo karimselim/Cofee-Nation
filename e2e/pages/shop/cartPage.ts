@@ -107,4 +107,45 @@ export class CartPage {
   getError(text: RegExp | string): Locator {
     return this.page.getByRole("alert").filter({ hasText: text });
   }
+
+  getLine(index: number): Locator {
+    return this.getLines().nth(index);
+  }
+
+  getPromoInput(): Locator {
+    return this.promoInput;
+  }
+
+  getPromoApplied(): Locator {
+    return this.page.getByTestId("promo-applied");
+  }
+
+  getPromoDiscount(): Locator {
+    return this.page.getByTestId("promo-discount");
+  }
+
+  getDeliveryButton(name: "Dine In" | "Door Delivery" | "Pickup"): Locator {
+    return this.page.getByRole("button", { name, exact: true });
+  }
+
+  getAddressInput(): Locator {
+    return this.addressInput;
+  }
+
+  getNotesInput(): Locator {
+    return this.notesInput;
+  }
+
+  getConfirmHeading(): Locator {
+    return this.page.getByRole("heading", { name: /order confirmed/i });
+  }
+
+  async choosePaymentByText(name: "Card" | "Bank account" | "Cash on delivery"): Promise<void> {
+    await this.page.getByText(name, { exact: true }).click();
+  }
+
+  async openFromHeader(): Promise<void> {
+    await this.page.getByRole("link", { name: "Your cart" }).first().click();
+    await expect(this.page.getByRole("heading", { name: /checkout your item now/i })).toBeVisible();
+  }
 }

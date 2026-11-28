@@ -5,7 +5,7 @@ const API_PORT = 3200;
 const chrome = { executablePath: process.env.PW_CHROME_PATH || undefined };
 
 export default defineConfig({
-  testDir: "./tests",
+  testDir: "./e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
@@ -21,33 +21,20 @@ export default defineConfig({
   projects: [
     {
       name: "desktop",
-      testDir: "./tests/ui",
+      testDir: "./e2e/tests/ui",
       testIgnore: /responsive\.spec\.ts/,
       use: { ...devices["Desktop Chrome"], launchOptions: chrome },
     },
     {
       name: "mobile",
-      testDir: "./tests/ui",
+      testDir: "./e2e/tests/ui",
       testMatch: /responsive\.spec\.ts/,
       use: { ...devices["Pixel 5"], launchOptions: chrome },
     },
     {
       name: "api",
-      testDir: "./tests/api",
+      testDir: "./e2e/tests/api",
       use: { ...devices["Desktop Chrome"], baseURL: `http://localhost:${API_PORT}` },
-    },
-    // The first suite, kept until every case lives in the page-object library above.
-    {
-      name: "legacy-desktop",
-      testDir: "./e2e",
-      testIgnore: /responsive\.spec\.ts/,
-      use: { ...devices["Desktop Chrome"], launchOptions: chrome },
-    },
-    {
-      name: "legacy-mobile",
-      testDir: "./e2e",
-      testMatch: /responsive\.spec\.ts/,
-      use: { ...devices["Pixel 5"], launchOptions: chrome },
     },
   ],
 

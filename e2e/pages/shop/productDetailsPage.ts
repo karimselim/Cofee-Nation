@@ -53,4 +53,25 @@ export class ProductDetailsPage {
   getCartBadge(): Locator {
     return this.cartBadge;
   }
+
+  getSizeRadio(size: "R" | "L" | "XL"): Locator {
+    const label = { R: "Regular", L: "Large", XL: "Extra large" }[size];
+    return this.page.getByRole("radio", { name: new RegExp(`^${label},`) });
+  }
+
+  getDeliveryOption(name: "Dine In" | "Door Delivery" | "Pickup"): Locator {
+    return this.page.getByRole("button", { name, exact: true });
+  }
+
+  getWhenButton(answer: "Yes" | "No"): Locator {
+    return this.page.getByRole("button", { name: answer, exact: true });
+  }
+
+  getTimeInput(): Locator {
+    return this.page.getByLabel("Set Time");
+  }
+
+  getArrowAddButton(): Locator {
+    return this.page.getByRole("button", { name: "Add to cart", exact: true });
+  }
 }
