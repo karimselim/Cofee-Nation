@@ -64,7 +64,7 @@ function Dropdown<T extends string>({ label, value, options, onChange, className
 
   return (
     <div ref={root} className={`relative flex flex-col text-left ${className}`}>
-      <span id={labelId} className="text-sm mb-1 text-gray-600">
+      <span id={labelId} className="text-sm mb-1 text-muted">
         {label}
       </span>
       <button
@@ -75,7 +75,7 @@ function Dropdown<T extends string>({ label, value, options, onChange, className
         aria-labelledby={`${labelId} ${uid}-value`}
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={onKeyDown}
-        className="flex items-center justify-between gap-3 bg-white rounded-lg border border-gray-200 px-3 py-2 h-11 text-left hover:border-buttonColor focus:border-buttonColor outline-none"
+        className="flex items-center justify-between gap-3 bg-surface rounded-lg border border-line px-3 py-2 h-11 text-left hover:border-accent focus:border-accent outline-none"
       >
         <span id={`${uid}-value`} className="truncate">
           {options[selectedIndex].label}
@@ -83,7 +83,7 @@ function Dropdown<T extends string>({ label, value, options, onChange, className
         <svg
           aria-hidden="true"
           viewBox="0 0 20 20"
-          className={`w-4 h-4 shrink-0 text-buttonColor transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`w-4 h-4 shrink-0 text-accent transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -96,7 +96,7 @@ function Dropdown<T extends string>({ label, value, options, onChange, className
           id={listId}
           role="listbox"
           aria-labelledby={labelId}
-          className="absolute left-0 right-0 top-full mt-1 z-20 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl py-1"
+          className="absolute left-0 right-0 top-full mt-1 z-20 overflow-hidden rounded-xl border border-line bg-surface shadow-xl py-1"
         >
           {options.map((o, i) => (
             <li
@@ -106,8 +106,8 @@ function Dropdown<T extends string>({ label, value, options, onChange, className
               onMouseEnter={() => setActive(i)}
               onClick={() => choose(i)}
               className={`flex items-center justify-between cursor-pointer px-3 py-2 ${
-                i === active ? "bg-firstColor/30" : ""
-              } ${o.value === value ? "font-bold text-buttonColor" : ""}`}
+                i === active ? "bg-accent/30" : ""
+              } ${o.value === value ? "font-bold text-accent" : ""}`}
             >
               {o.label}
               {o.value === value && <span aria-hidden="true">✓</span>}

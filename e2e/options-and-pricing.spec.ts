@@ -131,6 +131,32 @@ test.describe("checkout validation", () => {
     await expect(page.getByText("We are open from")).toBeVisible();
   });
 
+  test("time input refuses times outside 09:00-22:00 right away and accepts valid ones", async ({ page }) => {
+    await toCart(page);
+    await page.getByRole("button", { name: "No", exact: true }).click();
+    const time = page.getByLabel("Set Time");
+    await time.fill("06:00");
+    await expect(page.getByRole("alert").filter({ hasText: "We are open from 09:00 to 22:00" })).toBeVisible();
+    await time.fill("22:30");
+    await expect(page.getByText("We are open from")).toBeVisible();
+    await time.fill("25:00");
+    await expect(page.getByText("Enter a real time")).toBeVisible();
+    await time.fill("09:00");
+    await expect(page.getByRole("alert").filter({ hasText: /open from|real time/ })).toHaveCount(0);
+    await time.fill("22:00");
+    await expect(page.getByRole("alert").filter({ hasText: /open from|real time/ })).toHaveCount(0);
+  });
+
+  test("a half-typed time like 6 cannot be paid", async ({ page }) => {
+    await toCart(page);
+    await page.getByRole("button", { name: "No", exact: true }).click();
+    await page.getByText("Cash on delivery", { exact: true }).click();
+    await page.getByLabel("Set Time").fill("6");
+    await page.getByRole("button", { name: "Confirm And Pay" }).click();
+    await expect(page.getByText("Enter a real time")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Order confirmed" })).toHaveCount(0);
+  });
+
   test("pickup order with no address can be paid", async ({ page }) => {
     await toCart(page);
     await page.getByText("Cash on delivery", { exact: true }).click();

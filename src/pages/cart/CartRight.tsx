@@ -24,8 +24,8 @@ interface CartRightProps {
 }
 
 const inputClass = (invalid: boolean) =>
-  `w-full bg-gray-50 outline-none rounded-lg border px-3 py-2 ${
-    invalid ? "border-red-500" : "border-gray-200 focus:border-buttonColor"
+  `w-full bg-surface2 outline-none rounded-lg border px-3 py-2 ${
+    invalid ? "border-red-500" : "border-line focus:border-accent"
   }`;
 
 const CartRight = ({
@@ -42,21 +42,21 @@ const CartRight = ({
 }: CartRightProps) => (
   <aside className="flex-1 flex gap-5 flex-col">
     <section className="flex gap-5 flex-col w-full">
-      <header className="text-white flex text-xl lg:text-2xl font-extrabold text-center md:text-left items-center">
+      <header className="text-white text-xl lg:text-2xl font-extrabold text-left">
         <h3>Order options</h3>
       </header>
-      <div className="rounded-xl bg-white p-5 lg:p-7">
+      <div className="rounded-2xl border border-line bg-surface p-5 lg:p-7">
         <OrderOptions timeError={errors.time} />
       </div>
     </section>
     <section className="flex gap-5 flex-col w-full">
-      <header className="text-white flex text-xl lg:text-2xl font-extrabold text-center md:text-left items-center">
+      <header className="text-white text-xl lg:text-2xl font-extrabold text-left">
         <h3>Address details</h3>
       </header>
       <form
         onSubmit={(e) => e.preventDefault()}
         noValidate
-        className="rounded-xl bg-white p-5 lg:p-7 flex flex-col gap-4"
+        className="rounded-2xl border border-line bg-surface p-5 lg:p-7 flex flex-col gap-4"
       >
         <div>
           <label htmlFor="delivery-address" className="block mb-1">
@@ -106,7 +106,7 @@ const CartRight = ({
       onMethodChange={onMethodChange}
       onPay={onPay}
       disabled={payDisabled}
-      error={errors.method || errors.cart}
+      error={errors.cart || errors.method}
     />
   </aside>
 );

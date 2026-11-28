@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../setup/hooks";
 import { cartActions } from "../setup/cart-slice";
 import { DeliveryMethod } from "../types";
-import { SHOP_CLOSE, SHOP_OPEN } from "../utils/validation";
+import { SHOP_CLOSE, SHOP_OPEN, validateTime } from "../utils/validation";
 
 const METHODS: { value: DeliveryMethod; label: string }[] = [
   { value: "dine-in", label: "Dine In" },
@@ -11,13 +11,16 @@ const METHODS: { value: DeliveryMethod; label: string }[] = [
 
 const choice = (active: boolean) =>
   `text-start rounded-lg p-2 flex items-center font-bold ${
-    active ? "bg-buttonColor text-white" : "text-gray-500 bg-[#BABABA59] hover:text-gray-600 hover:bg-gray-100"
+    active ? "bg-accent text-onAccent" : "text-muted bg-surface2 border border-line hover:text-ink hover:border-accent/60"
   }`;
 
 /** Delivery method and time. Shared by the product page and the cart. */
 const OrderOptions = ({ timeError = "" }: { timeError?: string }) => {
   const prefs = useAppSelector((s) => s.cart.prefs);
   const dispatch = useAppDispatch();
+  // Check as the user types, once a full HH:MM is entered, so 06:00 is refused straight away.
+  const live = prefs.when === "later" && prefs.time.length === 5 ? validateTime(prefs.time) : "";
+  const shownError = timeError || live;
 
   return (
     <div className="flex flex-col gap-4">
@@ -57,26 +60,35 @@ const OrderOptions = ({ timeError = "" }: { timeError?: string }) => {
         </div>
       </div>
       <div>
-        <label htmlFor="order-time">Set Time</label>
+        <label htmlFor="order-time" className="block">Set Time</label>
         <input
           id="order-time"
-          type="time"
-          min={SHOP_OPEN}
-          max={SHOP_CLOSE}
+          type="text"
+          inputMode="numeric"
+          autoComplete="off"
+          placeholder="e.g. 15:30"
+          maxLength={5}
           value={prefs.time}
           disabled={prefs.when === "now"}
-          aria-invalid={!!timeError || undefined}
-          onChange={(e) => dispatch(cartActions.setPrefs({ time: e.target.value }))}
-          className="ml-4 bg-[#BABABA59] px-8 rounded-lg font-bold py-2 disabled:opacity-50"
+          aria-invalid={!!shownError || undefined}
+          aria-describedby={shownError ? "order-time-error" : undefined}
+          onChange={(e) => {
+            let v = e.target.value.replace(/[^0-9:]/g, "");
+            if (/^\d{2}$/.test(v) && e.target.value.length > prefs.time.length) v += ":";
+            dispatch(cartActions.setPrefs({ time: v }));
+          }}
+          className={`mt-2 block w-44 bg-surface2 rounded-lg border px-3 h-11 font-bold outline-none text-accent disabled:opacity-50 ${
+            shownError ? "border-red-500" : "border-line hover:border-accent focus:border-accent"
+          }`}
         />
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-muted mt-1">
           {prefs.when === "now"
             ? "Choose “No” to pick a later time."
             : `Open ${SHOP_OPEN} to ${SHOP_CLOSE}.`}
         </p>
-        {timeError && (
-          <p role="alert" className="text-red-500">
-            {timeError}
+        {shownError && (
+          <p id="order-time-error" role="alert" className="text-red-500">
+            {shownError}
           </p>
         )}
       </div>

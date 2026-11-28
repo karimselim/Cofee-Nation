@@ -5,13 +5,16 @@ function Favourite() {
   return (
     <Section>
       <TextHolder>
-        <Header2 className="mb-12 md:mb-0">Here is People's Favorite</Header2>
-        <p className="text-textColor">
-          Let's choose and have a bit taste of poeple's favorite. It might be
+        <p className="uppercase tracking-[0.35em] text-accent text-[11px] mb-3">
+          Our products
+        </p>
+        <Header2 className="mb-4">Here is People's Favorite</Header2>
+        <p className="text-muted">
+          Let's choose and have a bit taste of people's favourite. It might be
           yours too!
         </p>
       </TextHolder>
-      <div className="cards flex flex-wrap gap-12">
+      <div className="cards flex flex-wrap gap-8 justify-center">
         <MealCard />
         <MealCard />
         <MealCard />

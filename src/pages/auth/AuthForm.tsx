@@ -14,7 +14,7 @@ import {
 } from "../../utils/validation";
 
 const fieldClass = (invalid: boolean) =>
-  `w-full border-2 rounded-2xl p-3 mt-2 ${invalid ? "border-red-500" : "border-gray-400"}`;
+  `w-full border-2 rounded-2xl p-3 mt-2 ${invalid ? "border-red-500" : "border-line"}`;
 
 const AuthForm = () => {
   const location = useLocation();
@@ -109,11 +109,11 @@ const AuthForm = () => {
           <img src={jokopi} alt="Coffee Nation logo" className="w-8" />
           Coffee Nation
         </Link>
-        <h1 className="text-buttonColor font-semibold">{isRegister ? "Signup" : "Login"}</h1>
+        <h1 className="text-accent font-semibold">{isRegister ? "Signup" : "Login"}</h1>
       </header>
 
       {sentTo ? (
-        <div role="status" className="rounded-2xl border-2 border-firstColor p-5 space-y-3">
+        <div role="status" className="rounded-2xl border-2 border-accent p-5 space-y-3">
           <p className="font-bold text-lg">Check your email</p>
           <p>
             We sent a verification link to <b>{sentTo}</b>. Open it to confirm that this
@@ -121,14 +121,14 @@ const AuthForm = () => {
           </p>
           <Link
             to="/auth/login"
-            className="bg-buttonColor text-white font-bold rounded-2xl py-2 px-6 inline-block"
+            className="bg-accent text-onAccent font-bold rounded-2xl py-2 px-6 inline-block"
           >
             Go to login
           </Link>
         </div>
       ) : (
         <form onSubmit={submit} noValidate>
-          <div className="mt-16 flex flex-col space-y-3 md:space-y-4 gap-5">
+          <div className="mt-8 md:mt-14 flex flex-col space-y-3 md:space-y-4 gap-5">
             <div>
               <label htmlFor="email" className="text-footerTextColor font-bold">
                 Email address :
@@ -171,7 +171,7 @@ const AuthForm = () => {
                 {errors.password}
               </p>
               {isRegister && (
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-muted">
                   At least 8 characters, with a letter and a number.
                 </p>
               )}
@@ -219,13 +219,13 @@ const AuthForm = () => {
               type="button"
               onClick={resend}
               disabled={busy}
-              className="underline text-buttonColor font-semibold mb-2"
+              className="underline text-accent font-semibold mb-2"
             >
               Send the verification email again
             </button>
           )}
           {info && (
-            <p role="status" className="text-green-700 mb-2">
+            <p role="status" className="text-emerald-400 mb-2">
               {info}
             </p>
           )}
@@ -233,7 +233,7 @@ const AuthForm = () => {
           <button
             type="submit"
             disabled={busy}
-            className="w-full capitalize bg-firstColor text-lg hover:bg-hoveredColor disabled:opacity-60 font-bold text-buttonColor mt-5 rounded-2xl py-2 mb-4 shadow-xl"
+            className="w-full capitalize bg-accent text-lg hover:bg-accentHover disabled:opacity-60 font-bold text-onAccent mt-5 rounded-2xl py-2 mb-4 shadow-xl"
           >
             {isRegister ? "Signup" : "Login"}
           </button>
@@ -241,7 +241,7 @@ const AuthForm = () => {
             type="button"
             onClick={google}
             disabled={busy}
-            className="w-full flex justify-center items-center font-bold text-lg text-buttonColor rounded-2xl py-2 my-4 shadow-xl gap-2"
+            className="w-full flex justify-center items-center font-bold text-lg text-accent rounded-2xl py-2 my-4 shadow-xl gap-2"
           >
             <img src={googleLogo} alt="" className="w-6 h-6" />
             {isRegister ? "Signup with Google" : "Login with Google"}
@@ -250,14 +250,14 @@ const AuthForm = () => {
       )}
 
       <div className="flex items-center justify-center relative w-full">
-        <hr className="w-full h-px dark:bg-gray-700 my-6 border-0" />
-        <span className="absolute bg-white -translate-x-1/2 left-1/2 px-3 w-max">
+        <hr className="w-full h-px bg-line my-6 border-0" />
+        <span className="absolute bg-surface -translate-x-1/2 left-1/2 px-3 w-max">
           {isRegister ? "Already have an account?" : "Don’t have an account?"}
         </span>
       </div>
       <Link
         to={isRegister ? "/auth/login" : "/auth/register"}
-        className="flex justify-center bg-buttonColor text-lg font-bold text-white rounded-2xl py-2 mb-4 shadow-xl"
+        className="flex justify-center border border-accent/70 text-accent hover:bg-accent hover:text-onAccent transition-colors text-lg font-bold rounded-2xl py-2 mb-4"
       >
         {isRegister ? "Login here" : "Signup"}
       </Link>

@@ -40,4 +40,16 @@ test.describe("favourites", () => {
     await page.goto("/wishlist");
     await expect(page.getByText("You have no favourites yet.")).toBeVisible();
   });
+
+  test("the favourites page content is centered", async ({ page }) => {
+    await signUpAndLogin(page, uniq("c"));
+    await openFirst(page);
+    await page.getByRole("button", { name: /Save to favourites/ }).click();
+    await page.goto("/wishlist");
+    const vw = page.viewportSize()!.width;
+    const box = (await page.getByTestId("wishlist-item").boundingBox())!;
+    expect(Math.abs(box.x + box.width / 2 - vw / 2)).toBeLessThan(20);
+    const h = (await page.getByRole("heading", { name: "Your favourites" }).boundingBox())!;
+    expect(Math.abs(h.x + h.width / 2 - vw / 2)).toBeLessThan(20);
+  });
 });

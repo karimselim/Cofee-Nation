@@ -112,13 +112,14 @@ const YourCart = () => {
     const count = order.items.reduce((n, i) => n + i.quantity, 0);
     return (
       <>
-        <div className="bg-cover bg-center bg-cart">
-          <section className="global-px py-16">
+        <div className="relative bg-cover bg-center bg-cart">
+          <div className="absolute inset-0 bg-page/95" aria-hidden="true"></div>
+          <section className="relative global-px py-16">
             <div
               role="status"
-              className="rounded-lg bg-white p-8 max-w-xl mx-auto text-center flex flex-col gap-4"
+              className="rounded-2xl border border-line bg-surface p-8 max-w-xl mx-auto text-center flex flex-col gap-4"
             >
-              <h1 className="text-buttonColor font-bold text-2xl lg:text-3xl">Order confirmed</h1>
+              <h1 className="text-accent font-bold text-2xl lg:text-3xl">Order confirmed</h1>
               <p>Thank you! Your order number is</p>
               <p className="font-extrabold text-xl" data-testid="order-number">
                 {order.number}
@@ -132,14 +133,14 @@ const YourCart = () => {
                 {order.prefs.when === "later" ? ` at ${order.prefs.time}` : ", now"}
               </p>
               {order.address && <p>Delivering to: {order.address}</p>}
-              <p className="text-sm text-gray-500">This is a demo shop. No payment was taken.</p>
+              <p className="text-sm text-muted">This is a demo shop. No payment was taken.</p>
               {user ? (
-                <Link to="/history" className="underline text-buttonColor font-semibold">
+                <Link to="/history" className="underline text-accent font-semibold">
                   See it in your order history
                 </Link>
               ) : (
                 <p className="text-sm">
-                  <Link to="/auth/login" className="underline text-buttonColor font-semibold">
+                  <Link to="/auth/login" className="underline text-accent font-semibold">
                     Log in
                   </Link>{" "}
                   to keep your orders in your history.
@@ -147,7 +148,7 @@ const YourCart = () => {
               )}
               <Link
                 to="/products"
-                className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3 mx-auto"
+                className="bg-accent text-onAccent font-bold rounded-xl px-6 py-3 mx-auto"
               >
                 Keep shopping
               </Link>
@@ -161,23 +162,24 @@ const YourCart = () => {
 
   return (
     <>
-      <div className="bg-cover bg-center bg-cart">
-        <section className="global-px space-y-3 py-10">
+      <div className="relative bg-cover bg-center bg-cart">
+        <div className="absolute inset-0 bg-page/95" aria-hidden="true"></div>
+        <section className="relative global-px space-y-3 py-10">
           <h1 className="text-white text-2xl md:text-3xl text-center md:text-left font-extrabold ">
             Checkout your item now!
           </h1>
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
-            <aside className="flex flex-1 gap-5 w-full h-auto">
-              <section className="rounded-lg bg-white p-5 lg:p-7 w-full flex-col">
+            <aside className="flex flex-1 gap-5 w-full h-auto items-start">
+              <section className="rounded-2xl border border-line bg-surface p-5 lg:p-7 w-full flex-col h-fit">
                 <header className="w-full text-center my-4 lg:my-6">
-                  <h3 className="text-buttonColor font-bold text-lg lg:text-3xl">Order Summary</h3>
+                  <h3 className="text-accent font-bold text-lg lg:text-3xl">Order Summary</h3>
                 </header>
                 {isEmpty ? (
                   <div className="flex flex-col items-center gap-4 my-10 text-center">
                     <p className="text-lg">Your cart is empty.</p>
                     <Link
                       to="/products"
-                      className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3"
+                      className="bg-accent text-onAccent font-bold rounded-xl px-6 py-3"
                     >
                       Browse products
                     </Link>
@@ -199,7 +201,7 @@ const YourCart = () => {
                       </span>
                       <button
                         type="button"
-                        className="underline text-buttonColor"
+                        className="underline text-accent"
                         onClick={() => {
                           setPromo(null);
                           setPromoError("");
@@ -222,12 +224,12 @@ const YourCart = () => {
                           setPromoError("");
                         }}
                         onKeyDown={(e) => e.key === "Enter" && submitPromo()}
-                        className="flex-1 bg-gray-50 outline-none rounded-lg border border-gray-200 px-3 py-2"
+                        className="flex-1 min-w-0 bg-surface2 outline-none rounded-lg border border-line px-3 py-2"
                       />
                       <button
                         type="button"
                         onClick={submitPromo}
-                        className="bg-buttonColor text-white font-bold rounded-lg px-4"
+                        className="shrink-0 bg-accent text-onAccent font-bold rounded-lg px-4"
                       >
                         Apply
                       </button>
@@ -248,7 +250,7 @@ const YourCart = () => {
                     <p className="flex flex-1 justify-end">{money(totals.subtotal)}</p>
                   </div>
                   {discount > 0 && (
-                    <div className="flex uppercase lg:text-lg text-green-700" data-testid="promo-discount">
+                    <div className="flex uppercase lg:text-lg text-emerald-400" data-testid="promo-discount">
                       <p className="flex flex-[2_2_0]">Discount ({promo?.code})</p>
                       <p className="flex flex-1 justify-end">-{money(discount)}</p>
                     </div>

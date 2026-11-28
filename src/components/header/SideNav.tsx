@@ -67,7 +67,7 @@ const SideNav = () => {
       >
         {(state: string) => (
           <div
-            className="sideBar h-screen absolute top-0 right-[-15px] w-80 p-5 bg-white border-l-2 border-gray-100 flex flex-col ease-in-out transition-all duration-300"
+            className="sideBar h-screen absolute top-0 right-[-15px] w-80 p-5 bg-surface border-l-2 border-line flex flex-col ease-in-out transition-all duration-300"
             style={{
               right: state === "entered" ? 0 : -400,
             }}
@@ -90,7 +90,7 @@ const SideNav = () => {
                 <li>
                   <Link
                     to="/"
-                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-accent w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
                       scrollToTop();
@@ -102,7 +102,7 @@ const SideNav = () => {
                 <li>
                   <Link
                     to="/products"
-                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-accent w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
                       scrollToTop();
@@ -114,7 +114,7 @@ const SideNav = () => {
                 <li>
                   <Link
                     to="/yourCart"
-                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-accent w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
                       scrollToTop();
@@ -127,7 +127,7 @@ const SideNav = () => {
                 <li>
                   <Link
                     to="/history"
-                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-accent w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
                       scrollToTop();
@@ -139,7 +139,7 @@ const SideNav = () => {
                 <li>
                   <Link
                     to="/wishlist"
-                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-buttonColor w-full flex text-sm"
+                    className=" p-4 text-unactiveText font-semibold hover:bg-btHovered rounded-md hover:text-accent w-full flex text-sm"
                     onClick={() => {
                       isNavHideHandler();
                       scrollToTop();
@@ -163,7 +163,7 @@ const SideNav = () => {
               </Button>
               <Button
                 to="auth/register"
-                className="bg-firstColor hover:bg-hoveredColor font-semibold text-xs w-full rounded-xl py-3 mb-4 shadow-md"
+                className="bg-accent hover:bg-accentHover font-semibold text-xs w-full rounded-xl py-3 mb-4 shadow-md"
                 onClick={() => {
                   isNavHideHandler();
                   scrollToTop();
@@ -171,7 +171,7 @@ const SideNav = () => {
               >
                 Signup
               </Button>
-              <p className="my-4 text-xs text-center text-gray-400">
+              <p className="my-4 text-xs text-center text-muted">
                 <span>Copyright © 2023</span>
               </p>
             </div>

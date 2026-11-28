@@ -6,7 +6,7 @@ const chooseSort = async (page: Page, name: string) => {
 };
 
 const prices = async (page: Page) => {
-  const texts = await page.locator('a[href^="/products/1/"] p.font-bold').allInnerTexts();
+  const texts = await page.locator('a[href^="/products/1/"] [data-testid="price"]').allInnerTexts();
   return texts.map((t) => Number(t.replace(/[^0-9.]/g, "")));
 };
 

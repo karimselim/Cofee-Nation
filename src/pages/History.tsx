@@ -24,21 +24,21 @@ const History = () => {
         {orders.length === 0 ? (
           <div className="text-center py-10">
             <p className="text-lg mb-4">You haven't placed any orders yet.</p>
-            <Link to="/products" className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3">
+            <Link to="/products" className="bg-accent text-onAccent font-bold rounded-xl px-6 py-3">
               Browse products
             </Link>
           </div>
         ) : (
           <ul className="flex flex-col gap-4 max-w-3xl mx-auto">
             {orders.map((o) => (
-              <li key={o.id} data-testid="order" className="rounded-xl border border-gray-200 bg-white">
+              <li key={o.id} data-testid="order" className="rounded-xl border border-line bg-surface">
                 <details>
                   <summary className="cursor-pointer p-4 flex flex-wrap gap-x-6 gap-y-1 justify-between items-center">
                     <span className="font-bold">{o.number}</span>
-                    <span className="text-gray-600">{new Date(o.createdAt).toLocaleString()}</span>
+                    <span className="text-muted">{new Date(o.createdAt).toLocaleString()}</span>
                     <span className="font-bold">{formatMoney(o.total)}</span>
                   </summary>
-                  <div className="px-4 pb-4 flex flex-col gap-2 border-t border-gray-100 pt-3">
+                  <div className="px-4 pb-4 flex flex-col gap-2 border-t border-line pt-3">
                     {o.items.map((i) => (
                       <div key={i.key} className="flex justify-between">
                         <span>
@@ -55,12 +55,12 @@ const History = () => {
                     <div className="flex justify-between text-sm"><span>Tax & fees</span><span>{formatMoney(o.tax)}</span></div>
                     <div className="flex justify-between text-sm"><span>Shipping</span><span>{formatMoney(o.shipping)}</span></div>
                     <div className="flex justify-between font-bold"><span>Total</span><span>{formatMoney(o.total)}</span></div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-muted">
                       {DELIVERY[o.prefs.delivery]}
                       {o.prefs.when === "later" ? ` at ${o.prefs.time}` : ", now"} · Paid with {METHOD[o.method]} (demo)
                     </p>
-                    {o.address && <p className="text-sm text-gray-600">Address: {o.address}</p>}
-                    {o.notes && <p className="text-sm text-gray-600">Notes: {o.notes}</p>}
+                    {o.address && <p className="text-sm text-muted">Address: {o.address}</p>}
+                    {o.notes && <p className="text-sm text-muted">Notes: {o.notes}</p>}
                   </div>
                 </details>
               </li>

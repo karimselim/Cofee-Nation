@@ -15,9 +15,9 @@ interface Props {
 
 const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd }: Props) => (
   <footer className="flex md:flex-row flex-col gap-8">
-    <aside className="shadow-primary px-5 py-8 space-y-4 text-xl flex-1 rounded-xl w-full gap-4 flex flex-col text-center font-bold">
+    <aside className="bg-surface border border-line shadow-primary px-5 py-6 flex-1 rounded-xl w-full gap-4 flex flex-col text-left font-bold text-xl">
       <p id="size-label">Choose a size</p>
-      <div role="radiogroup" aria-labelledby="size-label" className="flex justify-center gap-4">
+      <div role="radiogroup" aria-labelledby="size-label" className="flex justify-start gap-4">
         {SIZES.map((s) => (
           <button
             key={s.value}
@@ -26,18 +26,22 @@ const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd
             aria-label={`${s.label}, ${formatMoney(unitPrice(product, s.value))}`}
             onClick={() => onSizeChange(s.value)}
             className={`aspect-square w-12 p-2 text-center rounded-full ${
-              size === s.value ? "bg-firstColor" : "bg-gray-400"
+              size === s.value ? "bg-accent text-onAccent" : "bg-surface2 border border-line text-muted"
             }`}
           >
             {s.value}
           </button>
         ))}
       </div>
-      <p className="text-base font-normal text-gray-600">
-        {SIZES.map((s) => `${s.value} ${formatMoney(unitPrice(product, s.value))}`).join(" · ")}
+      <p className="text-sm font-normal text-muted flex flex-wrap gap-x-3 gap-y-1">
+        {SIZES.map((s) => (
+          <span key={s.value} className="whitespace-nowrap">
+            {s.value} {formatMoney(unitPrice(product, s.value))}
+          </span>
+        ))}
       </p>
     </aside>
-    <aside className="flex flex-[3_3_0] rounded-xl shadow-primary px-8 md:px-14 py-8 gap-4 items-center">
+    <aside className="flex flex-[3_3_0] rounded-xl bg-surface border border-line shadow-primary px-8 md:px-14 py-8 gap-4 items-center">
       <img
         src={product.image}
         alt=""
@@ -45,14 +49,14 @@ const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd
       />
       <header className="flex flex-col flex-[4_4_0]">
         <h2 className="font-black text-xl text-center md:text-left uppercase">{product.title}</h2>
-        <p className="text-gray-600">
+        <p className="text-muted">
           {quantity} × {size} · {formatMoney(total)}
         </p>
       </header>
       <button
         aria-label="Add to cart"
         onClick={onAdd}
-        className="flex bg-firstColor rounded-full aspect-square h-14 items-center justify-center text-buttonColor"
+        className="flex bg-accent rounded-full aspect-square h-14 items-center justify-center text-onAccent"
       >
         <FontAwesomeIcon icon={faArrowRight} className="text-4xl" />
       </button>

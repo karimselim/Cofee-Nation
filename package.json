@@ -26,7 +26,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:ui": "playwright test --project=desktop --project=mobile",
+    "test:api": "playwright test --project=api",
+    "api:dev": "node server/api-dev.mjs",
+    "test:types": "tsc -p tsconfig.e2e.json"
   },
   "eslintConfig": {
     "extends": [

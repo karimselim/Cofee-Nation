@@ -13,7 +13,7 @@ const Addons = () => {
           <p>We'll try to coax them out soon.</p>
         </article>
       </main>
-      <p className="text-buttonColor my-8 left-0">
+      <p className="text-accent my-8 left-0">
         *the price has been reduced by the current discount
       </p>
     </>
