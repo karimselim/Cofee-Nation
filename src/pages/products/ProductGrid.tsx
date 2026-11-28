@@ -9,17 +9,17 @@ const ProductGrid = ({ products }: { products: Product[] }) => (
     {products.map((prod) => (
       <Link
         to={productPath(prod)}
-        className="flex flex-col shadow-lg hover:shadow-xl hover:border-accent/60 border border-line rounded-3xl w-44 bg-surface p-5 duration-200 justify-between"
+        className="group flex flex-col items-center gap-4 shadow-lg hover:shadow-xl hover:border-accent/60 border border-line rounded-2xl w-44 bg-surface p-6 duration-200"
         key={`${prod.category}-${prod.id}`}
       >
         <img
           src={prod.image}
           alt={prod.title}
           loading="lazy"
-          className="rounded-full mt-[-50%] aspect-square mb-3 shadow-lg object-cover"
+          className="rounded-full w-28 h-28 object-cover border border-line bg-surface2"
         />
-        <article className="flex gap-5 flex-col text-center">
-          <p data-testid="title" className="text-base font-bold uppercase tracking-wide min-h-[72px] leading-6 break-words">
+        <article className="flex flex-col gap-3 text-center flex-1 justify-between w-full">
+          <p data-testid="title" className="text-sm font-bold uppercase tracking-wide min-h-[56px] leading-5 break-words">
             {prod.title.split(" ").slice(0, 3).join(" ")}
           </p>
           <p data-testid="price" className="font-bold end text-accent mt-auto">{formatMoney(prod.price)}</p>
