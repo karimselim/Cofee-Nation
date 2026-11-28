@@ -21,6 +21,60 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-page text-ink antialiased;
+  }
+
+  ::selection {
+    background: #c9a97e;
+    color: #1a1208;
+  }
+
+  /* Form controls follow the dark theme instead of the browser's light defaults */
+  input,
+  textarea,
+  select {
+    color-scheme: dark;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-muted/60;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c9a97e;
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2724;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3631;
+  }
+}
+
+@layer components {
+  /* A section heading in the reference style: uppercase, wide tracking */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold uppercase tracking-[0.12em] text-ink;
+  }
+}
+
 /* Notification banner: slides down from the top, and back up when it goes away. */
 @keyframes toast-in {
   from { opacity: 0; transform: translateY(-1.5rem); }
