@@ -1,5 +1,12 @@
 import { Section, Header2, TextHolder } from "../../Ui";
 import MealCard from "./MealCard";
+import { products } from "../../data/products";
+
+/** Three different catalogue products, one per row of the favourite section. */
+const favouriteTitles = ["Latte", "Cold Brew", "Matcha Latte"];
+const favourites = favouriteTitles
+  .map((title) => products.find((p) => p.title === title))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
 function Favourite() {
   return (
@@ -15,9 +22,9 @@ function Favourite() {
         </p>
       </TextHolder>
       <div className="cards flex flex-wrap gap-8 justify-center">
-        <MealCard />
-        <MealCard />
-        <MealCard />
+        {favourites.map((product) => (
+          <MealCard key={`${product.category}-${product.id}`} product={product} />
+        ))}
       </div>
     </Section>
   );
