@@ -18,8 +18,8 @@ const ProductGrid = ({ products }: { products: Product[] }) => (
           loading="lazy"
           className="rounded-full w-28 h-28 object-cover border border-line bg-surface2"
         />
-        <article className="flex flex-col gap-3 text-center flex-1 justify-between w-full">
-          <p data-testid="title" className="text-sm font-bold uppercase tracking-wide min-h-[56px] leading-5 break-words">
+        <article className="flex flex-col gap-2 text-center flex-1 justify-between w-full">
+          <p data-testid="title" className="text-sm font-bold uppercase tracking-wide min-h-[44px] leading-5 break-words">
             {prod.title.split(" ").slice(0, 3).join(" ")}
           </p>
           <p data-testid="price" className="font-bold end text-accent mt-auto">{formatMoney(prod.price)}</p>
