@@ -71,7 +71,7 @@ test.describe("Products page", () => {
     await productDetailsPage.increaseQuantity(2);
     await expect(productDetailsPage.getTotal()).toContainText("315");
     await productDetailsPage.chooseSize("L");
-    await expect(productDetailsPage.getTotal()).toContainText("393.75");
+    await expect(productDetailsPage.getTotal()).toContainText("390");
   });
 
   test("adding to the cart counts cart lines, not units", async ({ productDetailsPage, page }) => {

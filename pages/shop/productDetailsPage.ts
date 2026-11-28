@@ -37,7 +37,8 @@ export class ProductDetailsPage {
   }
 
   async chooseSize(size: "R" | "L" | "XL"): Promise<void> {
-    await this.page.getByRole("radio", { name: new RegExp(`^${size},`) }).click();
+    const label = { R: "Regular", L: "Large", XL: "Extra large" }[size];
+    await this.page.getByRole("radio", { name: new RegExp(`^${label},`) }).click();
   }
 
   async addToCart(): Promise<void> {
