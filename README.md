@@ -52,9 +52,42 @@ npm run test:e2e # Playwright tests (builds and serves the app first)
 
 ## Tests
 
-79 Playwright tests in `e2e/` cover navigation and 404s, products, search/filter/sort, sizes and prices, cart and checkout validation, promo codes, signup/login/verification errors, per-account carts and history, favourites, the cart badge, the notification animation, the sort dropdown and mobile layout. Tests build the app with `REACT_APP_FAKE_AUTH=true`, a local stand-in for Firebase, so signup and email verification can run without a real inbox. They run in GitHub Actions on every push (`.github/workflows/e2e.yml`).
+The Playwright suite uses the page-object layout from my Vendure project: page classes in `pages/`, API clients in `api-clients/`, fixtures that build them in `fixtures/`, types in `types/`, test data in `test-data/` and specs in `tests/ui` and `tests/api`.
 
-Locally, set `PW_CHROME_PATH` to use an installed Chrome, or run `npx playwright install chromium` once.
+```
+pages/           one class per page (ProductsPage, ProductDetailsPage, CartPage, ...)
+api-clients/     one class per REST area (ProductsApiClient, CartApiClient, OrdersApiClient, PromoApiClient)
+fixtures/        Playwright fixtures that create the page objects and API clients
+types/           types for page data and API responses
+test-data/       products, checkout values and account data used by the tests
+tests/ui/        browser tests (desktop and mobile projects)
+tests/api/       REST API tests
+api/             the REST endpoints (Vercel serverless functions)
+server/          the same handlers on a local port, so the API tests run without Vercel
+```
+
+`api/` is a read-only shop API over the same product data the UI uses: `GET /api/products`, `GET /api/products/:slug`, `GET /api/categories`, `POST /api/cart/price`, `POST /api/promo/validate` and `POST /api/orders`. It mirrors the rules in `src/utils` (sizes, tax and shipping, promo codes, shop hours 09:00-22:00) so the API tests check the same behaviour the UI enforces.
+
+Coverage:
+
+- Catalog: list, category filter, search, max price, sorting, pagination, unknown category/sort, 404 for a missing product.
+- Cart: line pricing, size multipliers, quantity, tax and shipping, promo discounts, bad quantities and unknown products.
+- Checkout: empty cart, address required for delivery, delivery time inside and outside 09:00-22:00, invalid time format, missing payment method, long notes, order number.
+- UI: home and navigation, mobile menu, search/filter/sort, pagination, product page totals, cart badge counting lines, promo codes, the delivery time field, order confirmation, signup and verification, login errors, protected routes, favourites, mobile layout.
+
+Bugs the tests lock down: an out-of-hours delivery time was accepted, an invalid time such as 25:00 was accepted, the cart badge counted units instead of lines, the favourites page was left aligned, the sort and search row overlapped, a bad max price returned an unfiltered list, and an empty cart asked for a payment method instead of saying the cart is empty.
+
+Tests build the app with `REACT_APP_FAKE_AUTH=true`, a local stand-in for Firebase, so signup and email verification can run without a real inbox. They run in GitHub Actions on every push (`.github/workflows/e2e.yml`).
+
+```bash
+npm run test:e2e    # every project (desktop, mobile, api, legacy)
+npm run test:ui     # browser tests
+npm run test:api    # REST API tests
+npm run api:dev     # the REST API on http://localhost:3200/api
+npm run test:types  # type check the test library
+```
+
+The older suite in `e2e/` still runs as the `legacy-desktop` and `legacy-mobile` projects until every case lives in the page objects above. Locally, set `PW_CHROME_PATH` to use an installed Chrome, or run `npx playwright install chromium` once.
 
 ## Notes
 
