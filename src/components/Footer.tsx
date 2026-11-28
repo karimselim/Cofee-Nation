@@ -7,8 +7,8 @@ import instagram from "../assists/icons/instagram.svg";
 const Footer = ({ className = "" }: { className?: string }) => {
   return (
     <footer className={`bg-footerColor border-t border-line ${className}`}>
-      <div className="flex flex-col md:flex-row gap-12 justify-between global-px pt-8 md:pt-16 text-center pb-8">
-        <div className="flex flex-col text-left gap-4">
+      <div className="flex flex-col md:flex-row flex-wrap gap-12 gap-y-10 justify-between global-px pt-8 md:pt-16 text-center pb-8">
+        <div className="flex flex-col text-left gap-4 min-w-0">
           <div className="logo">
             <Link to="/" className="border-none flex gap-3 font-bold items-center">
               <span className="grid place-items-center w-11 h-11 rounded-full border border-accent/60 bg-surface">
@@ -36,7 +36,7 @@ const Footer = ({ className = "" }: { className?: string }) => {
           </div>
           <p className="text-muted text-sm">© 2023 Coffee Nation</p>
         </div>
-        <div className="flex gap-16 md:gap-32">
+        <div className="flex flex-wrap gap-12 md:gap-16 lg:gap-32">
           <div className="right flex flex-col gap-2 text-left">
             <h4 className="uppercase text-xs tracking-[0.2em] text-ink mb-3">product</h4>
             <a href="/" className="text-footerTextColor/70 hover:text-accent text-sm duration-200">
