@@ -80,7 +80,7 @@ const Pagination = ({
         <div className="">
           <input
             id="page-input"
-            className=" text-center border-line mx-2 w-8 h-6 outline-firstColor border"
+            className="text-center bg-surface2 text-ink border-line mx-2 w-10 h-7 rounded outline-none border"
             type="number"
             value={inputPage}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>

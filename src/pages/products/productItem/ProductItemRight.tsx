@@ -25,8 +25,8 @@ const ProductItemRight = ({
 }: Props) => (
   <aside className="flex flex-col gap-5 justify-between w-full">
     <h1 className="font-black text-5xl uppercase w-full text-center mb-4">{title}</h1>
-    <p className="text-justify text-accent text-lg md:min-h-[200px]">{description}</p>
-    <p className="text-accent text-lg mb-8">
+    <p className="text-justify text-muted text-lg md:min-h-[200px]">{description}</p>
+    <p className="text-muted text-lg mb-8">
       Delivery only on <span className="font-bold">Monday to Friday</span> at
       <span className="font-bold"> 1 - 7 pm</span>
     </p>
@@ -71,7 +71,7 @@ const ProductItemRight = ({
       </button>
       <button
         disabled
-        className="bg-accent disabled:bg-gray-300 text-onAccent w-full text-lg font-bold py-3 rounded-xl cursor-not-allowed flex justify-center leading-loose px-4 duration-200 ease-in-out mt-4"
+        className="bg-accent disabled:bg-surface2 disabled:text-muted text-onAccent w-full text-lg font-bold py-3 rounded-xl cursor-not-allowed flex justify-center leading-loose px-4 duration-200 ease-in-out mt-4"
       >
         Ask a Staff
       </button>

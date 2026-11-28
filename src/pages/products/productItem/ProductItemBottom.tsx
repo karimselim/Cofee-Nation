@@ -15,7 +15,7 @@ interface Props {
 
 const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd }: Props) => (
   <footer className="flex md:flex-row flex-col gap-8">
-    <aside className="shadow-primary px-5 py-8 space-y-4 text-xl flex-1 rounded-xl w-full gap-4 flex flex-col text-center font-bold">
+    <aside className="bg-surface border border-line shadow-primary px-5 py-8 space-y-4 text-xl flex-1 rounded-xl w-full gap-4 flex flex-col text-center font-bold">
       <p id="size-label">Choose a size</p>
       <div role="radiogroup" aria-labelledby="size-label" className="flex justify-center gap-4">
         {SIZES.map((s) => (
@@ -26,7 +26,7 @@ const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd
             aria-label={`${s.label}, ${formatMoney(unitPrice(product, s.value))}`}
             onClick={() => onSizeChange(s.value)}
             className={`aspect-square w-12 p-2 text-center rounded-full ${
-              size === s.value ? "bg-accent" : "bg-gray-400"
+              size === s.value ? "bg-accent text-onAccent" : "bg-surface2 border border-line text-muted"
             }`}
           >
             {s.value}
@@ -37,7 +37,7 @@ const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd
         {SIZES.map((s) => `${s.value} ${formatMoney(unitPrice(product, s.value))}`).join(" · ")}
       </p>
     </aside>
-    <aside className="flex flex-[3_3_0] rounded-xl shadow-primary px-8 md:px-14 py-8 gap-4 items-center">
+    <aside className="flex flex-[3_3_0] rounded-xl bg-surface border border-line shadow-primary px-8 md:px-14 py-8 gap-4 items-center">
       <img
         src={product.image}
         alt=""

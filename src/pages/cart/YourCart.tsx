@@ -112,11 +112,12 @@ const YourCart = () => {
     const count = order.items.reduce((n, i) => n + i.quantity, 0);
     return (
       <>
-        <div className="bg-cover bg-center bg-cart">
-          <section className="global-px py-16">
+        <div className="relative bg-cover bg-center bg-cart">
+          <div className="absolute inset-0 bg-page/85" aria-hidden="true"></div>
+          <section className="relative global-px py-16">
             <div
               role="status"
-              className="rounded-lg bg-surface p-8 max-w-xl mx-auto text-center flex flex-col gap-4"
+              className="rounded-2xl border border-line bg-surface p-8 max-w-xl mx-auto text-center flex flex-col gap-4"
             >
               <h1 className="text-accent font-bold text-2xl lg:text-3xl">Order confirmed</h1>
               <p>Thank you! Your order number is</p>
@@ -161,14 +162,15 @@ const YourCart = () => {
 
   return (
     <>
-      <div className="bg-cover bg-center bg-cart">
-        <section className="global-px space-y-3 py-10">
+      <div className="relative bg-cover bg-center bg-cart">
+        <div className="absolute inset-0 bg-page/85" aria-hidden="true"></div>
+        <section className="relative global-px space-y-3 py-10">
           <h1 className="text-white text-2xl md:text-3xl text-center md:text-left font-extrabold ">
             Checkout your item now!
           </h1>
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
             <aside className="flex flex-1 gap-5 w-full h-auto">
-              <section className="rounded-lg bg-surface p-5 lg:p-7 w-full flex-col">
+              <section className="rounded-2xl border border-line bg-surface p-5 lg:p-7 w-full flex-col">
                 <header className="w-full text-center my-4 lg:my-6">
                   <h3 className="text-accent font-bold text-lg lg:text-3xl">Order Summary</h3>
                 </header>

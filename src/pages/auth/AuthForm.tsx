@@ -250,7 +250,7 @@ const AuthForm = () => {
       )}
 
       <div className="flex items-center justify-center relative w-full">
-        <hr className="w-full h-px dark:bg-gray-700 my-6 border-0" />
+        <hr className="w-full h-px bg-line my-6 border-0" />
         <span className="absolute bg-surface -translate-x-1/2 left-1/2 px-3 w-max">
           {isRegister ? "Already have an account?" : "Don’t have an account?"}
         </span>

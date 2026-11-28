@@ -7,8 +7,8 @@ const Auth = () => {
       <section className="flex flex-col lg:flex-row">
         <aside className="w-1/2 bg-cover bg-center bg-auth h-screen hidden lg:block fixed z-10"></aside>
         <aside className="bg-auth lg:bg-none bg-cover bg-center min-h-screen flex flex-col lg:w-1/2 lg:absolute lg:right-0">
-          <div className=" py-7 lg:px-16 flex justify-start flex-col min-h-screen align-top global-px w-full">
-            <section className="rounded-xl px-5 py-6 lg:p-0 bg-surface">
+          <div className=" py-10 lg:px-16 flex justify-center flex-col min-h-screen global-px w-full">
+            <section className="rounded-2xl px-5 py-6 lg:p-10 bg-surface border border-line w-full max-w-md mx-auto">
               <Outlet />
             </section>
           </div>

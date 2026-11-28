@@ -45,7 +45,7 @@ const CartRight = ({
       <header className="text-white flex text-xl lg:text-2xl font-extrabold text-center md:text-left items-center">
         <h3>Order options</h3>
       </header>
-      <div className="rounded-xl bg-surface p-5 lg:p-7">
+      <div className="rounded-2xl border border-line bg-surface p-5 lg:p-7">
         <OrderOptions timeError={errors.time} />
       </div>
     </section>
@@ -56,7 +56,7 @@ const CartRight = ({
       <form
         onSubmit={(e) => e.preventDefault()}
         noValidate
-        className="rounded-xl bg-surface p-5 lg:p-7 flex flex-col gap-4"
+        className="rounded-2xl border border-line bg-surface p-5 lg:p-7 flex flex-col gap-4"
       >
         <div>
           <label htmlFor="delivery-address" className="block mb-1">
