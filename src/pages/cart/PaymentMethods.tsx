@@ -23,7 +23,7 @@ const PaymentMethods = ({
 }: PaymentMethodsProps) => {
   return (
     <section className="flex flex-col gap-5">
-      <h3 id="payment-heading" className="text-white text-xl lg:text-2xl font-extrabold text-center md:text-left">
+      <h3 id="payment-heading" className="text-white text-xl lg:text-2xl font-extrabold text-left">
         Payment method
       </h3>
       <div role="radiogroup" aria-labelledby="payment-heading" className="rounded-2xl border border-line bg-surface p-5 lg:p-7 gap-3 flex flex-col">

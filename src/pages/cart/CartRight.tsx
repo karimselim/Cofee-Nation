@@ -42,7 +42,7 @@ const CartRight = ({
 }: CartRightProps) => (
   <aside className="flex-1 flex gap-5 flex-col">
     <section className="flex gap-5 flex-col w-full">
-      <header className="text-white flex text-xl lg:text-2xl font-extrabold text-center md:text-left items-center">
+      <header className="text-white text-xl lg:text-2xl font-extrabold text-left">
         <h3>Order options</h3>
       </header>
       <div className="rounded-2xl border border-line bg-surface p-5 lg:p-7">
@@ -50,7 +50,7 @@ const CartRight = ({
       </div>
     </section>
     <section className="flex gap-5 flex-col w-full">
-      <header className="text-white flex text-xl lg:text-2xl font-extrabold text-center md:text-left items-center">
+      <header className="text-white text-xl lg:text-2xl font-extrabold text-left">
         <h3>Address details</h3>
       </header>
       <form
