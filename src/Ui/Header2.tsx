@@ -8,7 +8,9 @@ interface Props {
 const Header2 = (props: Props) => {
   return (
     <h2
-      className={`text-4xl font-semibold mb-5 leading-[3rem] ${props.className ?? ""}`}
+      className={`text-3xl md:text-4xl font-bold uppercase tracking-[0.1em] mb-5 leading-[1.2] text-ink ${
+        props.className ?? ""
+      }`}
     >
       {props.children}
     </h2>

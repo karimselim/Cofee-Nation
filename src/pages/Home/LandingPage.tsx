@@ -1,6 +1,12 @@
 import { Button, Icon } from "../../Ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faMugHot, faUser, faStore } from "@fortawesome/free-solid-svg-icons";
+
+const stats = [
+  { icon: faUser, value: "90+", label: "Staff" },
+  { icon: faMugHot, value: "800+", label: "Customers" },
+  { icon: faStore, value: "30+", label: "Stores" },
+];
 
 const LandingPage = () => {
   const scrollToTop = () => {
@@ -9,59 +15,60 @@ const LandingPage = () => {
 
   return (
     <>
-      <section className="w-full bg-landing bg-cover bg-center text-white py-20 relative">
-        <div className="w-full h-full absolute top-0 left-0 bg-black opacity-30"></div>
-        <div className="global-px">
-          <article className="flex flex-col gap-6 w-[75%] lg:w-[50%] z-0 relative">
-            <h1 className="font-bold text-4xl">
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="absolute inset-0 bg-landing bg-cover bg-center opacity-70" aria-hidden="true"></div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-page via-page/85 to-page/10"
+          aria-hidden="true"
+        ></div>
+        <div className="global-px relative pt-14 md:pt-20 pb-12 md:pb-16">
+          <article className="flex flex-col gap-6 max-w-2xl">
+            <p className="uppercase tracking-[0.4em] text-accent text-[11px] md:text-xs">
+              Freshly roasted · since 2023
+            </p>
+            <h1 className="font-extrabold uppercase text-4xl md:text-6xl leading-[1.05] tracking-tight text-ink">
               Start Your Day with Coffee and Good Meals
             </h1>
-            <p className="font-semibold leading-5">
+            <p className="text-muted leading-7 max-w-xl">
               We provide high quality beans, good taste, and healthy meals made
               by love just for you. Start your day with us for a bigger smile!
             </p>
-            <Button
-              onClick={scrollToTop}
-              to="/products"
-              className=" text-onAccent bg-accent w-40 hover:bg-accentHover font-bold py-4 rounded-xl"
-            >
-              get started
-            </Button>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Button
+                onClick={scrollToTop}
+                to="/products"
+                className="bg-accent text-onAccent hover:bg-accentHover font-semibold uppercase text-xs tracking-[0.2em] px-8 py-4 rounded-full"
+              >
+                get started
+              </Button>
+              <Button
+                to="/products"
+                className="border border-line text-ink hover:border-accent hover:text-accent font-semibold uppercase text-xs tracking-[0.2em] px-8 py-4 rounded-full"
+              >
+                see the menu
+              </Button>
+            </div>
           </article>
-          <section className="bg-surface flex rounded-xl items-center justify-center text-center mt-20 -mb-[9rem] py-2 md:py-6 shadow-xl z-0 relative">
-            <aside className="flex justify-center items-center gap-3 md:gap-8 py-2 md:py-6 flex-col md:flex-row border-r-2 border-slate-200 flex-1">
-              <Icon>
-                <FontAwesomeIcon icon={faUser} />
-              </Icon>
-              <article className=" text-ink flex flex-col items-center justify-center md:items-start">
-                <p className="font-bold text-md lg:text-xl">90+</p>
-                <p className=" text-textColor">Staff</p>
-              </article>
-            </aside>
-            <aside className="flex justify-center items-center gap-3 md:gap-8 py-2 md:py-6 flex-col md:flex-row border-r-2 border-slate-200 flex-1">
-              <Icon>
-                <FontAwesomeIcon icon={faUser} />
-              </Icon>
-              <div className=" text-ink flex flex-col items-center justify-center text-center md:text-left md:items-start">
-                <p className="font-bold text-md lg:text-xl">800+</p>
-                <p className=" text-textColor">Customers</p>
-              </div>
-            </aside>
-            <aside className="flex justify-center items-center gap-3 md:gap-8 py-2 md:py-6 flex-col md:flex-row flex-1">
-              <Icon>
-                <FontAwesomeIcon icon={faUser} />
-              </Icon>
-              <div className=" text-ink flex flex-col items-center justify-center md:items-start">
-                <p className="font-bold text-md lg:text-xl text-center md:text-left">
-                  30+
-                </p>
-                <p className=" text-textColor">Stores</p>
-              </div>
-            </aside>
+
+          <section className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-line rounded-2xl border border-line bg-surface/80 backdrop-blur-sm">
+            {stats.map((stat) => (
+              <aside
+                key={stat.label}
+                className="flex justify-center items-center gap-4 py-6 px-4"
+              >
+                <Icon>
+                  <FontAwesomeIcon icon={stat.icon} />
+                </Icon>
+                <div className="flex flex-col items-start">
+                  <p className="font-bold text-xl text-ink">{stat.value}</p>
+                  <p className="text-muted text-sm">{stat.label}</p>
+                </div>
+              </aside>
+            ))}
           </section>
         </div>
       </section>
-      <div className="mb-20"></div>
+      <div className="mb-10"></div>
     </>
   );
 };
