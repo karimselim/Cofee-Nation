@@ -9,7 +9,7 @@ const tabs = [
 ];
 
 const activeClass =
-  "font-bold text-onAccent relative after:h-[2px] after:absolute after:w-full after:bg-accent after:-bottom-2 after:left-0";
+  "font-bold text-accent relative after:h-[2px] after:absolute after:w-full after:bg-accent after:-bottom-2 after:left-0";
 
 const ProductsNav = () => (
   <nav

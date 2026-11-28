@@ -53,7 +53,7 @@ const Pagination = ({
         {currentPage > 1 && (
           <button
             onClick={() => goTo(currentPage - 1)}
-            className="mr-2 group border border-accent text-onAccent px-4 py-2 rounded-lg font-bold hover:bg-accentHover hover:text-onAccent duration-300 ease-in-out flex gap-2 items-center"
+            className="mr-2 group border border-accent text-accent px-4 py-2 rounded-lg font-bold hover:bg-accentHover hover:text-onAccent duration-300 ease-in-out flex gap-2 items-center"
           >
             <FontAwesomeIcon
               icon={faArrowLeft}
