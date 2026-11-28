@@ -106,7 +106,7 @@ const CartRight = ({
       onMethodChange={onMethodChange}
       onPay={onPay}
       disabled={payDisabled}
-      error={errors.method || errors.cart}
+      error={errors.cart || errors.method}
     />
   </aside>
 );
