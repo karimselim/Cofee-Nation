@@ -57,7 +57,7 @@ const LoggedInIcons = () => {
         className="chat-container w-8 relative"
         to="/messages"
       >
-        <img src={chat} alt="" />
+        <img src={chat} alt="" className="w-8 brightness-0 invert opacity-80 transition-opacity hover:opacity-100" />
         {unread > 0 && (
           <span
             data-testid="unread-count"
