@@ -113,7 +113,7 @@ const YourCart = () => {
     return (
       <>
         <div className="relative bg-cover bg-center bg-cart">
-          <div className="absolute inset-0 bg-page/85" aria-hidden="true"></div>
+          <div className="absolute inset-0 bg-page/95" aria-hidden="true"></div>
           <section className="relative global-px py-16">
             <div
               role="status"
@@ -163,14 +163,14 @@ const YourCart = () => {
   return (
     <>
       <div className="relative bg-cover bg-center bg-cart">
-        <div className="absolute inset-0 bg-page/85" aria-hidden="true"></div>
+        <div className="absolute inset-0 bg-page/95" aria-hidden="true"></div>
         <section className="relative global-px space-y-3 py-10">
           <h1 className="text-white text-2xl md:text-3xl text-center md:text-left font-extrabold ">
             Checkout your item now!
           </h1>
           <div className="flex flex-col md:flex-row gap-10 lg:gap-16">
-            <aside className="flex flex-1 gap-5 w-full h-auto">
-              <section className="rounded-2xl border border-line bg-surface p-5 lg:p-7 w-full flex-col">
+            <aside className="flex flex-1 gap-5 w-full h-auto items-start">
+              <section className="rounded-2xl border border-line bg-surface p-5 lg:p-7 w-full flex-col h-fit">
                 <header className="w-full text-center my-4 lg:my-6">
                   <h3 className="text-accent font-bold text-lg lg:text-3xl">Order Summary</h3>
                 </header>
@@ -224,12 +224,12 @@ const YourCart = () => {
                           setPromoError("");
                         }}
                         onKeyDown={(e) => e.key === "Enter" && submitPromo()}
-                        className="flex-1 bg-surface2 outline-none rounded-lg border border-line px-3 py-2"
+                        className="flex-1 min-w-0 bg-surface2 outline-none rounded-lg border border-line px-3 py-2"
                       />
                       <button
                         type="button"
                         onClick={submitPromo}
-                        className="bg-accent text-onAccent font-bold rounded-lg px-4"
+                        className="shrink-0 bg-accent text-onAccent font-bold rounded-lg px-4"
                       >
                         Apply
                       </button>
