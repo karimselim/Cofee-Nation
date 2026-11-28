@@ -11,9 +11,7 @@ const Footer = ({ className = "" }: { className?: string }) => {
         <div className="flex flex-col text-left gap-4 min-w-0">
           <div className="logo">
             <Link to="/" className="border-none flex gap-3 font-bold items-center">
-              <span className="grid place-items-center w-11 h-11 rounded-full border border-accent/60 bg-surface">
-                <img src={jokopi} alt="" className="w-7" />
-              </span>
+              <img src={jokopi} alt="" className="w-10" />
               <span className="uppercase tracking-[0.18em] text-ink text-base">
                 Coffee Nation
               </span>
