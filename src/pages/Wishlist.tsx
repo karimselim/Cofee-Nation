@@ -37,7 +37,7 @@ const Wishlist = () => {
                   type="button"
                   aria-label={`Remove ${p.title} from favourites`}
                   onClick={() => dispatch(wishlistActions.toggle(p))}
-                  className="text-red-600 font-bold px-2"
+                  className="text-red-400 font-bold px-2"
                 >
                   Remove
                 </button>

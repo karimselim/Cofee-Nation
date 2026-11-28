@@ -19,10 +19,10 @@ const ProductGrid = ({ products }: { products: Product[] }) => (
           className="rounded-full mt-[-50%] aspect-square mb-3 shadow-lg object-cover"
         />
         <article className="flex gap-5 flex-col text-center">
-          <p className="text-base font-bold uppercase tracking-wide min-h-[72px] leading-6 break-words">
+          <p data-testid="title" className="text-base font-bold uppercase tracking-wide min-h-[72px] leading-6 break-words">
             {prod.title.split(" ").slice(0, 3).join(" ")}
           </p>
-          <p className="font-bold end text-accent mt-auto">{formatMoney(prod.price)}</p>
+          <p data-testid="price" className="font-bold end text-accent mt-auto">{formatMoney(prod.price)}</p>
         </article>
       </Link>
     ))}

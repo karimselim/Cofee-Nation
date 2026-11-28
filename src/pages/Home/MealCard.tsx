@@ -12,7 +12,7 @@ const MealCard = () => {
       <img
         src={product}
         alt="Hazelnut Latte"
-        className="rounded-full w-36 h-36 object-cover mb-4 border border-line"
+        className="rounded-full w-36 h-36 object-cover object-center scale-105 mb-4 border border-line"
       />
       <h3 className="text-lg font-semibold uppercase tracking-[0.12em] text-ink">
         Hazelnut Latte

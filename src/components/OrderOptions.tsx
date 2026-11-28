@@ -11,7 +11,7 @@ const METHODS: { value: DeliveryMethod; label: string }[] = [
 
 const choice = (active: boolean) =>
   `text-start rounded-lg p-2 flex items-center font-bold ${
-    active ? "bg-accent text-onAccent" : "text-muted bg-[#BABABA59] hover:text-muted hover:bg-surface2"
+    active ? "bg-accent text-onAccent" : "text-muted bg-surface2 border border-line hover:text-ink hover:border-accent/60"
   }`;
 
 /** Delivery method and time. Shared by the product page and the cart. */
