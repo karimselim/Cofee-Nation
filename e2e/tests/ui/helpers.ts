@@ -32,3 +32,30 @@ export function collectPageErrors(page: Page): string[] {
   page.on("pageerror", (error) => errors.push(error.message));
   return errors;
 }
+
+/** Adds the first product of a category, then opens the cart from the header. */
+export async function addFirstProductAndOpenCart(
+  page: Page,
+  cartPage: import("../../pages/shop/cartPage").CartPage,
+  category: "1" | "2" | "3" = "1",
+  quantityClicks = 0
+): Promise<void> {
+  await page.goto(`/products/${category}`);
+  await page.locator(`a[href^="/products/${category}/"]`).first().click();
+  for (let i = 0; i < quantityClicks; i++) {
+    await page.getByRole("button", { name: "Increase quantity" }).click();
+  }
+  await page.getByRole("button", { name: "Add To Cart", exact: true }).click();
+  await expect(page.getByRole("button", { name: /added to cart/i })).toBeVisible();
+  await cartPage.openFromHeader();
+}
+
+/** Pays a cart that already has a line, optionally typing an address. */
+export async function payCart(
+  cartPage: import("../../pages/shop/cartPage").CartPage,
+  options: { address?: string; method?: "Card" | "Bank account" | "Cash on delivery" } = {}
+): Promise<void> {
+  if (options.address) await cartPage.setAddress(options.address);
+  await cartPage.choosePaymentByText(options.method ?? "Cash on delivery");
+  await cartPage.confirm();
+}
