@@ -66,7 +66,7 @@ const OrderOptions = ({ timeError = "" }: { timeError?: string }) => {
           type="text"
           inputMode="numeric"
           autoComplete="off"
-          placeholder="HH:MM, e.g. 15:30"
+          placeholder="e.g. 15:30"
           maxLength={5}
           value={prefs.time}
           disabled={prefs.when === "now"}
@@ -77,7 +77,7 @@ const OrderOptions = ({ timeError = "" }: { timeError?: string }) => {
             if (/^\d{2}$/.test(v) && e.target.value.length > prefs.time.length) v += ":";
             dispatch(cartActions.setPrefs({ time: v }));
           }}
-          className={`mt-2 block w-40 bg-surface2 rounded-lg border px-3 h-11 font-bold outline-none text-accent disabled:opacity-50 ${
+          className={`mt-2 block w-44 bg-surface2 rounded-lg border px-3 h-11 font-bold outline-none text-accent disabled:opacity-50 ${
             shownError ? "border-red-500" : "border-line hover:border-accent focus:border-accent"
           }`}
         />
