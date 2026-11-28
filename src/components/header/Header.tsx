@@ -3,7 +3,7 @@ import { Logo, Nav, SignIn, SideNav } from "./";
 const Header = () => {
   return (
     <>
-      <header className="sticky top-0 bg-white/80 border-b-2 border-gray-100  backdrop-blur-xl z-10">
+      <header className="sticky top-0 z-20 border-b border-line bg-page/85 backdrop-blur-xl">
         <div className="flex justify-between header-px items-center global-px">
           <Logo />
           <Nav />

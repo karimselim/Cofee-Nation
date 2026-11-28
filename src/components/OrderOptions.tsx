@@ -11,7 +11,7 @@ const METHODS: { value: DeliveryMethod; label: string }[] = [
 
 const choice = (active: boolean) =>
   `text-start rounded-lg p-2 flex items-center font-bold ${
-    active ? "bg-buttonColor text-white" : "text-gray-500 bg-[#BABABA59] hover:text-gray-600 hover:bg-gray-100"
+    active ? "bg-accent text-onAccent" : "text-muted bg-[#BABABA59] hover:text-muted hover:bg-surface2"
   }`;
 
 /** Delivery method and time. Shared by the product page and the cart. */
@@ -77,11 +77,11 @@ const OrderOptions = ({ timeError = "" }: { timeError?: string }) => {
             if (/^\d{2}$/.test(v) && e.target.value.length > prefs.time.length) v += ":";
             dispatch(cartActions.setPrefs({ time: v }));
           }}
-          className={`mt-2 block w-40 bg-gray-50 rounded-lg border px-3 h-11 font-bold outline-none text-buttonColor disabled:opacity-50 ${
-            shownError ? "border-red-500" : "border-gray-200 hover:border-buttonColor focus:border-buttonColor"
+          className={`mt-2 block w-40 bg-surface2 rounded-lg border px-3 h-11 font-bold outline-none text-accent disabled:opacity-50 ${
+            shownError ? "border-red-500" : "border-line hover:border-accent focus:border-accent"
           }`}
         />
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-muted mt-1">
           {prefs.when === "now"
             ? "Choose “No” to pick a later time."
             : `Open ${SHOP_OPEN} to ${SHOP_CLOSE}.`}

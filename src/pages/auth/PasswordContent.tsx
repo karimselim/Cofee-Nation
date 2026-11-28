@@ -56,7 +56,7 @@ const PasswordContent = () => {
             setEmail(e.target.value);
           }}
           className={`w-full border-2 rounded-2xl p-3 mt-2 ${
-            error ? "border-red-500" : "border-gray-400"
+            error ? "border-red-500" : "border-line"
           }`}
           placeholder="Enter your email address to get link"
         />
@@ -64,20 +64,20 @@ const PasswordContent = () => {
           {error}
         </p>
         {sent && (
-          <p role="status" className="text-green-700">
+          <p role="status" className="text-emerald-400">
             {sent}
           </p>
         )}
         <button
           type="submit"
           disabled={busy}
-          className="capitalize bg-firstColor text-lg hover:bg-hoveredColor disabled:opacity-60 font-bold text-buttonColor rounded-2xl py-2 shadow-xl"
+          className="capitalize bg-accent text-lg hover:bg-accentHover disabled:opacity-60 font-bold text-onAccent rounded-2xl py-2 shadow-xl"
         >
           Send
         </button>
         <Link
           to="/auth/login"
-          className="text-center font-semibold text-buttonColor hover:underline"
+          className="text-center font-semibold text-accent hover:underline"
         >
           Back to login
         </Link>

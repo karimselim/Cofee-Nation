@@ -53,7 +53,7 @@ const Pagination = ({
         {currentPage > 1 && (
           <button
             onClick={() => goTo(currentPage - 1)}
-            className="mr-2 group border border-firstColor text-firstColor px-4 py-2 rounded-lg font-bold hover:bg-hoveredColor hover:text-buttonColor duration-300 ease-in-out flex gap-2 items-center"
+            className="mr-2 group border border-accent text-onAccent px-4 py-2 rounded-lg font-bold hover:bg-accentHover hover:text-onAccent duration-300 ease-in-out flex gap-2 items-center"
           >
             <FontAwesomeIcon
               icon={faArrowLeft}
@@ -65,7 +65,7 @@ const Pagination = ({
         {currentPage < lastPage && (
           <button
             onClick={() => goTo(currentPage + 1)}
-            className="rounded-xl px-5 py-2 bg-firstColor hover:bg-hoveredColor text-buttonColor font-bold flex items-center gap-2 duration-300 group"
+            className="rounded-xl px-5 py-2 bg-accent hover:bg-accentHover text-onAccent font-bold flex items-center gap-2 duration-300 group"
           >
             Next
             <FontAwesomeIcon
@@ -80,7 +80,7 @@ const Pagination = ({
         <div className="">
           <input
             id="page-input"
-            className=" text-center border-gray-100 mx-2 w-8 h-6 outline-firstColor border"
+            className=" text-center border-line mx-2 w-8 h-6 outline-firstColor border"
             type="number"
             value={inputPage}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -96,7 +96,7 @@ const Pagination = ({
           {currentPage > 1 && (
             <button
               aria-label="Previous page"
-              className="px-2 py-1 bg-firstColor hover:bg-hoveredColor text-buttonColor flex duration-75"
+              className="px-2 py-1 bg-accent hover:bg-accentHover text-onAccent flex duration-75"
               onClick={() => goTo(currentPage - 1)}
             >
               <FontAwesomeIcon icon={faAngleLeft} />
@@ -106,7 +106,7 @@ const Pagination = ({
             <button
               aria-label="Next page"
               onClick={() => goTo(currentPage + 1)}
-              className="px-2 py-1 bg-firstColor hover:bg-hoveredColor text-buttonColor flex duration-75"
+              className="px-2 py-1 bg-accent hover:bg-accentHover text-onAccent flex duration-75"
             >
               <FontAwesomeIcon icon={faAngleRight} />
             </button>

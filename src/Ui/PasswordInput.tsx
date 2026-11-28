@@ -17,7 +17,7 @@ const PasswordInput = ({ invalid, className = "", ...rest }: Props) => {
         type={visible ? "text" : "password"}
         aria-invalid={invalid || undefined}
         className={`w-full border-2 rounded-2xl p-3 pr-12 ${
-          invalid ? "border-red-500" : "border-gray-400"
+          invalid ? "border-red-500" : "border-line"
         } ${className}`}
       />
       <button
@@ -25,7 +25,7 @@ const PasswordInput = ({ invalid, className = "", ...rest }: Props) => {
         onClick={() => setVisible((v) => !v)}
         aria-label={visible ? "Hide password" : "Show password"}
         aria-pressed={visible}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-buttonColor"
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-accent"
       >
         <FontAwesomeIcon icon={visible ? faEyeSlash : faEye} />
       </button>

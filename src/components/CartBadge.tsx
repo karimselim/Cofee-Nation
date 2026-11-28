@@ -8,7 +8,7 @@ const CartBadge = () => {
     <span
       data-testid="cart-count"
       aria-label={`${count} order${count === 1 ? "" : "s"} in cart`}
-      className="ml-1 inline-flex min-w-[1.25rem] h-5 items-center justify-center rounded-full bg-buttonColor px-1.5 text-xs font-bold leading-none text-center tabular-nums text-white align-middle"
+      className="ml-1 inline-flex min-w-[1.25rem] h-5 items-center justify-center rounded-full bg-accent px-1.5 text-xs font-bold leading-none text-center tabular-nums text-onAccent align-middle"
     >
       {count > 99 ? "99+" : count}
     </span>

@@ -18,13 +18,13 @@ const Messages = () => {
               <button
                 onClick={() => dispatch(notificationsActions.markAllRead())}
                 disabled={unread === 0}
-                className="rounded-lg border border-buttonColor text-buttonColor px-4 py-2 font-semibold disabled:opacity-40"
+                className="rounded-lg border border-accent text-accent px-4 py-2 font-semibold disabled:opacity-40"
               >
                 Mark all as read
               </button>
               <button
                 onClick={() => dispatch(notificationsActions.clearAll())}
-                className="rounded-lg bg-buttonColor text-white px-4 py-2 font-semibold"
+                className="rounded-lg bg-accent text-onAccent px-4 py-2 font-semibold"
               >
                 Clear all
               </button>
@@ -34,7 +34,7 @@ const Messages = () => {
         {items.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-lg mb-4">No messages yet. Updates about your orders will appear here.</p>
-            <Link to="/products" className="bg-buttonColor text-white font-bold rounded-xl px-6 py-3">
+            <Link to="/products" className="bg-accent text-onAccent font-bold rounded-xl px-6 py-3">
               Browse products
             </Link>
           </div>
@@ -45,21 +45,21 @@ const Messages = () => {
                 key={n.id}
                 data-testid="message"
                 className={`rounded-xl border p-4 flex gap-4 items-start ${
-                  n.read ? "border-gray-200 bg-white" : "border-buttonColor bg-firstColor/20"
+                  n.read ? "border-line bg-surface" : "border-accent bg-accent/20"
                 }`}
               >
                 <div className="flex-1">
                   <p className="font-bold">
                     {n.title}
-                    {!n.read && <span className="ml-2 text-xs text-buttonColor">New</span>}
+                    {!n.read && <span className="ml-2 text-xs text-accent">New</span>}
                   </p>
                   <p>{n.body}</p>
-                  <p className="text-sm text-gray-500">{new Date(n.createdAt).toLocaleString()}</p>
+                  <p className="text-sm text-muted">{new Date(n.createdAt).toLocaleString()}</p>
                 </div>
                 {!n.read && (
                   <button
                     onClick={() => dispatch(notificationsActions.markRead(n.id))}
-                    className="text-sm underline text-buttonColor"
+                    className="text-sm underline text-accent"
                   >
                     Mark as read
                   </button>

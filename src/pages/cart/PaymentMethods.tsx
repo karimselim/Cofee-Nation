@@ -11,7 +11,7 @@ interface PaymentMethodsProps {
 
 const optionClass = (active: boolean) =>
   `flex gap-2 items-center cursor-pointer rounded-lg p-3 border-2 duration-150 ${
-    active ? "border-buttonColor bg-hoveredColor/30" : "border-transparent hover:bg-gray-50"
+    active ? "border-accent bg-accentHover/30" : "border-transparent hover:bg-surface2"
   }`;
 
 const PaymentMethods = ({
@@ -26,12 +26,12 @@ const PaymentMethods = ({
       <h3 id="payment-heading" className="text-white text-xl lg:text-2xl font-extrabold text-center md:text-left">
         Payment method
       </h3>
-      <div role="radiogroup" aria-labelledby="payment-heading" className="rounded-xl bg-white p-5 lg:p-7 gap-3 flex flex-col">
+      <div role="radiogroup" aria-labelledby="payment-heading" className="rounded-xl bg-surface p-5 lg:p-7 gap-3 flex flex-col">
         <label className={optionClass(method === "card")}>
           <input
             type="radio"
             name="payment-method"
-            className="w-4 h-4 accent-buttonColor"
+            className="w-4 h-4 accent-accent"
             value="card"
             onChange={() => onMethodChange("card")}
             checked={method === "card"}
@@ -59,7 +59,7 @@ const PaymentMethods = ({
           <input
             type="radio"
             name="payment-method"
-            className="w-4 h-4 accent-buttonColor"
+            className="w-4 h-4 accent-accent"
             value="bank"
             onChange={() => onMethodChange("bank")}
             checked={method === "bank"}
@@ -86,7 +86,7 @@ const PaymentMethods = ({
           <input
             type="radio"
             name="payment-method"
-            className="w-4 h-4 accent-buttonColor"
+            className="w-4 h-4 accent-accent"
             value="cash"
             onChange={() => onMethodChange("cash")}
             checked={method === "cash"}
@@ -127,14 +127,14 @@ const PaymentMethods = ({
         </label>
       </div>
       {error && (
-        <p role="alert" className="text-red-200 font-semibold">
+        <p role="alert" className="text-red-300 font-semibold">
           {error}
         </p>
       )}
       <button
         onClick={onPay}
         disabled={disabled}
-        className="uppercase bg-buttonColor disabled:bg-[#9f9f9f] text-white disabled:text-[#898989] rounded-md font-bold py-4 text-sm"
+        className="uppercase bg-accent disabled:bg-[#9f9f9f] text-onAccent disabled:text-[#898989] rounded-md font-bold py-4 text-sm"
       >
         Confirm And Pay
       </button>

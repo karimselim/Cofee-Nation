@@ -54,10 +54,10 @@ const ProductItem = ({ prod }: { prod: Product }) => {
 
   return (
     <section className="global-px py-10 relative">
-      <nav className="text-buttonColor font-semibold">
+      <nav className="text-accent font-semibold">
         <Link
           to="/products"
-          className="after:content-['>'] after:font-semibold after:text-gray-500 after:mx-1 text-gray-600 font-normal"
+          className="after:content-['>'] after:font-semibold after:text-muted after:mx-1 text-muted font-normal"
         >
           Favourite & Promo
         </Link>
@@ -66,7 +66,7 @@ const ProductItem = ({ prod }: { prod: Product }) => {
           type="button"
           onClick={toggleSaved}
           aria-pressed={saved}
-          className="ml-6 text-sm font-semibold border border-buttonColor rounded-full px-3 py-1"
+          className="ml-6 text-sm font-semibold border border-accent rounded-full px-3 py-1"
         >
           {saved ? "♥ Saved to favourites" : "♡ Save to favourites"}
         </button>

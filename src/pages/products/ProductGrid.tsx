@@ -9,7 +9,7 @@ const ProductGrid = ({ products }: { products: Product[] }) => (
     {products.map((prod) => (
       <Link
         to={productPath(prod)}
-        className="flex flex-col shadow-lg hover:shadow-xl rounded-3xl w-36 bg-white p-5 duration-200 break-words justify-between"
+        className="flex flex-col shadow-lg hover:shadow-xl rounded-3xl w-36 bg-surface p-5 duration-200 break-words justify-between"
         key={`${prod.category}-${prod.id}`}
       >
         <img
@@ -22,7 +22,7 @@ const ProductGrid = ({ products }: { products: Product[] }) => (
           <p className="text-lg font-black min-h-[102px]">
             {prod.title.split(" ").slice(0, 3).join(" ")}
           </p>
-          <p className="font-bold end text-buttonColor mt-auto">{formatMoney(prod.price)}</p>
+          <p className="font-bold end text-accent mt-auto">{formatMoney(prod.price)}</p>
         </article>
       </Link>
     ))}

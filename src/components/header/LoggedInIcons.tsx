@@ -61,7 +61,7 @@ const LoggedInIcons = () => {
         {unread > 0 && (
           <span
             data-testid="unread-count"
-            className="absolute text-white rounded-full text-xs font-bold bg-buttonColor -top-2 -left-2 p-[1px] min-w-[1.1rem] text-center"
+            className="absolute text-onAccent rounded-full text-xs font-bold bg-accent -top-2 -left-2 p-[1px] min-w-[1.1rem] text-center"
           >
             {formatBadge(unread)}
           </span>
@@ -80,13 +80,13 @@ const LoggedInIcons = () => {
           </div>
         </button>
         {isSignedInShown && (
-          <div className="absolute top-10 bg-white shadow-md border border-gray-200 rounded-lg flex flex-col right-0 py-2 cursor-default">
+          <div className="absolute top-10 bg-surface shadow-md border border-line rounded-lg flex flex-col right-0 py-2 cursor-default">
             <ul>
               <li className="px-4 py-1">Signed in as</li>
               <li className="font-medium px-4 pb-2">{user?.email}</li>
               <hr />
               <li
-                className="px-4 py-2 hover:bg-gray-100 duration-300 ease-in-out cursor-pointer"
+                className="px-4 py-2 hover:bg-surface2 duration-300 ease-in-out cursor-pointer"
                 onClick={signOut}
               >
                 Sign out

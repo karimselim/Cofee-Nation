@@ -8,16 +8,16 @@ const SignIn = () => {
   return user ? (
     <div className="max-lg:hidden">{<LoggedInIcons />}</div>
   ) : (
-    <div className="sign-in py-5 md:py-8 max-lg:hidden">
+    <div className="sign-in py-5 md:py-6 max-lg:hidden flex items-center gap-3">
       <NavLink
         to="auth/login"
-        className="capitalize m-2 font-semibold py-2 px-10 rounded-3xl border border-firstColor hover:bg-firstColor duration-200 hover:text-white"
+        className="uppercase text-[12px] tracking-[0.18em] font-semibold py-2 px-6 rounded-full border border-line text-ink hover:border-accent hover:text-accent duration-200"
       >
         Login
       </NavLink>
       <NavLink
         to="auth/register"
-        className="capitalize ml-4 py-2 px-10 rounded-3xl bg-firstColor duration-200 ease-in-out text-buttonColor font-semibold hover:bg-hoveredColor"
+        className="uppercase text-[12px] tracking-[0.18em] py-2 px-6 rounded-full bg-accent text-onAccent font-semibold hover:bg-accentHover duration-200"
       >
         Sign up
       </NavLink>

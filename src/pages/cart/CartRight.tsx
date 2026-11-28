@@ -24,8 +24,8 @@ interface CartRightProps {
 }
 
 const inputClass = (invalid: boolean) =>
-  `w-full bg-gray-50 outline-none rounded-lg border px-3 py-2 ${
-    invalid ? "border-red-500" : "border-gray-200 focus:border-buttonColor"
+  `w-full bg-surface2 outline-none rounded-lg border px-3 py-2 ${
+    invalid ? "border-red-500" : "border-line focus:border-accent"
   }`;
 
 const CartRight = ({
@@ -45,7 +45,7 @@ const CartRight = ({
       <header className="text-white flex text-xl lg:text-2xl font-extrabold text-center md:text-left items-center">
         <h3>Order options</h3>
       </header>
-      <div className="rounded-xl bg-white p-5 lg:p-7">
+      <div className="rounded-xl bg-surface p-5 lg:p-7">
         <OrderOptions timeError={errors.time} />
       </div>
     </section>
@@ -56,7 +56,7 @@ const CartRight = ({
       <form
         onSubmit={(e) => e.preventDefault()}
         noValidate
-        className="rounded-xl bg-white p-5 lg:p-7 flex flex-col gap-4"
+        className="rounded-xl bg-surface p-5 lg:p-7 flex flex-col gap-4"
       >
         <div>
           <label htmlFor="delivery-address" className="block mb-1">

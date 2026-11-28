@@ -13,7 +13,7 @@ function Feedbacks() {
         </p>
       </TextHolder>
       <div className="cards grid grid-cols-1 lg:grid-cols-3 gap-5">
-        <aside className="feedBackCard border-2  mx-auto space-y-4 border-gray-300 flex flex-col rounded-xl p-7 max-lg:max-w-[400px] hover:shadow-2xl hover:border-buttonColor duration-200 ease-in-out">
+        <aside className="feedBackCard border-2  mx-auto space-y-4 border-line flex flex-col rounded-xl p-7 max-lg:max-w-[400px] hover:shadow-2xl hover:border-accent duration-200 ease-in-out">
           <div className="person flex gap-2 items-center">
             <img src={profile} alt="profile" className="rounded-full w-14" />
             <div className="flex-1 text-left">
@@ -31,7 +31,7 @@ function Feedbacks() {
             recommended!
           </p>
         </aside>
-        <aside className="feedBackCard border-2  mx-auto space-y-4 border-gray-300 flex flex-col rounded-xl p-7 max-lg:max-w-[400px] hover:shadow-2xl hover:border-buttonColor duration-200 ease-in-out">
+        <aside className="feedBackCard border-2  mx-auto space-y-4 border-line flex flex-col rounded-xl p-7 max-lg:max-w-[400px] hover:shadow-2xl hover:border-accent duration-200 ease-in-out">
           <div className="person flex gap-2 items-center">
             <img src={profile} alt="profile" className="rounded-full w-14" />
             <div className="flex-1 text-left">
@@ -48,7 +48,7 @@ function Feedbacks() {
             better just by drinking their Hazelnut Latte
           </p>
         </aside>
-        <aside className="feedBackCard border-2  mx-auto space-y-4 border-gray-300 flex flex-col rounded-xl p-7 max-lg:max-w-[400px] hover:shadow-2xl hover:border-buttonColor duration-200 ease-in-out">
+        <aside className="feedBackCard border-2  mx-auto space-y-4 border-line flex flex-col rounded-xl p-7 max-lg:max-w-[400px] hover:shadow-2xl hover:border-accent duration-200 ease-in-out">
           <div className="person flex gap-2 items-center">
             <img src={profile} alt="profile" className="rounded-full w-14" />
             <div className="flex-1 text-left">

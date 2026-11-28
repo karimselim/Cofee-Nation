@@ -26,14 +26,14 @@ const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd
             aria-label={`${s.label}, ${formatMoney(unitPrice(product, s.value))}`}
             onClick={() => onSizeChange(s.value)}
             className={`aspect-square w-12 p-2 text-center rounded-full ${
-              size === s.value ? "bg-firstColor" : "bg-gray-400"
+              size === s.value ? "bg-accent" : "bg-gray-400"
             }`}
           >
             {s.value}
           </button>
         ))}
       </div>
-      <p className="text-base font-normal text-gray-600">
+      <p className="text-base font-normal text-muted">
         {SIZES.map((s) => `${s.value} ${formatMoney(unitPrice(product, s.value))}`).join(" · ")}
       </p>
     </aside>
@@ -45,14 +45,14 @@ const ProductItemBottom = ({ product, size, onSizeChange, quantity, total, onAdd
       />
       <header className="flex flex-col flex-[4_4_0]">
         <h2 className="font-black text-xl text-center md:text-left uppercase">{product.title}</h2>
-        <p className="text-gray-600">
+        <p className="text-muted">
           {quantity} × {size} · {formatMoney(total)}
         </p>
       </header>
       <button
         aria-label="Add to cart"
         onClick={onAdd}
-        className="flex bg-firstColor rounded-full aspect-square h-14 items-center justify-center text-buttonColor"
+        className="flex bg-accent rounded-full aspect-square h-14 items-center justify-center text-onAccent"
       >
         <FontAwesomeIcon icon={faArrowRight} className="text-4xl" />
       </button>

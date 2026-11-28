@@ -44,7 +44,7 @@ const Toaster = () => {
       data-state={view.leaving ? "leaving" : "entering"}
       className={`${
         view.leaving ? "toast-out" : "toast-in"
-      } pointer-events-auto w-[92%] max-w-md rounded-xl bg-buttonColor text-white shadow-xl px-5 py-3 flex gap-4 items-start`}
+      } pointer-events-auto w-[92%] max-w-md rounded-xl bg-accent text-onAccent shadow-xl px-5 py-3 flex gap-4 items-start`}
     >
       <div className="flex-1">
         <p className="font-bold">{shown.title}</p>

@@ -18,7 +18,7 @@ const ErrorComponent = ({ message }: { message?: string }) => {
         <h1 className="font-bold text-xl">{text}</h1>
         <Button
           to="/"
-          className="bg-buttonColor text-lg font-bold text-white rounded-2xl py-2 mb-4 shadow-xl"
+          className="bg-accent text-lg font-bold text-onAccent rounded-2xl py-2 mb-4 shadow-xl"
         >
           back to home
         </Button>

@@ -3,10 +3,12 @@ import jokopi from "../../assists/jokopi.svg";
 
 const Logo = () => {
   return (
-    <div className="logo flex items-center py-5 md:py-8 font-bold ml-2 text-xl">
-      <Link to="/" className="logo flex items-center gap-4 border-none">
-        <img src={jokopi} alt="Coffee Nation logo" className="w-8" />
-        Coffee Nation
+    <div className="logo flex items-center py-4 md:py-5 font-bold text-lg">
+      <Link to="/" className="logo flex items-center gap-3 border-none">
+        <span className="grid place-items-center w-11 h-11 rounded-full border border-accent/60 bg-surface">
+          <img src={jokopi} alt="Coffee Nation logo" className="w-7" />
+        </span>
+        <span className="uppercase tracking-[0.18em] text-ink text-base">Coffee Nation</span>
       </Link>
     </div>
   );

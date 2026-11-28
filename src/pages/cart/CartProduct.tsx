@@ -7,7 +7,7 @@ import { formatMoney } from "../../utils/money";
 import { SIZES, lineTotal } from "../../utils/pricing";
 
 const roundBtn =
-  "w-8 aspect-square bg-buttonColor text-white flex justify-center items-center rounded-full font-extrabold text-lg";
+  "w-8 aspect-square bg-accent text-onAccent flex justify-center items-center rounded-full font-extrabold text-lg";
 
 const CartProduct = ({ item }: { item: CartItem }) => {
   const dispatch = useAppDispatch();
@@ -25,7 +25,7 @@ const CartProduct = ({ item }: { item: CartItem }) => {
       </div>
       <div className="flex flex-col gap-3 flex-[2_2_0]">
         <p className="font-semibold">{title.split(" ").slice(0, 3).join(" ")}</p>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-muted">
           Size {size} ({sizeLabel}) · {formatMoney(price)} each
         </p>
         <div className="flex gap-4">

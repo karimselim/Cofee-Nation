@@ -33,7 +33,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
     usePagination(items);
 
   const field =
-    "w-full h-11 bg-white rounded-lg border border-gray-200 px-3 outline-none focus:border-buttonColor hover:border-buttonColor";
+    "w-full h-11 bg-surface rounded-lg border border-line px-3 outline-none focus:border-accent hover:border-accent";
 
   return (
     <div>
@@ -43,7 +43,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
         className="mt-10 grid gap-4 grid-cols-1 sm:grid-cols-[minmax(0,1fr)_9rem] lg:grid-cols-[minmax(0,1fr)_9rem_14rem] items-end"
       >
         <div className="flex flex-col text-left">
-          <label htmlFor="product-search" className="text-sm mb-1 text-gray-600">Search</label>
+          <label htmlFor="product-search" className="text-sm mb-1 text-muted">Search</label>
           <input
             id="product-search"
             type="search"
@@ -55,7 +55,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
           />
         </div>
         <div className="flex flex-col text-left">
-          <label htmlFor="product-max" className="text-sm mb-1 text-gray-600">Max price (EGP)</label>
+          <label htmlFor="product-max" className="text-sm mb-1 text-muted">Max price (EGP)</label>
           <input
             id="product-max"
             type="text"
@@ -92,7 +92,7 @@ const CategoryPage = ({ category }: { category?: Category }) => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
-      <p className="text-buttonColor my-8">
+      <p className="text-accent my-8">
         *prices shown are after the current discount
       </p>
     </div>
